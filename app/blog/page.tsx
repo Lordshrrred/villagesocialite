@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
-import { Fragment } from "react";
 import Link from "next/link";
-import { BlogPromoAd } from "@/components/blog-promo-ad";
 import { ImportedStoryCard } from "@/components/imported-story-card";
 import { SectionHeading } from "@/components/section-heading";
 import { SeoBlogCard } from "@/components/seo-blog-card";
@@ -89,19 +87,12 @@ export default function BlogPage() {
           title="Answers people search for, written with Socialite flavor."
           description="Useful guides, local angles, and Socialite picks are spaced throughout the feed so the blog feels helpful, shoppable, and alive without becoming a cluttered dump."
         />
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {seoPosts.map((post, index) => (
-            <Fragment key={post.slug}>
-              <SeoBlogCard post={post} />
-              {(index + 1) % 8 === 0 ? (
-                <BlogPromoAd index={Math.floor(index / 8)} />
-              ) : null}
-            </Fragment>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {seoPosts.map((post) => (
+            <SeoBlogCard key={post.slug} post={post} />
           ))}
         </div>
       </section>
-
-      <BlogPromoAd index={2} variant="wide" />
 
       <section className="space-y-8">
         <SectionHeading
@@ -109,7 +100,7 @@ export default function BlogPage() {
           title="Local videos, offers, and stories still get the spotlight."
           description="The blog keeps the strongest Village Socialite coverage in the mix, including videos, offers, resident moments, restaurant finds, and the local texture that gives the site its personality."
         />
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {archivePosts.map((post) => (
             <ImportedStoryCard key={post.id} item={post} />
           ))}

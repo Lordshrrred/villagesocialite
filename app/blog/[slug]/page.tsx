@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { BlogPromoAd } from "@/components/blog-promo-ad";
 import {
   buildSeoArticleSections,
   getRelatedSeoBlogPosts,
@@ -140,7 +141,7 @@ export default async function SeoBlogPostPage({ params }: PageProps) {
   ];
 
   return (
-    <div className="mx-auto w-full max-w-4xl px-5 py-10 sm:px-8 sm:py-14">
+    <div className="mx-auto w-full max-w-7xl px-5 py-10 sm:px-8 sm:py-14">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
@@ -164,32 +165,33 @@ export default async function SeoBlogPostPage({ params }: PageProps) {
         </Link>
       </nav>
 
-      <article className="mt-9 bg-white">
-        <header className="space-y-6 border-b border-[var(--color-line)] pb-9">
-          <Link
-            href={`/blog/category/${post.categorySlug}`}
-            className="text-[11px] font-extrabold uppercase tracking-[0.28em] text-[var(--color-coral)] hover:text-[var(--color-teal-deep)]"
-          >
-            {post.category}
-          </Link>
-          <h1 className="font-[family:var(--font-cormorant)] text-5xl font-semibold leading-none text-[var(--color-ink)] sm:text-6xl">
-            {post.title}
-          </h1>
-          <p className="text-xl leading-9 text-[var(--color-ink-soft)]">{post.hook}</p>
-          <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-[var(--color-line)] bg-[var(--color-paper)]">
-            <Image
-              src={post.image}
-              alt={post.title}
-              fill
-              priority
-              sizes="(min-width: 768px) 768px, 100vw"
-              className="object-cover object-center"
-            />
-          </div>
-          <p className="text-sm font-semibold leading-7 text-[var(--color-ink-soft)]">
-            Updated for Village Socialite readers. Main topic: <span className="text-[var(--color-ink)]">{post.keyword}</span>.
-          </p>
-        </header>
+      <div className="mt-9 grid gap-8 lg:grid-cols-[minmax(0,56rem)_21rem] lg:items-start xl:grid-cols-[minmax(0,56rem)_23rem]">
+        <article className="bg-white">
+          <header className="space-y-6 border-b border-[var(--color-line)] pb-9">
+            <Link
+              href={`/blog/category/${post.categorySlug}`}
+              className="text-[11px] font-extrabold uppercase tracking-[0.28em] text-[var(--color-coral)] hover:text-[var(--color-teal-deep)]"
+            >
+              {post.category}
+            </Link>
+            <h1 className="font-[family:var(--font-cormorant)] text-5xl font-semibold leading-none text-[var(--color-ink)] sm:text-6xl">
+              {post.title}
+            </h1>
+            <p className="text-xl leading-9 text-[var(--color-ink-soft)]">{post.hook}</p>
+            <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-[var(--color-line)] bg-[var(--color-paper)]">
+              <Image
+                src={post.image}
+                alt={post.title}
+                fill
+                priority
+                sizes="(min-width: 1024px) 760px, 100vw"
+                className="object-cover object-center"
+              />
+            </div>
+            <p className="text-sm font-semibold leading-7 text-[var(--color-ink-soft)]">
+              Updated for Village Socialite readers. Main topic: <span className="text-[var(--color-ink)]">{post.keyword}</span>.
+            </p>
+          </header>
 
         <div className="space-y-11 pt-9">
           <section className="space-y-5">
@@ -271,7 +273,25 @@ export default async function SeoBlogPostPage({ params }: PageProps) {
             ))}
           </section>
         </div>
-      </article>
+        </article>
+
+        <aside className="space-y-5 lg:sticky lg:top-24" aria-label="Village Socialite offers">
+          <div className="rounded-[1.4rem] border border-white/80 bg-white/90 p-5 shadow-[0_16px_45px_rgba(5,20,25,0.07)] ring-1 ring-[var(--color-line)] backdrop-blur">
+            <p className="text-[11px] font-extrabold uppercase tracking-[0.28em] text-[var(--color-coral)]">
+              Socialite picks
+            </p>
+            <h2 className="mt-2 font-[family:var(--font-cormorant)] text-3xl font-semibold leading-tight text-[var(--color-ink)]">
+              Offers worth keeping close.
+            </h2>
+            <p className="mt-3 text-sm leading-7 text-[var(--color-ink-soft)]">
+              Handy Village-ready finds sit here in the rail while the guide stays easy to read.
+            </p>
+          </div>
+          <BlogPromoAd index={0} />
+          <BlogPromoAd index={1} />
+          <BlogPromoAd index={2} />
+        </aside>
+      </div>
 
       <section className="mt-12 border-t border-[var(--color-line)] pt-8">
         <p className="text-[11px] font-extrabold uppercase tracking-[0.28em] text-[var(--color-coral)]">
