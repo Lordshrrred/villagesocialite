@@ -49,7 +49,10 @@ export default function Home() {
             <p className="text-[11px] font-extrabold uppercase tracking-[0.38em] text-[var(--color-cyan)]">
               The Villages, Florida — All-Access Pass
             </p>
-            <h1 className="font-[family:var(--font-cormorant)] text-[2.6rem] font-semibold leading-[1.08] sm:text-[3.8rem] lg:text-[5.2rem]">
+            <h1
+              className="font-[family:var(--font-cormorant)] font-semibold"
+              style={{ fontSize: "clamp(2.4rem, 4.6vw, 5.4rem)", lineHeight: 1.08 }}
+            >
               Watch The Villages<br />Come To Life.
             </h1>
             <p className="text-lg leading-9 text-white/85 sm:text-xl">
