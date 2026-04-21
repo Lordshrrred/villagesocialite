@@ -25,8 +25,8 @@ export function SiteHeader() {
   const navItemClass = (href: string) => {
     const active = pathname === href;
     if (active)
-      return "nav-item-hover whitespace-nowrap rounded-full px-5 py-2 text-[0.85rem] font-extrabold bg-white text-[var(--color-teal-deep)] shadow-[0_2px_12px_rgba(0,0,0,0.15)]";
-    return "nav-item-hover whitespace-nowrap rounded-full px-5 py-2 text-[0.85rem] font-bold text-white/90 hover:bg-white/20 hover:text-white hover:shadow-[0_2px_14px_rgba(255,255,255,0.15)] transition-all duration-200 hover:scale-[1.04]";
+      return "nav-item-hover whitespace-nowrap rounded-full px-4 py-2 text-center text-[0.82rem] font-extrabold bg-white text-[var(--color-teal-deep)] shadow-[0_2px_12px_rgba(0,0,0,0.15)]";
+    return "nav-item-hover whitespace-nowrap rounded-full px-4 py-2 text-center text-[0.82rem] font-bold text-white/90 hover:bg-white/20 hover:text-white hover:shadow-[0_2px_14px_rgba(255,255,255,0.15)] transition-all duration-200 hover:scale-[1.04]";
   };
 
   return (
@@ -87,25 +87,27 @@ export function SiteHeader() {
           </Link>
 
           {/* Mobile-only centered wordmark + sparkles */}
-          <Link href="/" className="relative flex flex-1 flex-col items-center justify-center sm:hidden">
-            {/* Sparkle A — top-right of wordmark */}
+          <Link href="/" className="relative flex flex-1 items-center justify-center sm:hidden">
+            {/* Sparkle A */}
             <svg className="sparkle-2 absolute -top-2 right-4 pointer-events-none" width="9" height="9" viewBox="0 0 12 12" fill="none" aria-hidden="true">
               <path d="M6 0 C6 3.5 8.5 6 12 6 C8.5 6 6 8.5 6 12 C6 8.5 3.5 6 0 6 C3.5 6 6 3.5 6 0Z" fill="#22e8d4" />
             </svg>
-            {/* Sparkle B — bottom-left */}
+            {/* Sparkle B */}
             <svg className="sparkle-3 absolute -bottom-1 left-4 pointer-events-none" width="7" height="7" viewBox="0 0 12 12" fill="none" aria-hidden="true">
               <path d="M6 0 C6 3.5 8.5 6 12 6 C8.5 6 6 8.5 6 12 C6 8.5 3.5 6 0 6 C3.5 6 6 3.5 6 0Z" fill="#00afc5" opacity="0.7" />
             </svg>
-            {/* Sparkle C — top-left accent */}
+            {/* Sparkle C */}
             <svg className="sparkle absolute -top-1 left-6 pointer-events-none" width="8" height="8" viewBox="0 0 12 12" fill="none" aria-hidden="true">
               <path d="M6 0 C6 3.5 8.5 6 12 6 C8.5 6 6 8.5 6 12 C6 8.5 3.5 6 0 6 C3.5 6 6 3.5 6 0Z" fill="#00afc5" />
             </svg>
-            <p className="font-[family:var(--font-cormorant)] text-[1.65rem] font-semibold leading-none tracking-tight text-[var(--color-ink)]">
-              Village Socialite
-            </p>
-            <p className="mt-1 whitespace-nowrap text-[8.5px] font-extrabold uppercase tracking-[0.1em] text-[var(--color-teal)]">
-              Watch. Explore. Belong.
-            </p>
+            <div className="flex flex-col">
+              <p className="font-[family:var(--font-cormorant)] text-[1.65rem] font-semibold leading-none tracking-tight text-[var(--color-ink)]">
+                Village Socialite
+              </p>
+              <p className="mt-1 whitespace-nowrap text-[8.5px] font-extrabold uppercase tracking-[0.1em] text-[var(--color-teal)]">
+                Watch. Explore. Belong.
+              </p>
+            </div>
           </Link>
 
           {/* Search bar — desktop, more breathing room */}
@@ -147,7 +149,7 @@ export function SiteHeader() {
         style={{ background: "linear-gradient(90deg, #004d63 0%, #007a96 20%, #00afc5 50%, #00d4e0 78%, #22e8d4 100%)" }}
       >
         <div className="mx-auto flex w-full max-w-7xl items-center justify-center px-4 py-1.5 sm:px-6">
-          <div className="flex items-center justify-center gap-0.5">
+          <div className="flex w-full max-w-5xl items-center justify-between gap-1">
             {mainNav.map((item) => (
               <Link key={item.href} href={item.href} className={navItemClass(item.href)}>
                 {item.label}
