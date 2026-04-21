@@ -45,58 +45,59 @@ export default function Home() {
         {/* Subtle bottom fade so bottom content reads cleanly */}
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[rgba(5,20,25,0.55)] to-transparent" />
 
-        {/* Layout: heading top-left, CTAs pinned bottom-left */}
-        <div className="relative mx-auto flex h-full w-full max-w-7xl flex-col justify-between px-6 py-10 sm:px-10 sm:py-12 lg:px-14 lg:py-14">
-
-          {/* ── Top: eyebrow + heading ── */}
-          <div className="max-w-3xl text-white">
+        {/* ── TOP: eyebrow + heading ── */}
+        <div className="absolute left-0 right-0 top-10 px-6 sm:px-10 lg:top-14 lg:px-14">
+          <div className="mx-auto max-w-7xl">
             <p className="text-[11px] font-extrabold uppercase tracking-[0.38em] text-[var(--color-cyan)]">
               The Villages, Florida — All-Access Pass
             </p>
             <h1
               className="mt-4 font-[family:var(--font-cormorant)] font-semibold text-white"
-              style={{ fontSize: "clamp(2.4rem, 4.6vw, 5.4rem)", lineHeight: 1.08 }}
+              style={{ fontSize: "clamp(3rem, 5.8vw, 6.4rem)", lineHeight: 1.05 }}
             >
               Watch The Villages<br />Come To Life.
             </h1>
           </div>
+        </div>
 
-          {/* ── Bottom: description + buttons + quick links ── */}
-          <div className="max-w-2xl space-y-5 text-white">
-            <p className="text-lg leading-8 text-white/88 sm:text-xl">
-              Nightlife, golf, live music, dining, real estate, and the moments that make The Villages unlike anywhere else.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/categories"
-                className="rounded-full bg-[var(--color-teal)] px-8 py-4 text-base font-extrabold text-white shadow-[0_6px_24px_rgba(0,175,197,0.5)] transition hover:-translate-y-0.5 hover:shadow-[0_10px_32px_rgba(0,175,197,0.55)]"
-              >
-                Browse Categories
-              </Link>
-              <Link
-                href="/join-the-socialite"
-                className="rounded-full border-2 border-white/35 bg-white/12 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition hover:bg-white/22"
-              >
-                Join The Socialite
-              </Link>
-            </div>
-            <div className="flex flex-wrap gap-5 border-t border-white/15 pt-4">
-              {[
-                { href: "/categories", label: "▶ Start Watching" },
-                { href: "/best-golf-carts-the-villages", label: "🛺 Best Golf Carts" },
-                { href: "/join-the-socialite", label: "✦ Join Us" },
-              ].map((item) => (
+        {/* ── BOTTOM: description + buttons + quick links ── */}
+        <div className="absolute bottom-10 left-0 right-0 px-6 sm:px-10 lg:bottom-14 lg:px-14">
+          <div className="mx-auto max-w-7xl">
+            <div className="max-w-2xl space-y-5 text-white">
+              <p className="text-lg leading-8 text-white/88 sm:text-xl">
+                Nightlife, golf, live music, dining, real estate, and the moments that make The Villages unlike anywhere else.
+              </p>
+              <div className="flex flex-wrap gap-3">
                 <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-sm font-bold text-white/70 transition hover:text-white"
+                  href="/categories"
+                  className="rounded-full bg-[var(--color-teal)] px-8 py-4 text-base font-extrabold text-white shadow-[0_6px_24px_rgba(0,175,197,0.5)] transition hover:-translate-y-0.5 hover:shadow-[0_10px_32px_rgba(0,175,197,0.55)]"
                 >
-                  {item.label}
+                  Browse Categories
                 </Link>
-              ))}
+                <Link
+                  href="/join-the-socialite"
+                  className="rounded-full border-2 border-white/35 bg-white/12 px-8 py-4 text-base font-bold text-white backdrop-blur-sm transition hover:bg-white/22"
+                >
+                  Join The Socialite
+                </Link>
+              </div>
+              <div className="flex flex-wrap gap-5 border-t border-white/15 pt-4">
+                {[
+                  { href: "/categories", label: "▶ Start Watching" },
+                  { href: "/best-golf-carts-the-villages", label: "🛺 Best Golf Carts" },
+                  { href: "/join-the-socialite", label: "✦ Join Us" },
+                ].map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="text-sm font-bold text-white/70 transition hover:text-white"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
-
         </div>
       </section>
 
