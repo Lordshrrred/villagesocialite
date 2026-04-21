@@ -48,12 +48,12 @@ export default function Home() {
         {/* ══ MOBILE layout (hidden on desktop) ══════════════════════════ */}
         <div className="relative flex h-full flex-col justify-center px-6 py-12 lg:hidden">
           <div className="max-w-lg space-y-6 text-white">
-            <p className="text-[11px] font-extrabold uppercase tracking-[0.38em] text-[var(--color-cyan)]">
-              The Villages, Florida — All-Access Pass
+            <p className="text-[11px] font-extrabold uppercase tracking-[0.38em] leading-6 text-[var(--color-cyan)]">
+              The Villages, Florida<br />All-Access Pass
             </p>
             <h1
               className="font-[family:var(--font-cormorant)] font-semibold text-white"
-              style={{ fontSize: "clamp(1.75rem, 7.5vw, 3.4rem)", lineHeight: 1.08 }}
+              style={{ fontSize: "clamp(2rem, 8vw, 3.4rem)", lineHeight: 1.08 }}
             >
               Watch The Villages<br />Come To Life.
             </h1>
