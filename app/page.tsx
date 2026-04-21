@@ -79,12 +79,12 @@ function CategoryGlyph({ name }: { name: CategoryIconName }) {
       )}
       {name === "cart" && (
         <>
-          <path d="M16 39h33l-3-12H24l-8 12Z" fill="currentColor" opacity=".24" />
-          <path d="M25 31h10v8H25zM37 31h8l2 8H37zM25 18h17l3 9H23l2-9Z" fill="currentColor" opacity=".16" />
-          <path d="M16 39h33l-3-12H24l-8 12ZM23 39v-8h12M35 27v12M45 39v-7M18 47h32" fill="none" {...strokeProps} />
-          <path d="M23 47a4 4 0 1 0 0 8 4 4 0 0 0 0-8ZM46 47a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" fill="currentColor" opacity=".3" />
-          <path d="M23 50h.1M46 50h.1" fill="none" {...strokeProps} />
-          <path d="M19 25h7l2-8h14l3 8" fill="none" {...strokeProps} />
+          <path d="M18 37h26l5 6H15l3-6Z" fill="currentColor" opacity=".26" />
+          <path d="M23 22h22l3 15H20l3-15Z" fill="currentColor" opacity=".16" />
+          <path d="M27 26h10v11H24l3-11ZM39 26h6l2 11h-8V26Z" fill="currentColor" opacity=".18" />
+          <path d="M18 37h26l5 6H15l3-6ZM23 22h22l3 15H20l3-15ZM24 22l4-7h16l4 7M37 22v21M22 43h29" fill="none" {...strokeProps} />
+          <path d="M19 49a4.5 4.5 0 1 0 9 0 4.5 4.5 0 0 0-9 0ZM43 49a4.5 4.5 0 1 0 9 0 4.5 4.5 0 0 0-9 0Z" fill="currentColor" opacity=".3" />
+          <path d="M23.5 49h.1M47.5 49h.1M28 37v-7h8M41 37v-7h4" fill="none" {...strokeProps} />
         </>
       )}
       {name === "home" && (
