@@ -32,7 +32,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50">
       {/* ── Top bar ─────────────────────────────────────────────────── */}
       <div className="border-b border-[var(--color-teal)]/20 bg-[var(--background)]/97 shadow-[0_1px_16px_rgba(5,20,25,0.09)] backdrop-blur-xl">
-        <div className="mx-auto flex w-full max-w-7xl items-center gap-6 px-5 py-5 sm:px-8 sm:py-6">
+        <div className="mx-auto flex w-full max-w-7xl items-center gap-6 px-5 py-3 sm:px-8 sm:py-4">
 
           {/* Logo */}
           <Link href="/" className="flex shrink-0 items-center gap-4 group">
