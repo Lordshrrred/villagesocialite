@@ -52,6 +52,7 @@ export default async function SeoBlogPostPage({ params }: PageProps) {
 
   const sections = buildSeoArticleSections(post);
   const related = getRelatedSeoBlogPosts(post, 3);
+  const isSvgImage = post.image.endsWith(".svg");
   const schema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -109,6 +110,7 @@ export default async function SeoBlogPostPage({ params }: PageProps) {
               alt={post.title}
               fill
               priority
+              unoptimized={isSvgImage}
               sizes="(min-width: 1024px) 42vw, 100vw"
               className="object-cover"
             />
@@ -121,7 +123,7 @@ export default async function SeoBlogPostPage({ params }: PageProps) {
         <div className="space-y-6">
           <div className="rounded-[2rem] border-2 border-white bg-[linear-gradient(180deg,#ffffff,#f7fcfd)] p-6 shadow-[0_24px_60px_rgba(5,20,25,0.06)] sm:p-10">
             <p className="text-[11px] font-extrabold uppercase tracking-[0.3em] text-[var(--color-coral)]">
-              Search intent
+              Local read
             </p>
             <p className="mt-4 text-lg leading-9 text-[var(--color-ink-soft)]">{post.intent}</p>
           </div>

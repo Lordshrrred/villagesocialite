@@ -1,3 +1,5 @@
+import { seoBlogImages } from "@/lib/seo-blog-images";
+
 export type SeoBlogCategory = {
   slug: string;
   name: string;
@@ -265,7 +267,7 @@ function titleFromKeyword(keyword: string) {
     "What to Know About",
     "How to Navigate",
     "The Smart Socialite Guide to",
-    "Before You Search for",
+    "The Village Socialite Guide to",
   ];
   return `${starts[keyword.length % starts.length]} ${keyword}`;
 }
@@ -276,6 +278,90 @@ function slugify(value: string) {
     .replace(/&/g, "and")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-|-$/g, "");
+}
+
+const categoryEditorial = {
+  "moving-to-the-villages": {
+    scene: "neighborhood feel, daily errands, home styles, lifestyle visits, and what a normal week could actually look like",
+    promise: "Use it to compare the dream with the day-to-day details before the moving truck shows up.",
+    decision: "proximity to town squares, golf cart access, budget comfort, healthcare, clubs, and how quickly the place feels like home",
+  },
+  "things-to-do": {
+    scene: "town squares, live music, seasonal events, recreation centers, day trips, and the easy wins that make a weekend feel full",
+    promise: "Use it to turn a loose afternoon into a plan with a little more sparkle.",
+    decision: "timing, parking, golf cart routes, crowd energy, weather, reservations, and whether the outing gives people a reason to linger",
+  },
+  "golf-cart-life": {
+    scene: "cart paths, rentals, gas stops, accessories, safety habits, route planning, and the culture that makes carts feel like a second front door",
+    promise: "Use it to move around The Villages with fewer rookie mistakes and better local rhythm.",
+    decision: "range, comfort, storage, weather protection, route confidence, maintenance, and where the cart fits into daily life",
+  },
+  "dining-and-nightlife": {
+    scene: "breakfast runs, happy hours, town square patios, date-night tables, music nights, and the restaurants people actually talk about",
+    promise: "Use it to pick better tables, better timing, and better reasons to get dressed and go out.",
+    decision: "menu fit, noise level, reservation habits, golf cart access, live music, patio comfort, and whether the night feels worth repeating",
+  },
+  "real-estate": {
+    scene: "home types, neighborhood tradeoffs, seasonal demand, listing language, cart-friendly locations, and the lifestyle behind the price",
+    promise: "Use it to read between the listing photos and understand what the address might mean for real life.",
+    decision: "location, floor plan, bond and fees, square proximity, resale confidence, outdoor space, and how the home supports the social life you want",
+  },
+  "health-wellness": {
+    scene: "healthcare access, active aging, fitness, pickleball, recovery, home comfort, and independence without losing the fun",
+    promise: "Use it to build a Villages routine that feels good, sustainable, and still social.",
+    decision: "accessibility, appointment convenience, strength and mobility, comfort products, classes, recovery time, and confidence getting out the door",
+  },
+  "clubs-community": {
+    scene: "clubs, classes, volunteering, recreation centers, hobby groups, dance floors, art rooms, and the friend-making engine of The Villages",
+    promise: "Use it to find the rooms where your people are most likely to be.",
+    decision: "meeting frequency, beginner friendliness, location, cost, social fit, schedule, and whether the group makes it easy to show up again",
+  },
+  "shopping-local-services": {
+    scene: "local businesses, home services, salons, medical offices, markets, pet care, cart service, and the vendors residents rely on",
+    promise: "Use it to spend smarter locally and find the businesses that make Village life smoother.",
+    decision: "trust, convenience, reviews, responsiveness, pricing clarity, golf cart access, and whether the service understands active-adult life",
+  },
+  "dating-social-life": {
+    scene: "singles groups, friendship circles, date-night spots, confidence, relationship questions, and the very human side of starting again",
+    promise: "Use it to navigate connection with more ease and a little more nerve.",
+    decision: "comfort level, safety, social setting, shared interests, timing, expectations, and whether the situation helps people relax",
+  },
+  "visitor-guides": {
+    scene: "first trips, lifestyle previews, town square routes, seasonal planning, where to stay, what to skip, and what to see first",
+    promise: "Use it to make a short visit feel like a smart preview instead of a blur.",
+    decision: "trip length, weather, square selection, restaurants, cart access, show times, lodging, and what gives visitors the clearest feel for the community",
+  },
+} as const;
+
+function editorialFor(slug: string) {
+  return categoryEditorial[slug as keyof typeof categoryEditorial] ?? categoryEditorial["things-to-do"];
+}
+
+function descriptionFor(keyword: string, slug: string, index: number) {
+  const editorial = editorialFor(slug);
+  const opens = [
+    `${keyword} gets clearer when you look at how people actually live it in The Villages.`,
+    `${keyword} can shape a whole day in The Villages, from the first plan to the ride home.`,
+    `${keyword} is one of those local questions where the details matter more than the headline.`,
+    `${keyword} deserves a Villages-specific read, because the community has its own rhythm.`,
+  ];
+  return `${opens[index % opens.length]} This guide looks at ${editorial.scene}. ${editorial.promise}`;
+}
+
+function hookFor(keyword: string, slug: string, index: number) {
+  const editorial = editorialFor(slug);
+  const hooks = [
+    `Around The Villages, ${keyword} is tied to real choices: where to go, who to meet, what to compare, and how to make the day feel easier.`,
+    `The Villages has a way of turning ${keyword} into something practical, social, and surprisingly personal once you are here.`,
+    `For residents, future residents, and visiting family, ${keyword} is not abstract. It affects the routes, rooms, tables, and moments that make the community work.`,
+    `A good answer on ${keyword} should feel local. It should understand the golf carts, the squares, the clubs, the weather, and the social pace of The Villages.`,
+  ];
+  return `${hooks[index % hooks.length]} The Socialite angle is simple: ${editorial.promise}`;
+}
+
+function intentFor(slug: string) {
+  const editorial = editorialFor(slug);
+  return `Help residents, future residents, visitors, and local businesses compare ${editorial.decision}.`;
 }
 
 export const seoBlogCategories = categories;
@@ -293,12 +379,11 @@ export const seoBlogPosts: SeoBlogPost[] = researchTopics.flatMap((cluster, clus
       keyword,
       categorySlug: category.slug,
       category: category.name,
-      image: cluster.image,
+      image: seoBlogImages[id - 1]?.path ?? cluster.image,
       publishedAt: new Date(Date.UTC(2026, 3, 21 - Math.floor(id / 6))).toISOString(),
-      intent:
-        "Help searchers understand the local reality, compare options, and take the next step inside the Village Socialite ecosystem.",
-      description: `${keyword} is one of the strongest Village Socialite search themes. This guide gives residents, future residents, and visitors a practical local angle with clear next steps.`,
-      hook: `People search for "${keyword}" because The Villages is not just a place on a map. It is a lifestyle, a calendar, a golf cart network, a social scene, and a local economy all moving at once.`,
+      intent: intentFor(category.slug),
+      description: descriptionFor(keyword, category.slug, termIndex),
+      hook: hookFor(keyword, category.slug, termIndex),
       secondaryKeywords: [
         "The Villages Florida",
         "Village Socialite",
@@ -341,15 +426,15 @@ export function buildSeoArticleSections(post: SeoBlogPost) {
   return [
     {
       title: `Why "${post.keyword}" matters in The Villages`,
-      body: `Search interest around ${post.keyword} usually comes from people trying to make a real decision. Some are visiting for the first time, some are comparing retirement communities, some are already residents looking for the next restaurant, event, club, cart route, or service. Village Socialite treats that search as a signal: people want useful answers, but they also want the feeling of being plugged into the local conversation.`,
+      body: `${post.keyword} usually matters because somebody is trying to make a real Village decision. They might be visiting for the first time, comparing retirement communities, meeting friends for dinner, planning a cart route, choosing a club, or figuring out where the energy is tonight. Village Socialite treats that curiosity like the start of a local plan, not a generic answer dropped onto a page.`,
     },
     {
-      title: "The local reality behind the search",
+      title: "The local reality behind the topic",
       body: `The Villages works differently from a normal Florida town. Town squares, recreation centers, golf cart paths, clubs, restaurants, healthcare, home services, and social calendars are all connected. That means a strong answer has to go beyond a generic list. It needs to explain how people actually move, meet, eat, shop, relax, and show up here.`,
     },
     {
       title: `How to use this guide if you are researching ${post.category}`,
-      body: `Start with intent. If you are moving here, think about daily rhythm and proximity. If you are visiting, prioritize town squares, live music, restaurants, and golf cart access. If you already live here, use this as a prompt to try a new lane of Village life instead of repeating the same routine. The best searches are not just answered; they turn into plans.`,
+      body: `Start with the kind of day you actually want. If you are moving here, think about daily rhythm and proximity. If you are visiting, prioritize town squares, live music, restaurants, and golf cart access. If you already live here, use this as a prompt to try a new lane of Village life instead of repeating the same routine. The best local guides do not just answer a question; they help you move.`,
     },
     {
       title: "What locals and future locals should compare",
@@ -357,7 +442,7 @@ export function buildSeoArticleSections(post: SeoBlogPost) {
     },
     {
       title: "The Village Socialite take",
-      body: `The opportunity is bigger than ranking for a keyword. Village Socialite can become the place people land when they want the human version of the answer. That means practical guidance, local personality, smart offers, and clear calls to action that help businesses, creators, residents, and visitors connect faster.`,
+      body: `Village Socialite works best when it feels like the human version of the answer: practical guidance, local personality, useful offers, and clear next steps. The goal is simple: help businesses, creators, residents, and visitors connect faster with the people, places, and moments that make The Villages worth talking about.`,
     },
   ];
 }

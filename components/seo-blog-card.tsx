@@ -3,6 +3,8 @@ import Link from "next/link";
 import type { SeoBlogPost } from "@/lib/seo-blog";
 
 export function SeoBlogCard({ post }: { post: SeoBlogPost }) {
+  const isSvg = post.image.endsWith(".svg");
+
   return (
     <article className="group overflow-hidden rounded-[1.8rem] border-2 border-white bg-[linear-gradient(180deg,#ffffff,#f7fcfd)] shadow-[0_24px_60px_rgba(5,20,25,0.07)] transition duration-300 hover:-translate-y-1 hover:border-[var(--color-teal)]/35 hover:shadow-[0_28px_70px_rgba(0,175,197,0.16)]">
       <Link href={`/blog/${post.slug}`} className="block">
@@ -11,6 +13,7 @@ export function SeoBlogCard({ post }: { post: SeoBlogPost }) {
             src={post.image}
             alt={post.title}
             fill
+            unoptimized={isSvg}
             sizes="(min-width: 1024px) 30vw, 100vw"
             className="object-cover transition duration-500 group-hover:scale-105"
           />

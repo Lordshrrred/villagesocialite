@@ -13,7 +13,7 @@ const mainNav = [
   { href: "/merch", label: "Merch" },
   { href: "/fat-pig-society-cbd", label: "Organic CBD" },
   { href: "/best-golf-carts-the-villages", label: "Best Golf Carts" },
-  { href: "/blog", label: "Blog", tiny: true },
+  { href: "/blog", label: "Blog" },
 ];
 
 const mobileNav = mainNav;
@@ -22,11 +22,11 @@ export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  const navItemClass = (href: string, tiny = false) => {
+  const navItemClass = (href: string) => {
     const active = pathname === href;
     if (active)
-      return `nav-item-hover whitespace-nowrap rounded-full py-2 font-extrabold bg-white text-[var(--color-teal-deep)] shadow-[0_2px_12px_rgba(0,0,0,0.15)] ${tiny ? "ml-8 px-3 text-[0.72rem] tracking-[0.18em] uppercase" : "px-5 text-[0.85rem]"}`;
-    return `nav-item-hover whitespace-nowrap rounded-full py-2 font-bold text-white/90 hover:bg-white/20 hover:text-white hover:shadow-[0_2px_14px_rgba(255,255,255,0.15)] transition-all duration-200 hover:scale-[1.04] ${tiny ? "ml-8 px-3 text-[0.72rem] tracking-[0.18em] uppercase" : "px-5 text-[0.85rem]"}`;
+      return "nav-item-hover whitespace-nowrap rounded-full px-5 py-2 text-[0.85rem] font-extrabold bg-white text-[var(--color-teal-deep)] shadow-[0_2px_12px_rgba(0,0,0,0.15)]";
+    return "nav-item-hover whitespace-nowrap rounded-full px-5 py-2 text-[0.85rem] font-bold text-white/90 hover:bg-white/20 hover:text-white hover:shadow-[0_2px_14px_rgba(255,255,255,0.15)] transition-all duration-200 hover:scale-[1.04]";
   };
 
   return (
@@ -149,7 +149,7 @@ export function SiteHeader() {
         <div className="mx-auto flex w-full max-w-7xl items-center justify-center px-4 py-1.5 sm:px-6">
           <div className="flex items-center justify-center gap-0.5">
             {mainNav.map((item) => (
-              <Link key={item.href} href={item.href} className={navItemClass(item.href, item.tiny)}>
+              <Link key={item.href} href={item.href} className={navItemClass(item.href)}>
                 {item.label}
               </Link>
             ))}

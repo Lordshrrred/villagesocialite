@@ -11,7 +11,7 @@ import { getAllPostsSorted } from "@/lib/wordpress";
 export const metadata: Metadata = {
   title: "The Villages Florida Blog | Village Socialite",
   description:
-    "SEO-rich Village Socialite guides covering moving to The Villages, restaurants, golf carts, events, real estate, dating, wellness, clubs, and local services.",
+    "Village Socialite guides covering moving to The Villages, restaurants, golf carts, events, real estate, dating, wellness, clubs, and local services.",
   alternates: {
     canonical: "/blog",
   },

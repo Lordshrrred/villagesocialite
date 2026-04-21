@@ -37,12 +37,12 @@ export default async function SearchPage({ searchParams }: SearchProps) {
         <SectionHeading
           eyebrow="Search"
           title={query ? `Results for "${q}"` : "Search Village Socialite"}
-          description={query ? `${results.length + blogResults.length} results across SEO guides, stories, pages, offers, and archive content.` : "Use the search bar above to jump straight into the archive and the new SEO blog."}
+          description={query ? `${results.length + blogResults.length} results across Village guides, stories, pages, offers, and archive content.` : "Use the search bar above to jump straight into Village Socialite stories, guides, offers, and local finds."}
         />
       </section>
       {blogResults.length > 0 ? (
         <section className="space-y-6">
-          <h2 className="text-2xl font-extrabold text-[var(--color-ink)]">SEO blog guides</h2>
+          <h2 className="text-2xl font-extrabold text-[var(--color-ink)]">Village guides</h2>
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {blogResults.map((post) => (
               <SeoBlogCard key={post.slug} post={post} />
