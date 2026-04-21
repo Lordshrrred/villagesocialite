@@ -31,37 +31,69 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50">
       {/* ── Top bar ─────────────────────────────────────────────────── */}
-      <div className="border-b border-[var(--color-teal)]/20 bg-[var(--background)]/97 shadow-[0_1px_12px_rgba(5,20,25,0.07)] backdrop-blur-xl">
-        <div className="mx-auto flex w-full max-w-7xl items-center gap-4 px-5 py-3 sm:px-8">
-          {/* Logo — no boxy wrapper, just the martini icon */}
-          <Link href="/" className="flex shrink-0 items-center gap-3 group">
-            <Image
-              src="/reference-selected/cropped-20251201_2104_Village-Socialite-Martini_simple_compose_01kbekm22mfjetcmbba22q6tsy-1.png"
-              alt="Village Socialite"
-              width={48}
-              height={48}
-              className="drop-shadow-sm transition-transform group-hover:scale-105"
-              priority
-            />
-            <div className="hidden sm:block">
-              <p className="font-[family:var(--font-cormorant)] text-[1.55rem] font-semibold leading-none text-[var(--color-ink)]">
+      <div className="border-b border-[var(--color-teal)]/20 bg-[var(--background)]/97 shadow-[0_1px_16px_rgba(5,20,25,0.09)] backdrop-blur-xl">
+        <div className="mx-auto flex w-full max-w-7xl items-center gap-6 px-5 py-4 sm:px-8 sm:py-5">
+
+          {/* Logo */}
+          <Link href="/" className="flex shrink-0 items-center gap-3.5 group">
+            <div className="relative">
+              <Image
+                src="/reference-selected/cropped-20251201_2104_Village-Socialite-Martini_simple_compose_01kbekm22mfjetcmbba22q6tsy-1.png"
+                alt="Village Socialite"
+                width={62}
+                height={62}
+                className="drop-shadow-md transition-transform duration-300 group-hover:scale-105"
+                priority
+              />
+              {/* Sparkle 1 — top-right of logo */}
+              <svg
+                className="sparkle absolute -top-1 -right-1 pointer-events-none"
+                width="12" height="12" viewBox="0 0 12 12" fill="none"
+                aria-hidden="true"
+              >
+                <path d="M6 0 C6 3.5 8.5 6 12 6 C8.5 6 6 8.5 6 12 C6 8.5 3.5 6 0 6 C3.5 6 6 3.5 6 0Z"
+                  fill="#00afc5" />
+              </svg>
+            </div>
+
+            <div className="hidden sm:block relative">
+              {/* Sparkle 2 — floats top-right of wordmark */}
+              <svg
+                className="sparkle-2 absolute -top-2 right-0 pointer-events-none"
+                width="9" height="9" viewBox="0 0 12 12" fill="none"
+                aria-hidden="true"
+              >
+                <path d="M6 0 C6 3.5 8.5 6 12 6 C8.5 6 6 8.5 6 12 C6 8.5 3.5 6 0 6 C3.5 6 6 3.5 6 0Z"
+                  fill="#22e8d4" />
+              </svg>
+              {/* Sparkle 3 — bottom-left accent */}
+              <svg
+                className="sparkle-3 absolute -bottom-1 -left-1 pointer-events-none"
+                width="7" height="7" viewBox="0 0 12 12" fill="none"
+                aria-hidden="true"
+              >
+                <path d="M6 0 C6 3.5 8.5 6 12 6 C8.5 6 6 8.5 6 12 C6 8.5 3.5 6 0 6 C3.5 6 6 3.5 6 0Z"
+                  fill="#00afc5" opacity="0.7" />
+              </svg>
+
+              <p className="font-[family:var(--font-cormorant)] text-[1.85rem] font-semibold leading-none tracking-tight text-[var(--color-ink)]">
                 Village Socialite
               </p>
-              <p className="mt-0.5 text-[10px] font-extrabold uppercase tracking-[0.32em] text-[var(--color-teal)]">
+              <p className="mt-1 text-[10px] font-extrabold uppercase tracking-[0.36em] text-[var(--color-teal)]">
                 Watch. Explore. Belong.
               </p>
             </div>
           </Link>
 
-          {/* Search bar — desktop */}
-          <div className="hidden flex-1 lg:block">
+          {/* Search bar — desktop, more breathing room */}
+          <div className="hidden flex-1 lg:block px-2">
             <SearchBar />
           </div>
 
           {/* Join CTA — desktop only */}
           <Link
             href="/join-the-socialite"
-            className="hidden shrink-0 rounded-full bg-[var(--color-teal-deep)] px-5 py-2.5 text-sm font-extrabold text-white shadow-[0_4px_16px_rgba(0,77,99,0.40)] transition hover:-translate-y-0.5 hover:bg-[var(--color-teal)] hover:shadow-[0_8px_24px_rgba(0,175,197,0.45)] lg:inline-flex"
+            className="hidden shrink-0 rounded-full bg-[var(--color-teal-deep)] px-6 py-3 text-sm font-extrabold text-white shadow-[0_4px_16px_rgba(0,77,99,0.40)] transition hover:-translate-y-0.5 hover:bg-[var(--color-teal)] hover:shadow-[0_8px_24px_rgba(0,175,197,0.45)] lg:inline-flex"
           >
             Join The Socialite
           </Link>

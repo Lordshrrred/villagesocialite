@@ -150,6 +150,15 @@ select {
   font-family: var(--font-cormorant), serif;
 }
 
+/* ── Header sparkle ─────────────────────────────────────────────── */
+@keyframes sparklePop {
+  0%, 100% { opacity: 0; transform: scale(0.4) rotate(0deg); }
+  50%       { opacity: 1; transform: scale(1) rotate(20deg); }
+}
+.sparkle { animation: sparklePop 2.4s ease-in-out infinite; }
+.sparkle-2 { animation: sparklePop 2.4s ease-in-out infinite; animation-delay: 0.8s; }
+.sparkle-3 { animation: sparklePop 2.4s ease-in-out infinite; animation-delay: 1.6s; }
+
 /* ── Legacy content ──────────────────────────────────────────────── */
 .legacy-content {
   color: var(--color-ink);
