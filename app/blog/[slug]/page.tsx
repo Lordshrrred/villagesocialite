@@ -281,10 +281,10 @@ export default async function SeoBlogPostPage({ params }: PageProps) {
               Socialite picks
             </p>
             <h2 className="mt-2 font-[family:var(--font-cormorant)] text-3xl font-semibold leading-tight text-[var(--color-ink)]">
-              Offers worth keeping close.
+              Gear, comforts, and local finds we would actually click.
             </h2>
             <p className="mt-3 text-sm leading-7 text-[var(--color-ink-soft)]">
-              Handy Village-ready finds sit here in the rail while the guide stays easy to read.
+              A short rail of Socialite picks for golf cart days, home comfort, easier tech, and the Village lifestyle around this guide.
             </p>
           </div>
           <BlogPromoAd index={0} />
