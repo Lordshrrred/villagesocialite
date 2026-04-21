@@ -166,8 +166,8 @@ export default async function SeoBlogPostPage({ params }: PageProps) {
       </nav>
 
       <div className="mt-9 grid gap-8 lg:grid-cols-[minmax(0,56rem)_21rem] lg:items-start xl:grid-cols-[minmax(0,56rem)_23rem]">
-        <article className="bg-white">
-          <header className="space-y-6 border-b border-[var(--color-line)] pb-9">
+        <article className="overflow-hidden rounded-[2rem] border border-white/80 bg-white shadow-[0_24px_70px_rgba(5,20,25,0.10)] ring-1 ring-[var(--color-line)] sm:rounded-[2.4rem]">
+          <header className="space-y-6 border-b border-[var(--color-line)] bg-[linear-gradient(180deg,#ffffff,#f8fcfd)] px-6 py-8 sm:px-10 sm:py-10 lg:px-14">
             <Link
               href={`/blog/category/${post.categorySlug}`}
               className="text-[11px] font-extrabold uppercase tracking-[0.28em] text-[var(--color-coral)] hover:text-[var(--color-teal-deep)]"
@@ -193,7 +193,7 @@ export default async function SeoBlogPostPage({ params }: PageProps) {
             </p>
           </header>
 
-        <div className="space-y-11 pt-9">
+        <div className="space-y-11 px-6 py-8 sm:px-10 sm:py-10 lg:px-14">
           <section className="space-y-5">
             <p className="text-xl leading-9 text-[var(--color-ink)]">{post.intent}</p>
             <p className="text-lg leading-9 text-[var(--color-ink-soft)]">
