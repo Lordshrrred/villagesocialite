@@ -53,10 +53,11 @@ export function BlogPromoAd({
   return (
     <aside
       className={[
-        "group overflow-hidden rounded-[1.8rem] border-2 border-[var(--color-teal)]/20 bg-white shadow-[0_24px_60px_rgba(5,20,25,0.08)]",
+        "group relative overflow-hidden rounded-[1.8rem] border-2 border-white bg-[linear-gradient(180deg,#ffffff,#f4fbfc)] shadow-[0_24px_60px_rgba(5,20,25,0.09)] transition duration-300 hover:-translate-y-1 hover:border-[var(--color-gold)]/60 hover:shadow-[0_28px_70px_rgba(232,164,21,0.16)]",
         variant === "wide" ? "grid gap-0 md:grid-cols-[0.4fr_0.6fr]" : "",
       ].join(" ")}
     >
+      <div className="absolute inset-x-0 top-0 z-10 h-1.5 bg-[linear-gradient(90deg,var(--color-coral),var(--color-gold),var(--color-teal))]" />
       <Link href={ad.href} className={variant === "wide" ? "contents" : "block"}>
         <div className={variant === "wide" ? "relative min-h-[240px]" : "relative aspect-[16/10]"}>
           <Image
@@ -67,8 +68,8 @@ export function BlogPromoAd({
             className="object-cover transition duration-500 group-hover:scale-[1.04]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/5 to-transparent" />
-          <p className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.24em] text-[var(--color-teal-deep)]">
-            Sponsored pick
+          <p className="absolute left-4 top-4 rounded-full bg-[var(--color-gold)] px-3 py-1 text-[10px] font-extrabold uppercase tracking-[0.24em] text-[var(--color-ink)] shadow-[0_10px_25px_rgba(5,20,25,0.14)]">
+            Socialite pick
           </p>
         </div>
         <div className="space-y-4 p-6">
@@ -79,7 +80,7 @@ export function BlogPromoAd({
             {ad.title}
           </h3>
           <p className="text-sm leading-7 text-[var(--color-ink-soft)]">{ad.description}</p>
-          <span className="inline-flex items-center gap-2 rounded-full bg-[var(--color-teal-deep)] px-5 py-2.5 text-sm font-extrabold text-white transition group-hover:-translate-y-0.5 group-hover:bg-[var(--color-teal)]">
+          <span className="inline-flex items-center gap-2 rounded-full bg-[var(--color-teal-deep)] px-5 py-2.5 text-sm font-extrabold text-white transition group-hover:-translate-y-0.5 group-hover:bg-[var(--color-coral)]">
             {ad.cta} →
           </span>
         </div>

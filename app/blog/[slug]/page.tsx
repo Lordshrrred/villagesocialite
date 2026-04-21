@@ -79,7 +79,7 @@ export default async function SeoBlogPostPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <article className="overflow-hidden rounded-[2.4rem] border border-white/10 bg-[var(--color-ink)] text-white shadow-[0_30px_90px_rgba(5,20,25,0.22)]">
+      <article className="overflow-hidden rounded-[2.4rem] border border-white/20 bg-[radial-gradient(circle_at_12%_0%,rgba(0,216,240,0.20),transparent_30%),linear-gradient(135deg,#051419,#004d63_55%,#00afc5)] text-white shadow-[0_30px_90px_rgba(5,20,25,0.22)]">
         <div className="grid gap-0 lg:grid-cols-[1.02fr_0.98fr]">
           <div className="space-y-6 p-7 sm:p-10 lg:p-12">
             <Link
@@ -119,7 +119,7 @@ export default async function SeoBlogPostPage({ params }: PageProps) {
 
       <section className="grid gap-8 lg:grid-cols-[0.7fr_0.3fr]">
         <div className="space-y-6">
-          <div className="rounded-[2rem] border border-[var(--color-line)] bg-white p-6 shadow-[0_24px_60px_rgba(18,27,33,0.05)] sm:p-10">
+          <div className="rounded-[2rem] border-2 border-white bg-[linear-gradient(180deg,#ffffff,#f7fcfd)] p-6 shadow-[0_24px_60px_rgba(5,20,25,0.06)] sm:p-10">
             <p className="text-[11px] font-extrabold uppercase tracking-[0.3em] text-[var(--color-coral)]">
               Search intent
             </p>
@@ -128,18 +128,27 @@ export default async function SeoBlogPostPage({ params }: PageProps) {
 
           {sections.map((section, index) => (
             <div key={section.title} className="space-y-6">
-              <section className="rounded-[2rem] border border-[var(--color-line)] bg-white p-6 shadow-[0_24px_60px_rgba(18,27,33,0.05)] sm:p-10">
+              <section className="rounded-[2rem] border-2 border-white bg-[linear-gradient(180deg,#ffffff,#f7fcfd)] p-6 shadow-[0_24px_60px_rgba(5,20,25,0.06)] sm:p-10">
                 <h2 className="font-[family:var(--font-cormorant)] text-4xl font-semibold leading-tight text-[var(--color-ink)]">
                   {section.title}
                 </h2>
                 <p className="mt-5 text-lg leading-9 text-[var(--color-ink-soft)]">{section.body}</p>
-                <div className="mt-6 rounded-[1.4rem] bg-[var(--color-paper)] p-5">
+                <div className="mt-6 rounded-[1.4rem] border border-[var(--color-teal)]/15 bg-[var(--color-paper)] p-5">
                   <p className="text-sm font-extrabold uppercase tracking-[0.22em] text-[var(--color-teal)]">
                     Socialite move
                   </p>
                   <p className="mt-3 text-sm leading-7 text-[var(--color-ink-soft)]">
                     If this topic matters to you, bookmark Village Socialite, search the archive, and join the list so the next great Village find comes to you first.
                   </p>
+                  {index === 2 ? (
+                    <p className="mt-3 text-sm leading-7 text-[var(--color-ink-soft)]">
+                      Heading into a town square, market, golf cart ride, or Socialite-worthy night out?{" "}
+                      <Link href="/merch" className="font-extrabold text-[var(--color-coral)] underline decoration-[var(--color-gold)] decoration-2 underline-offset-4">
+                        Shop the Village Socialite merch
+                      </Link>{" "}
+                      and make the look part of the story.
+                    </p>
+                  ) : null}
                   <Link
                     href="/join-the-socialite"
                     className="mt-4 inline-flex rounded-full bg-[var(--color-teal-deep)] px-5 py-2.5 text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-[var(--color-teal)]"
@@ -148,13 +157,10 @@ export default async function SeoBlogPostPage({ params }: PageProps) {
                   </Link>
                 </div>
               </section>
-              {index === 1 || index === 3 ? (
-                <BlogPromoAd index={index} variant="wide" />
-              ) : null}
             </div>
           ))}
 
-          <section className="rounded-[2rem] border border-[var(--color-line)] bg-white p-6 shadow-[0_24px_60px_rgba(18,27,33,0.05)] sm:p-10">
+          <section className="rounded-[2rem] border-2 border-white bg-[linear-gradient(180deg,#ffffff,#f7fcfd)] p-6 shadow-[0_24px_60px_rgba(5,20,25,0.06)] sm:p-10">
             <h2 className="font-[family:var(--font-cormorant)] text-4xl font-semibold text-[var(--color-ink)]">
               Quick FAQ for {post.keyword}
             </h2>
@@ -176,7 +182,7 @@ export default async function SeoBlogPostPage({ params }: PageProps) {
         </div>
 
         <aside className="space-y-6 lg:sticky lg:top-36 lg:self-start">
-          <div className="rounded-[1.7rem] border border-[var(--color-line)] bg-white p-6 shadow-[0_20px_50px_rgba(5,20,25,0.05)]">
+          <div className="rounded-[1.7rem] border-2 border-white bg-[linear-gradient(180deg,#ffffff,#f7fcfd)] p-6 shadow-[0_20px_50px_rgba(5,20,25,0.06)]">
             <p className="text-[11px] font-extrabold uppercase tracking-[0.28em] text-[var(--color-coral)]">
               Plug in
             </p>
@@ -186,13 +192,22 @@ export default async function SeoBlogPostPage({ params }: PageProps) {
             <p className="mt-3 text-sm leading-7 text-[var(--color-ink-soft)]">
               Step into the spotlight and let Village Socialite help turn local attention into actual momentum.
             </p>
-            <Link
-              href="/join-the-socialite"
-              className="mt-5 inline-flex rounded-full bg-[var(--color-gold)] px-5 py-3 text-sm font-extrabold text-[var(--color-ink)] transition hover:-translate-y-0.5"
-            >
-              Get featured →
-            </Link>
+            <div className="mt-5 flex flex-wrap gap-3">
+              <Link
+                href="/join-the-socialite"
+                className="inline-flex rounded-full bg-[var(--color-gold)] px-5 py-3 text-sm font-extrabold text-[var(--color-ink)] transition hover:-translate-y-0.5"
+              >
+                Get featured →
+              </Link>
+              <Link
+                href="/merch"
+                className="inline-flex rounded-full border-2 border-[var(--color-teal)]/25 px-5 py-3 text-sm font-extrabold text-[var(--color-teal-deep)] transition hover:-translate-y-0.5 hover:border-[var(--color-coral)]/45"
+              >
+                Shop merch →
+              </Link>
+            </div>
           </div>
+          <BlogPromoAd index={2} />
           <BlogPromoAd index={0} />
           <BlogPromoAd index={1} />
         </aside>

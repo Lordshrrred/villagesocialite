@@ -23,21 +23,21 @@ export default function BlogPage() {
 
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-12 px-5 py-10 sm:px-8 sm:py-14">
-      <section className="overflow-hidden rounded-[2.4rem] bg-[linear-gradient(135deg,#051419,#004d63_50%,#00afc5)] p-8 text-white shadow-[0_30px_90px_rgba(5,20,25,0.22)] sm:p-12">
+      <section className="overflow-hidden rounded-[2.4rem] border border-white/20 bg-[radial-gradient(circle_at_12%_0%,rgba(0,216,240,0.26),transparent_32%),linear-gradient(135deg,#051419,#004d63_50%,#00afc5)] p-8 text-white shadow-[0_30px_90px_rgba(5,20,25,0.22)] sm:p-12">
         <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
           <SectionHeading
-            eyebrow="Village Socialite blog"
-            title="The SEO-rich guidebook for life in The Villages, Florida."
-            description="Fresh search-focused guides for residents, future residents, visitors, businesses, and anyone trying to understand what makes The Villages move."
+            eyebrow="Village Socialite journal"
+            title="The good stuff guide to life in The Villages, Florida."
+            description="A sharper, more useful home for Villages living: what to do, where to go, how to move here, who to know, and the little local details that turn a search into a plan."
             light
           />
-          <div className="rounded-[1.6rem] border border-white/12 bg-white/10 p-6 backdrop-blur">
+          <div className="rounded-[1.6rem] border border-white/20 bg-white/10 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.18)] backdrop-blur">
             <p className="text-[11px] font-extrabold uppercase tracking-[0.3em] text-[var(--color-seafoam)]">
-              Built around search intent
+              Built for real Village discovery
             </p>
             <p className="mt-3 text-4xl font-semibold">{seoPosts.length}</p>
             <p className="mt-2 text-sm leading-7 text-white/75">
-              New SEO guides across moving, restaurants, golf carts, events, real estate, wellness, clubs, dating, local services, and visitor planning.
+              Curated guides across moving, restaurants, golf carts, events, real estate, wellness, clubs, dating, local services, and visitor planning.
             </p>
             <Link
               href="/join-the-socialite"
@@ -52,9 +52,9 @@ export default function BlogPage() {
       <section className="space-y-5">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading
-            eyebrow="SEO categories"
-            title="Start with the keyword lane that matters."
-            description="Each category is built around common search behavior for The Villages community and the practical decisions people are trying to make."
+            eyebrow="Explore the lanes"
+            title="Start where Village life is already happening."
+            description="Every category keeps the original Socialite spirit, then organizes it into cleaner paths for residents, future residents, visitors, and local businesses."
           />
           <Link
             href="/search"
@@ -68,7 +68,7 @@ export default function BlogPage() {
             <Link
               key={category.slug}
               href={`/blog/category/${category.slug}`}
-              className="rounded-[1.5rem] border border-[var(--color-line)] bg-white p-5 shadow-[0_18px_45px_rgba(5,20,25,0.04)] transition hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(5,20,25,0.08)]"
+              className="rounded-[1.5rem] border-2 border-white bg-[linear-gradient(180deg,#ffffff,#f7fcfd)] p-5 shadow-[0_18px_45px_rgba(5,20,25,0.05)] transition hover:-translate-y-1 hover:border-[var(--color-teal)]/35 hover:shadow-[0_22px_55px_rgba(0,175,197,0.13)]"
             >
               <span
                 className="mb-4 block h-1.5 w-14 rounded-full"
@@ -85,9 +85,9 @@ export default function BlogPage() {
 
       <section className="space-y-8">
         <SectionHeading
-          eyebrow="100 SEO guides"
-          title="Search-focused articles with Village Socialite energy."
-          description="The ad placements are intentionally spaced between posts so the chair, handset, and merch offers stay visible without making the blog feel cluttered."
+          eyebrow="100 Village guides"
+          title="Answers people search for, written with Socialite flavor."
+          description="Useful guides, local angles, and Socialite picks are spaced throughout the feed so the blog feels helpful, shoppable, and alive without becoming a cluttered dump."
         />
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {seoPosts.map((post, index) => (
@@ -106,8 +106,8 @@ export default function BlogPage() {
       <section className="space-y-8">
         <SectionHeading
           eyebrow="Original archive"
-          title="Keep the original Village Socialite posts in the mix."
-          description="The new SEO guides sit alongside the existing archive, so the site gains search reach without burying the work that was already there."
+          title="The original Socialite work still gets the spotlight."
+          description="The rebuilt blog keeps the existing archive in the mix, preserving the videos, offers, stories, and local texture that gave Village Socialite its personality in the first place."
         />
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {archivePosts.map((post) => (

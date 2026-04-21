@@ -46,15 +46,16 @@ export default async function SeoBlogCategoryPage({ params }: PageProps) {
 
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-5 py-10 sm:px-8 sm:py-14">
-      <section className="rounded-[2.3rem] border border-[var(--color-line)] bg-white p-8 shadow-[0_24px_60px_rgba(18,27,33,0.05)] sm:p-12">
+      <section className="overflow-hidden rounded-[2.3rem] border border-white/20 bg-[radial-gradient(circle_at_10%_0%,rgba(0,216,240,0.20),transparent_30%),linear-gradient(135deg,#051419,#004d63_55%,#00afc5)] p-8 text-white shadow-[0_30px_90px_rgba(5,20,25,0.20)] sm:p-12">
         <SectionHeading
-          eyebrow="Blog category"
+          eyebrow="Village Socialite category"
           title={category.name}
-          description={`${category.description} Browse ${posts.length} SEO-focused Village Socialite guides in this lane.`}
+          description={`${category.description} Browse ${posts.length} Village Socialite guides in this lane.`}
+          light
         />
         <Link
           href="/blog"
-          className="mt-6 inline-flex rounded-full bg-[var(--color-teal-deep)] px-5 py-3 text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-[var(--color-teal)]"
+          className="mt-6 inline-flex rounded-full bg-[var(--color-gold)] px-5 py-3 text-sm font-extrabold text-[var(--color-ink)] transition hover:-translate-y-0.5"
         >
           Back to the blog →
         </Link>
