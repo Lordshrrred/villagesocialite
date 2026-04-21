@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import { CategoryCard } from "@/components/category-card";
 import { decodeHtmlEntities, stripHtml } from "@/lib/content-format";
-import { getAllCategories } from "@/lib/wordpress";
+import { getAllCategories, getCategoryBySlug, getItemsForCategory, getPrimaryImage } from "@/lib/wordpress";
 
 export const metadata: Metadata = {
   title: "Video Categories | Village Socialite",
@@ -48,6 +50,12 @@ export default function CategoriesPage() {
       };
     });
 
+  // Spotlight categories for the bottom panel
+  const petsCategory = getCategoryBySlug("pets-animals-the-villages");
+  const nightlifeCategory = getCategoryBySlug("nightlife-the-villages");
+  const petsPosts = petsCategory ? getItemsForCategory(petsCategory.id).slice(0, 4) : [];
+  const nightlifePosts = nightlifeCategory ? getItemsForCategory(nightlifeCategory.id).slice(0, 4) : [];
+
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-5 py-10 sm:px-8 sm:py-14">
 
@@ -71,6 +79,107 @@ export default function CategoriesPage() {
         {categories.map((category) => (
           <CategoryCard key={category.name} category={category} />
         ))}
+      </section>
+
+      {/* Bottom spotlight: category panels + Facebook CTA */}
+      <section className="grid gap-6 lg:grid-cols-[1fr_auto_1fr]">
+
+        {/* Left: Pets & Animals */}
+        <div className="rounded-[2rem] border border-[var(--color-line)] bg-white p-6 shadow-[0_8px_32px_rgba(18,27,33,0.06)]">
+          <div className="mb-4 flex items-center justify-between">
+            <span className="rounded-full bg-[var(--color-teal)] px-4 py-1.5 text-sm font-extrabold text-white shadow-[0_4px_14px_rgba(0,175,197,0.4)]">
+              {petsCategory ? decodeHtmlEntities(petsCategory.name) : "Pets & Animals"}
+            </span>
+            {petsCategory && (
+              <Link
+                href={`/category/${petsCategory.slug}`}
+                className="text-sm font-semibold text-[var(--color-teal)] hover:underline"
+              >
+                + More videos
+              </Link>
+            )}
+          </div>
+          <div className="grid grid-cols-3 gap-3">
+            {petsPosts.map((post) => (
+              <Link key={post.id} href={`/${post.slug}`} className="group block">
+                <div className="relative aspect-video overflow-hidden rounded-xl bg-[var(--color-paper)]">
+                  <Image
+                    src={getPrimaryImage(post)}
+                    alt={post.title}
+                    fill
+                    className="object-cover transition duration-300 group-hover:scale-105"
+                    sizes="120px"
+                  />
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition" />
+                </div>
+                <p className="mt-1.5 line-clamp-2 text-xs font-medium leading-snug text-[var(--color-ink)]">
+                  {decodeHtmlEntities(post.title)}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Center: Follow us on Facebook */}
+        <div className="flex items-stretch justify-center">
+          <a
+            href="https://www.facebook.com/VillageSocialite"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative block w-full overflow-hidden rounded-[2rem] shadow-[0_8px_40px_rgba(18,27,33,0.18)] lg:w-[240px]"
+          >
+            <Image
+              src="/villagesocialitefacebook.jpg"
+              alt="Follow Village Socialite on Facebook"
+              width={480}
+              height={640}
+              className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+            <div className="absolute bottom-5 left-0 right-0 flex justify-center">
+              <span className="rounded-full bg-[#1877F2] px-5 py-2 text-sm font-extrabold text-white shadow-lg transition group-hover:bg-[#145dbf]">
+                Follow Us
+              </span>
+            </div>
+          </a>
+        </div>
+
+        {/* Right: Nightlife */}
+        <div className="rounded-[2rem] border border-[var(--color-line)] bg-white p-6 shadow-[0_8px_32px_rgba(18,27,33,0.06)]">
+          <div className="mb-4 flex items-center justify-between">
+            <span className="rounded-full bg-[var(--color-teal)] px-4 py-1.5 text-sm font-extrabold text-white shadow-[0_4px_14px_rgba(0,175,197,0.4)]">
+              {nightlifeCategory ? decodeHtmlEntities(nightlifeCategory.name) : "Nightlife"}
+            </span>
+            {nightlifeCategory && (
+              <Link
+                href={`/category/${nightlifeCategory.slug}`}
+                className="text-sm font-semibold text-[var(--color-teal)] hover:underline"
+              >
+                + More videos
+              </Link>
+            )}
+          </div>
+          <div className="grid grid-cols-3 gap-3">
+            {nightlifePosts.map((post) => (
+              <Link key={post.id} href={`/${post.slug}`} className="group block">
+                <div className="relative aspect-video overflow-hidden rounded-xl bg-[var(--color-paper)]">
+                  <Image
+                    src={getPrimaryImage(post)}
+                    alt={post.title}
+                    fill
+                    className="object-cover transition duration-300 group-hover:scale-105"
+                    sizes="120px"
+                  />
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition" />
+                </div>
+                <p className="mt-1.5 line-clamp-2 text-xs font-medium leading-snug text-[var(--color-ink)]">
+                  {decodeHtmlEntities(post.title)}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+
       </section>
     </div>
   );
