@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ImportedStoryCard } from "@/components/imported-story-card";
 import { SectionHeading } from "@/components/section-heading";
 import { getItemsForTag, getTagBySlug } from "@/lib/wordpress";
+import { decodeHtmlEntities } from "@/lib/content-format";
 
 type PageProps = {
   params: Promise<{
@@ -15,9 +16,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const tag = getTagBySlug(slug);
   if (!tag) return {};
 
+  const tagName = decodeHtmlEntities(tag.name);
   return {
-    title: tag.name,
-    description: `Tagged Village Socialite archive stories for ${tag.name}.`,
+    title: tagName,
+    description: `Tagged Village Socialite archive stories for ${tagName}.`,
   };
 }
 
@@ -27,13 +29,14 @@ export default async function TagPage({ params }: PageProps) {
   if (!tag) notFound();
 
   const posts = getItemsForTag(tag.id);
+  const tagName = decodeHtmlEntities(tag.name);
 
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-5 py-10 sm:px-8 sm:py-14">
       <section className="rounded-[2.3rem] border border-[var(--color-line)] bg-white p-8 shadow-[0_24px_60px_rgba(18,27,33,0.05)] sm:p-12">
         <SectionHeading
           eyebrow="Tag archive"
-          title={tag.name}
+          title={tagName}
           description={`Preserved tagged content from the original Village Socialite library, now living inside the rebuilt experience.`}
         />
       </section>

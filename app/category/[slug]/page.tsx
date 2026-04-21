@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ImportedStoryCard } from "@/components/imported-story-card";
 import { SectionHeading } from "@/components/section-heading";
 import { getCategoryBySlug, getItemsForCategory } from "@/lib/wordpress";
+import { decodeHtmlEntities } from "@/lib/content-format";
 
 type PageProps = {
   params: Promise<{
@@ -15,9 +16,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const category = getCategoryBySlug(slug);
   if (!category) return {};
 
+  const name = decodeHtmlEntities(category.name);
   return {
-    title: category.name,
-    description: `${category.name} stories and videos from the Village Socialite archive.`,
+    title: name,
+    description: `${name} stories and videos from the Village Socialite archive.`,
   };
 }
 
@@ -32,14 +34,15 @@ export default async function CategoryPage({ params }: PageProps) {
   if (!category) notFound();
 
   const posts = getItemsForCategory(category.id);
+  const name = decodeHtmlEntities(category.name);
 
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-5 py-10 sm:px-8 sm:py-14">
       <section className="rounded-[2.3rem] border border-[var(--color-line)] bg-white p-8 shadow-[0_24px_60px_rgba(18,27,33,0.05)] sm:p-12">
         <SectionHeading
           eyebrow="Village Socialite"
-          title={category.name}
-          description={`${category.count} stories and videos covering ${category.name.toLowerCase()} in The Villages, Florida.`}
+          title={name}
+          description={`${category.count} stories and videos covering ${name.toLowerCase()} in The Villages, Florida.`}
         />
       </section>
 

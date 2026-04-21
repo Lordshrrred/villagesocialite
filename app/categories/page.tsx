@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { CategoryCard } from "@/components/category-card";
-import { stripHtml } from "@/lib/content-format";
+import { decodeHtmlEntities, stripHtml } from "@/lib/content-format";
 import { getAllCategories } from "@/lib/wordpress";
 
 export const metadata: Metadata = {
@@ -35,15 +35,18 @@ const categoryImages: Record<string, string> = {
 export default function CategoriesPage() {
   const categories = getAllCategories()
     .sort((a, b) => b.count - a.count)
-    .map((category) => ({
-      name: category.name,
-      description:
-        stripHtml(category.description) ||
-        `Browse ${category.count} archived Village Socialite stories in ${category.name}.`,
-      href: `/category/${category.slug}`,
-      countLabel: `${category.count} stories`,
-      image: categoryImages[category.slug] ?? undefined,
-    }));
+    .map((category) => {
+      const name = decodeHtmlEntities(category.name);
+      return {
+        name,
+        description:
+          stripHtml(category.description) ||
+          `Browse ${category.count} archived Village Socialite stories in ${name}.`,
+        href: `/category/${category.slug}`,
+        countLabel: `${category.count} stories`,
+        image: categoryImages[category.slug] ?? undefined,
+      };
+    });
 
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-5 py-10 sm:px-8 sm:py-14">
