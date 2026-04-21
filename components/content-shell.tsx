@@ -2,7 +2,7 @@ import { ImportedStoryCard } from "@/components/imported-story-card";
 import Image from "next/image";
 import Link from "next/link";
 import { LegacyContent } from "@/components/legacy-content";
-import { formatLongDate } from "@/lib/content-format";
+import { decodeHtmlEntities, formatLongDate } from "@/lib/content-format";
 import {
   getCategoryNames,
   getPrimaryImage,
@@ -15,6 +15,7 @@ export function ContentShell({ item }: { item: WordpressItem }) {
   const categories = getCategoryNames(item.categories);
   const tags = getTagNames(item.tags).slice(0, 12);
   const relatedPosts = getRelatedPosts(item, 3);
+  const title = decodeHtmlEntities(item.title);
 
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-5 py-10 sm:px-8 sm:py-14">
@@ -32,7 +33,7 @@ export function ContentShell({ item }: { item: WordpressItem }) {
             ))}
           </div>
           <h1 className="font-[family:var(--font-cormorant)] text-5xl font-semibold leading-none sm:text-6xl">
-            {item.title}
+            {title}
           </h1>
           <div className="flex flex-wrap gap-4 text-sm text-white/68">
             <span>{formatLongDate(item.date)}</span>
@@ -43,7 +44,7 @@ export function ContentShell({ item }: { item: WordpressItem }) {
         <div className="relative min-h-[280px] overflow-hidden rounded-[1.8rem]">
           <Image
             src={getPrimaryImage(item)}
-            alt={item.title}
+            alt={title}
             fill
             sizes="(min-width: 1024px) 32vw, 100vw"
             className="object-cover"
@@ -58,10 +59,10 @@ export function ContentShell({ item }: { item: WordpressItem }) {
         <aside className="space-y-6">
           <div className="rounded-[1.6rem] border border-[var(--color-line)] bg-[var(--color-paper)] p-6">
             <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--color-coral)]">
-              From the original site
+              Village Socialite archive
             </p>
             <p className="mt-4 text-sm leading-7 text-[var(--color-ink-soft)]">
-              This piece preserves the original published copy inside the new Village Socialite experience, giving the archive a stronger editorial setting without erasing past work.
+              Original Village Socialite copy, images, and intent are preserved here so the archive still feels lived-in, local, and connected to the brand&apos;s roots.
             </p>
           </div>
           {tags.length > 0 ? (

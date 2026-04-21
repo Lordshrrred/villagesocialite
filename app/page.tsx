@@ -2,13 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { CategoryCard } from "@/components/category-card";
 import { ImportedStoryCard } from "@/components/imported-story-card";
-import { NewsletterPanel } from "@/components/newsletter-panel";
 import { OfferCard } from "@/components/offer-card";
+import { SpotlightForm } from "@/components/spotlight-form";
 import { SectionHeading } from "@/components/section-heading";
 import {
   communityHighlights,
   whyVillageSocialite,
 } from "@/lib/site-data";
+import { stripHtml } from "@/lib/content-format";
 import {
   getAllCategories,
   getFeaturedMigrationStories,
@@ -25,8 +26,7 @@ export default function Home() {
     .slice(0, 6)
     .map((category) => ({
       name: category.name,
-      description:
-        category.description ||
+      description: stripHtml(category.description) ||
         `Browse the original Village Socialite archive for ${category.name.toLowerCase()} stories, videos, and local coverage.`,
       href: `/category/${category.slug}`,
       countLabel: `${category.count} archived stories`,
@@ -46,21 +46,21 @@ export default function Home() {
                 The insider&apos;s guide to what makes life in The Villages worth talking about.
               </h1>
               <p className="max-w-2xl text-base leading-8 text-white/78 sm:text-lg">
-                From town square energy and standout dining to neighborhood culture, guides, and local personalities, Village Socialite brings the most interesting side of The Villages into one refined destination.
+                The all-access pass to what&apos;s buzzing in The Villages: standout stories, social energy, growth opportunities, polished promotions, and the people shaping the good life.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
               <Link
-                href="/featured"
+                href="/join-the-socialite"
                 className="rounded-full bg-[var(--color-gold)] px-6 py-3 text-sm font-semibold text-[var(--color-ink)] transition hover:-translate-y-0.5"
               >
-                Browse featured stories
+                Step Into the Spotlight
               </Link>
               <Link
-                href="/explore"
+                href="/merch"
                 className="rounded-full border border-white/15 bg-white/6 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/12"
               >
-                Explore categories
+                Shop the Merch Drop
               </Link>
             </div>
             <div className="grid gap-4 pt-4 sm:grid-cols-3">
@@ -108,10 +108,10 @@ export default function Home() {
                     Brand direction
                   </p>
                   <p className="mt-3 font-[family:var(--font-cormorant)] text-3xl font-semibold leading-tight">
-                    More editorial. More intentional. More trusted.
+                    The social pulse, the growth engine, and the local spotlight.
                   </p>
                   <p className="mt-4 text-sm leading-7 text-white/74">
-                    A sharper front door for stories, local finds, and the social pulse of The Villages.
+                    Built to help stories travel, brands show up better, and Village life feel worth clicking into.
                   </p>
                 </div>
               </div>
@@ -120,11 +120,48 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="grid gap-6 lg:grid-cols-2">
+        <article className="rounded-[2.2rem] border border-[var(--color-line)] bg-white px-8 py-10 shadow-[0_24px_60px_rgba(18,27,33,0.06)]">
+          <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-[radial-gradient(circle,#dffdf5,#ffffff)] text-4xl shadow-[0_20px_35px_rgba(111,230,214,0.28)]">
+            🛺
+          </div>
+          <p className="text-[11px] font-extrabold uppercase tracking-[0.32em] text-[var(--color-coral)]">
+            The Growth Engine
+          </p>
+          <h2 className="mt-4 font-[family:var(--font-cormorant)] text-4xl font-semibold text-[var(--color-ink)]">
+            Broadcast your story like you mean it.
+          </h2>
+          <div className="mt-6 space-y-4 text-lg text-[var(--color-ink-soft)]">
+            <p>🎙 Podcast spotlight: be a guest and share your story.</p>
+            <p>📈 Brand exposure: premium local visibility for businesses, creators, and offers.</p>
+            <p>🤝 Community reach: show up in front of locals, newcomers, and socially active Villagers.</p>
+          </div>
+        </article>
+        <article className="rounded-[2.2rem] border border-[var(--color-line)] bg-white px-8 py-10 shadow-[0_24px_60px_rgba(18,27,33,0.06)]">
+          <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-[radial-gradient(circle,#e8fff9,#ffffff)] text-4xl shadow-[0_20px_35px_rgba(111,230,214,0.28)]">
+            🌴
+          </div>
+          <p className="text-[11px] font-extrabold uppercase tracking-[0.32em] text-[var(--color-coral)]">
+            The Social Standard
+          </p>
+          <h2 className="mt-4 font-[family:var(--font-cormorant)] text-4xl font-semibold text-[var(--color-ink)]">
+            Curated Village life with a little more shine.
+          </h2>
+          <div className="mt-6 space-y-4 text-lg text-[var(--color-ink-soft)]">
+            <p>✨ Elite events, standout local finds, and polished community stories.</p>
+            <p>🍸 A smarter mix of style, spotlight, and social energy.</p>
+            <p>📣 High-visibility placement for the people and brands that belong in the conversation.</p>
+          </div>
+        </article>
+      </section>
+
+      <SpotlightForm />
+
       <section className="space-y-8">
         <SectionHeading
-          eyebrow="Featured stories and videos"
-          title="Featured stories with a stronger point of view."
-          description="These are pulled directly from the original Village Socialite archive and given a cleaner, more intentional front-of-house treatment."
+          eyebrow="The Village edit"
+          title="What everybody&apos;s talking about around the squares, golf carts, patios, and back gates."
+          description="Big personalities, local scenes, real buzz, and the stories that make The Villages feel more alive than the average retirement feed."
         />
         <div className="grid gap-6 lg:grid-cols-2">
           {featuredStories.map((story) => (
@@ -136,8 +173,8 @@ export default function Home() {
       <section className="space-y-8">
         <SectionHeading
           eyebrow="Explore by category"
-          title="Discovery paths that feel curated instead of crowded."
-          description="The Villages is bigger than one topic. These sections make it easier to move from curiosity to the exact lane that fits your interests."
+          title="Choose your lane and dive straight into the good stuff."
+          description="Dining, events, golf, dating, lifestyle, music, and all the local corners that keep Village life interesting."
         />
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {categories.map((category) => (
@@ -148,12 +185,17 @@ export default function Home() {
 
       <section className="space-y-8">
         <SectionHeading
-          eyebrow="Offers, specials, and high-value pages"
-          title="The original money pages and feature pages still matter."
-          description="Instead of burying them, the new site gives them a dedicated place and lets them benefit from the upgraded design language."
+          eyebrow="Offers, drops, and high-visibility pages"
+          title="Merch, spotlight pages, CBD, and the pages built to convert attention into action."
+          description="The original site had real commercial energy. These pages keep that alive while giving them a cleaner, more premium surface."
         />
         <div className="grid gap-6 lg:grid-cols-2">
-          {offerPages.map((page) => (
+          {offerPages
+            .sort((a, b) => {
+              const order = ["merch", "join-the-socialite", "fat-pig-society-cbd"];
+              return (order.indexOf(a.slug) === -1 ? 99 : order.indexOf(a.slug)) - (order.indexOf(b.slug) === -1 ? 99 : order.indexOf(b.slug));
+            })
+            .map((page) => (
             <OfferCard key={page.id} item={page} />
           ))}
         </div>
@@ -162,8 +204,8 @@ export default function Home() {
       <section className="space-y-8">
         <SectionHeading
           eyebrow="Latest from the archive"
-          title="Hundreds of existing stories now have a place inside the new site."
-          description="Recent posts from the original corpus are now part of the living experience instead of being trapped in the old WordPress layout."
+          title="Fresh Village goodness from the archive."
+          description="The original site produced a huge amount of real Village content. Now it&apos;s organized to feel scrollable, clickable, and worth sticking with."
         />
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {latestPosts.map((story) => (
@@ -223,7 +265,6 @@ export default function Home() {
         </div>
       </section>
 
-      <NewsletterPanel />
     </div>
   );
 }

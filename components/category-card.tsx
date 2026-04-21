@@ -1,7 +1,11 @@
 import Link from "next/link";
+import { decodeHtmlEntities } from "@/lib/content-format";
 import type { Category } from "@/lib/site-data";
 
 export function CategoryCard({ category }: { category: Category }) {
+  const name = decodeHtmlEntities(category.name);
+  const description = decodeHtmlEntities(category.description);
+
   return (
     <Link
       href={category.href}
@@ -11,8 +15,8 @@ export function CategoryCard({ category }: { category: Category }) {
         <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-sea)]">
           {category.countLabel}
         </p>
-        <h3 className="text-2xl font-semibold text-[var(--color-ink)]">{category.name}</h3>
-        <p className="text-sm leading-7 text-[var(--color-ink-soft)]">{category.description}</p>
+        <h3 className="text-2xl font-semibold text-[var(--color-ink)]">{name}</h3>
+        <p className="text-sm leading-7 text-[var(--color-ink-soft)]">{description}</p>
       </div>
       <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-ink)] transition group-hover:gap-3">
         Explore the lane

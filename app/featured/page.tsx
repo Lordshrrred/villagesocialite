@@ -8,7 +8,7 @@ import { getFeaturedMigrationStories, getOfferPages } from "@/lib/wordpress";
 export const metadata: Metadata = {
   title: "Featured",
   description:
-    "A curated look at how featured stories, guides, and spotlight content can live on the new Village Socialite.",
+    "A curated look at standout Village Socialite stories, offer pages, and attention-grabbing local content.",
 };
 
 export default function FeaturedPage() {
@@ -20,8 +20,8 @@ export default function FeaturedPage() {
       <section className="rounded-[2.3rem] border border-[var(--color-line)] bg-white p-8 shadow-[0_24px_60px_rgba(18,27,33,0.05)] sm:p-12">
         <SectionHeading
           eyebrow="Featured"
-          title="The best original content, now treated like it deserves."
-          description="This feature layer surfaces standout stories and offer pages from the original site and gives them a cleaner editorial hierarchy."
+          title="The stories, offers, and personality pieces that deserve the front row."
+          description="The strongest Village Socialite content now lives in a feature layer built to feel bold, editorial, and worth sharing."
         />
       </section>
 

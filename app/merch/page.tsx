@@ -4,14 +4,9 @@ import { ContentShell } from "@/components/content-shell";
 import { decodeHtmlEntities } from "@/lib/content-format";
 import { getItemBySlug, getPrimaryImage } from "@/lib/wordpress";
 
-type PageProps = {
-  params: Promise<{
-    slug: string;
-  }>;
-};
+const slug = "merch";
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
-  const { slug } = await params;
+export function generateMetadata(): Metadata {
   const item = getItemBySlug(slug);
 
   if (!item) {
@@ -27,24 +22,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       images: [{ url: getPrimaryImage(item) }],
     },
     alternates: {
-      canonical: `/${item.slug}`,
+      canonical: `/${slug}`,
     },
   };
 }
 
-export async function generateStaticParams() {
-  const all = (await import("@/data/wordpress-content.json")).default;
-  const itemSlugs = [...all.posts, ...all.pages]
-    .map((item) => item.slug)
-    .filter(
-      (slug) => !["explore", "categories", "blog"].includes(slug),
-    );
-
-  return [...new Set(itemSlugs)].map((slug) => ({ slug }));
-}
-
-export default async function ImportedContentPage({ params }: PageProps) {
-  const { slug } = await params;
+export default function MerchPage() {
   const item = getItemBySlug(slug);
 
   if (!item) {
