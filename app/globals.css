@@ -2,11 +2,11 @@
 
 :root {
   /* ── Core palette — vibrant teal/cyan, high contrast for all ages ── */
-  --background: #eef9fb;
+  --background: #dff0f4;
   --foreground: #051419;
   --color-ink: #051419;
   --color-ink-soft: #184555;
-  --color-paper: #e0f5f8;
+  --color-paper: #cce8ee;
   --color-line: rgba(5, 20, 25, 0.10);
   --color-sea: #006a82;
   --color-seafoam: #48cfe0;

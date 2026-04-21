@@ -236,35 +236,6 @@ export default function Home() {
           posts={trendingPosts}
         />
 
-        {/* ── Master Connector ────────────────────────────────────────── */}
-        <section className="overflow-hidden rounded-[2rem] border-2 border-[var(--color-line)] bg-white shadow-[0_16px_48px_rgba(5,20,25,0.07)]">
-          <div className="flex flex-col items-center gap-6 p-7 sm:p-9 lg:flex-row lg:gap-8">
-            <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-full border-4 border-[var(--color-line)] shadow-[0_8px_24px_rgba(0,175,197,0.2)] sm:h-36 sm:w-36">
-              <Image src="https://villagesocialite.com/wp-content/uploads/2026/03/followvillagesocialiteonfacebook.jpg" alt="Village Socialite community" fill className="object-cover object-center" sizes="144px" />
-            </div>
-            <div className="flex-1 text-center lg:text-left">
-              <p className="text-[11px] font-extrabold uppercase tracking-[0.34em] text-[var(--color-teal)]">The Master Connector</p>
-              <h2 className="mt-1.5 font-[family:var(--font-cormorant)] text-2xl font-semibold text-[var(--color-ink)] sm:text-3xl">
-                Socially Connected. <span style={{ color: "#e05a8a" }}>Business Driven.</span>
-              </h2>
-              <p className="mt-2 max-w-md text-sm leading-7 text-[var(--color-ink-soft)]">The premier platform for Villagers to showcase talents, promote their business, and profit from their passions — while having a blast.</p>
-            </div>
-            <div className="flex flex-col items-center gap-4 lg:items-end">
-              <div className="flex gap-5">
-                {[{ icon: "📣", label: "PROMOTE" }, { icon: "🎓", label: "LEARN" }, { icon: "💰", label: "PROFIT" }].map(({ icon, label }) => (
-                  <div key={label} className="flex flex-col items-center gap-1">
-                    <span className="text-xl">{icon}</span>
-                    <span className="text-[9px] font-extrabold uppercase tracking-widest text-[var(--color-ink-soft)]">{label}</span>
-                  </div>
-                ))}
-              </div>
-              <Link href="/join-the-socialite" className="inline-flex items-center gap-2 rounded-full bg-[var(--color-teal-deep)] px-6 py-3 text-sm font-extrabold text-white shadow-[0_6px_20px_rgba(0,77,99,0.35)] transition hover:-translate-y-0.5 hover:bg-[var(--color-teal)] whitespace-nowrap">
-                Get Featured →
-              </Link>
-            </div>
-          </div>
-        </section>
-
         {/* ── Discover cards ──────────────────────────────────────────── */}
         <section className="grid gap-6 lg:grid-cols-2">
           <article className="rounded-[2rem] border-2 border-[var(--color-line)] bg-white px-7 py-9 shadow-[0_20px_50px_rgba(5,20,25,0.06)]">
@@ -293,6 +264,35 @@ export default function Home() {
               Join The Socialite — Free →
             </Link>
           </article>
+        </section>
+
+        {/* ── Master Connector ────────────────────────────────────────── */}
+        <section className="overflow-hidden rounded-[2rem] border-2 border-[var(--color-line)] bg-white shadow-[0_16px_48px_rgba(5,20,25,0.07)]">
+          <div className="flex flex-col items-center gap-6 p-7 sm:p-9 lg:flex-row lg:gap-8">
+            <div className="relative h-28 w-28 shrink-0 overflow-hidden rounded-full border-4 border-[var(--color-line)] shadow-[0_8px_24px_rgba(0,175,197,0.2)] sm:h-36 sm:w-36">
+              <Image src="https://villagesocialite.com/wp-content/uploads/2026/03/villagesocialitevent.jpg" alt="Village Socialite community event" fill className="object-cover object-center" sizes="144px" />
+            </div>
+            <div className="flex-1 text-center lg:text-left">
+              <p className="text-[11px] font-extrabold uppercase tracking-[0.34em] text-[var(--color-teal)]">The Master Connector</p>
+              <h2 className="mt-1.5 font-[family:var(--font-cormorant)] text-2xl font-semibold text-[var(--color-ink)] sm:text-3xl">
+                Socially Connected. <span style={{ color: "#e05a8a" }}>Business Driven.</span>
+              </h2>
+              <p className="mt-2 max-w-md text-sm leading-7 text-[var(--color-ink-soft)]">The premier platform for Villagers to showcase talents, promote their business, and profit from their passions — while having a blast.</p>
+            </div>
+            <div className="flex flex-col items-center gap-4 lg:items-end">
+              <div className="flex gap-5">
+                {[{ icon: "📣", label: "PROMOTE" }, { icon: "🎓", label: "LEARN" }, { icon: "💰", label: "PROFIT" }].map(({ icon, label }) => (
+                  <div key={label} className="flex flex-col items-center gap-1">
+                    <span className="text-xl">{icon}</span>
+                    <span className="text-[9px] font-extrabold uppercase tracking-widest text-[var(--color-ink-soft)]">{label}</span>
+                  </div>
+                ))}
+              </div>
+              <Link href="/join-the-socialite" className="inline-flex items-center gap-2 rounded-full bg-[var(--color-teal-deep)] px-6 py-3 text-sm font-extrabold text-white shadow-[0_6px_20px_rgba(0,77,99,0.35)] transition hover:-translate-y-0.5 hover:bg-[var(--color-teal)] whitespace-nowrap">
+                Get Featured →
+              </Link>
+            </div>
+          </div>
         </section>
 
         {/* ── Food, Drinks & Dining ───────────────────────────────────── */}
@@ -336,7 +336,7 @@ export default function Home() {
                 src="https://villagesocialite.com/wp-content/uploads/2026/03/followvillagesocialiteonfacebook.jpg"
                 alt="Follow Village Socialite on Facebook"
                 fill
-                className="object-cover object-left"
+                className="object-cover object-top"
                 sizes="(min-width: 1024px) 288px, 100vw"
               />
               <div className="absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-[#003546]/60 to-transparent hidden lg:block" />

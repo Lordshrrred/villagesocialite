@@ -32,16 +32,16 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50">
       {/* ── Top bar ─────────────────────────────────────────────────── */}
       <div className="border-b border-[var(--color-teal)]/20 bg-[var(--background)]/97 shadow-[0_1px_16px_rgba(5,20,25,0.09)] backdrop-blur-xl">
-        <div className="mx-auto flex w-full max-w-7xl items-center gap-6 px-5 py-4 sm:px-8 sm:py-5">
+        <div className="mx-auto flex w-full max-w-7xl items-center gap-6 px-5 py-5 sm:px-8 sm:py-6">
 
           {/* Logo */}
-          <Link href="/" className="flex shrink-0 items-center gap-3.5 group">
+          <Link href="/" className="flex shrink-0 items-center gap-4 group">
             <div className="relative">
               <Image
                 src="/reference-selected/cropped-20251201_2104_Village-Socialite-Martini_simple_compose_01kbekm22mfjetcmbba22q6tsy-1.png"
                 alt="Village Socialite"
-                width={62}
-                height={62}
+                width={72}
+                height={72}
                 className="drop-shadow-md transition-transform duration-300 group-hover:scale-105"
                 priority
               />
@@ -76,10 +76,10 @@ export function SiteHeader() {
                   fill="#00afc5" opacity="0.7" />
               </svg>
 
-              <p className="font-[family:var(--font-cormorant)] text-[1.85rem] font-semibold leading-none tracking-tight text-[var(--color-ink)]">
+              <p className="font-[family:var(--font-cormorant)] text-[2.1rem] font-semibold leading-none tracking-tight text-[var(--color-ink)]">
                 Village Socialite
               </p>
-              <p className="mt-1 text-[10px] font-extrabold uppercase tracking-[0.36em] text-[var(--color-teal)]">
+              <p className="mt-1.5 text-[11px] font-extrabold uppercase tracking-[0.38em] text-[var(--color-teal)]">
                 Watch. Explore. Belong.
               </p>
             </div>
