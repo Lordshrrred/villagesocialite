@@ -62,7 +62,7 @@ export function SiteHeader() {
           {/* Join CTA — desktop only */}
           <Link
             href="/join-the-socialite"
-            className="hidden shrink-0 rounded-full bg-[var(--color-coral)] px-5 py-2.5 text-sm font-extrabold text-white shadow-[0_4px_16px_rgba(224,70,30,0.35)] transition hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(224,70,30,0.45)] lg:inline-flex"
+            className="hidden shrink-0 rounded-full bg-[var(--color-teal-deep)] px-5 py-2.5 text-sm font-extrabold text-white shadow-[0_4px_16px_rgba(0,77,99,0.40)] transition hover:-translate-y-0.5 hover:bg-[var(--color-teal)] hover:shadow-[0_8px_24px_rgba(0,175,197,0.45)] lg:inline-flex"
           >
             Join The Socialite
           </Link>
@@ -140,7 +140,7 @@ export function SiteHeader() {
               <Link
                 href="/join-the-socialite"
                 onClick={() => setMenuOpen(false)}
-                className="block w-full rounded-full bg-[var(--color-coral)] px-6 py-4 text-center text-lg font-extrabold text-white shadow-[0_4px_16px_rgba(224,70,30,0.35)] transition hover:brightness-110"
+                className="block w-full rounded-full bg-[var(--color-teal-deep)] px-6 py-4 text-center text-lg font-extrabold text-white shadow-[0_4px_16px_rgba(0,77,99,0.35)] transition hover:bg-[var(--color-teal)] hover:brightness-105"
               >
                 Join The Socialite — Free
               </Link>

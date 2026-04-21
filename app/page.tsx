@@ -167,7 +167,7 @@ export default function Home() {
             </div>
             <Link
               href="/join-the-socialite"
-              className="mt-7 inline-flex items-center gap-2 rounded-full bg-[var(--color-coral)] px-5 py-3 text-sm font-extrabold text-white shadow-[0_4px_16px_rgba(224,70,30,0.28)] transition hover:-translate-y-0.5"
+              className="mt-7 inline-flex items-center gap-2 rounded-full bg-[var(--color-teal-deep)] px-5 py-3 text-sm font-extrabold text-white shadow-[0_4px_16px_rgba(0,77,99,0.30)] transition hover:-translate-y-0.5 hover:bg-[var(--color-teal)]"
             >
               Join The Socialite — Free <span aria-hidden="true">→</span>
             </Link>

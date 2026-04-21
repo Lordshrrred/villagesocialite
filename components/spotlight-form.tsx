@@ -11,15 +11,15 @@ const checkboxOptions = [
 export function SpotlightForm() {
   return (
     <section className="overflow-hidden rounded-[2.3rem] border border-[#8ee3f0]/55 bg-white shadow-[0_24px_70px_rgba(43,163,191,0.14)]">
-      <div className="bg-[linear-gradient(135deg,#48b8d9,#6ce7d7)] px-6 py-12 sm:px-10 sm:py-14">
+      <div className="px-6 py-12 sm:px-10 sm:py-14" style={{ background: "linear-gradient(135deg, #003546 0%, #005a78 45%, #007a96 100%)" }}>
         <div className="mx-auto max-w-3xl text-center text-white">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-white/80">
+          <p className="text-[11px] font-extrabold uppercase tracking-[0.36em] text-[#7ee8f5]">
             Free to join — no credit card
           </p>
           <h2 className="mt-4 font-[family:var(--font-cormorant)] text-5xl font-semibold sm:text-6xl">
             Join The Socialite
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg leading-9 text-white/90">
+          <p className="mx-auto mt-4 max-w-2xl text-lg leading-9 text-white/95">
             Get free weekly updates on what&apos;s happening in The Villages — events, restaurants, live music, real estate, golf carts, and the stories everyone&apos;s talking about.
           </p>
         </div>
