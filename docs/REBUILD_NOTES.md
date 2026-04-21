@@ -25,10 +25,17 @@
 ## What was rebuilt
 
 - A fresh Next.js App Router site with TypeScript and Tailwind CSS.
+- A local imported WordPress corpus snapshot in `data/wordpress-content.json` containing:
+  - 556 posts
+  - 18 pages
+  - 20 categories
+  - 2,389 tags
 - A polished homepage built around:
   - hero
   - featured stories/videos
   - explore categories
+  - preserved offers/pages from the original site
+  - latest imported stories from the original archive
   - why Village Socialite
   - community/local culture
   - newsletter CTA
@@ -39,8 +46,15 @@
   - `/explore`
   - `/categories`
   - `/featured`
+  - `/blog`
   - `/contact`
+- Content migration routes:
+  - `/<original-post-or-page-slug>`
+  - `/category/<slug>`
+  - `/tag/<slug>`
 - A reusable component layer for navigation, cards, section headings, footer, and CTA sections.
+- A script to refresh imported source content:
+  - `scripts/import-wordpress-content.mjs`
 
 ## How to run locally
 
@@ -67,8 +81,8 @@ npm run start
   - `hello@villagesocialite.com` is a placeholder.
 - Newsletter integration:
   - the current CTA is presentation-only and should be wired to a real provider.
-- Featured story copy:
-  - current content is curated from live-site themes and archived material, but should be refined with approved editorial language.
+- Imported original content:
+  - the original copy is preserved, but some pages may benefit from manual cleanup or richer editorial framing once client priorities are known.
 - Partnership and sponsor modules:
   - any paid placement language should be reviewed and finalized.
 - SEO and social assets:

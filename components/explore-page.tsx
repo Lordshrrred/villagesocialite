@@ -1,8 +1,22 @@
 import { CategoryCard } from "@/components/category-card";
+import { ImportedStoryCard } from "@/components/imported-story-card";
 import { SectionHeading } from "@/components/section-heading";
-import { categories, featuredCollections } from "@/lib/site-data";
+import { featuredCollections } from "@/lib/site-data";
+import { getAllCategories, getLatestPosts } from "@/lib/wordpress";
 
 export function ExplorePage() {
+  const categories = getAllCategories()
+    .sort((a, b) => b.count - a.count)
+    .map((category) => ({
+      name: category.name,
+      description:
+        category.description ||
+        `Browse the preserved ${category.name.toLowerCase()} coverage from the original Village Socialite site.`,
+      href: `/category/${category.slug}`,
+      countLabel: `${category.count} archived stories`,
+    }));
+  const latestPosts = getLatestPosts(12);
+
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-18 px-5 py-10 sm:px-8 sm:py-14">
       <section className="rounded-[2.4rem] border border-[var(--color-line)] bg-white px-6 py-8 shadow-[0_30px_80px_rgba(18,27,33,0.06)] sm:px-10 sm:py-12">
@@ -32,6 +46,19 @@ export function ExplorePage() {
             <p className="mt-4 text-sm leading-7 text-[var(--color-ink-soft)]">{collection.text}</p>
           </article>
         ))}
+      </section>
+
+      <section className="space-y-8">
+        <SectionHeading
+          eyebrow="Live archive"
+          title="The original content is part of the site now."
+          description="Recent stories from the old site are fully integrated into the new experience, with room to keep growing without losing what was already built."
+        />
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {latestPosts.map((post) => (
+            <ImportedStoryCard key={post.id} item={post} />
+          ))}
+        </div>
       </section>
     </div>
   );

@@ -4,7 +4,7 @@ import { ExplorePage } from "@/components/explore-page";
 export const metadata: Metadata = {
   title: "Explore",
   description:
-    "Browse Village Socialite's editorial lanes for dining, events, golf cart life, moving, wellness, and community stories.",
+    "Explore the imported Village Socialite archive by category, collection, and recent stories.",
 };
 
 export default function ExploreRoute() {

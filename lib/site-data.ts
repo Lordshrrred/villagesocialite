@@ -17,8 +17,8 @@ export type Category = {
 export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/explore", label: "Explore" },
+  { href: "/blog", label: "Blog" },
   { href: "/featured", label: "Featured" },
-  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 

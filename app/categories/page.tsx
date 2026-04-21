@@ -4,7 +4,7 @@ import { ExplorePage } from "@/components/explore-page";
 export const metadata: Metadata = {
   title: "Categories",
   description:
-    "A cleaner category experience for the Village Socialite content ecosystem.",
+    "Browse every preserved Village Socialite category inside the rebuilt site.",
 };
 
 export default function CategoriesPage() {

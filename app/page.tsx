@@ -1,17 +1,37 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CategoryCard } from "@/components/category-card";
-import { FeaturedStoryCard } from "@/components/featured-story-card";
+import { ImportedStoryCard } from "@/components/imported-story-card";
 import { NewsletterPanel } from "@/components/newsletter-panel";
+import { OfferCard } from "@/components/offer-card";
 import { SectionHeading } from "@/components/section-heading";
 import {
-  categories,
   communityHighlights,
-  featuredStories,
   whyVillageSocialite,
 } from "@/lib/site-data";
+import {
+  getAllCategories,
+  getFeaturedMigrationStories,
+  getLatestPosts,
+  getOfferPages,
+} from "@/lib/wordpress";
 
 export default function Home() {
+  const featuredStories = getFeaturedMigrationStories();
+  const latestPosts = getLatestPosts(6);
+  const offerPages = getOfferPages();
+  const categories = getAllCategories()
+    .sort((a, b) => b.count - a.count)
+    .slice(0, 6)
+    .map((category) => ({
+      name: category.name,
+      description:
+        category.description ||
+        `Browse the original Village Socialite archive for ${category.name.toLowerCase()} stories, videos, and local coverage.`,
+      href: `/category/${category.slug}`,
+      countLabel: `${category.count} archived stories`,
+    }));
+
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-18 px-5 py-8 sm:px-8 sm:py-12">
       <section className="relative overflow-hidden rounded-[2.5rem] border border-white/10 bg-[var(--color-ink)] px-6 py-8 text-white shadow-[0_30px_90px_rgba(9,18,24,0.28)] sm:px-10 sm:py-10 lg:px-14 lg:py-14">
@@ -104,11 +124,11 @@ export default function Home() {
         <SectionHeading
           eyebrow="Featured stories and videos"
           title="Featured stories with a stronger point of view."
-          description="The goal is simple: lead with the stories, videos, and local angles people actually want to click into first."
+          description="These are pulled directly from the original Village Socialite archive and given a cleaner, more intentional front-of-house treatment."
         />
         <div className="grid gap-6 lg:grid-cols-2">
           {featuredStories.map((story) => (
-            <FeaturedStoryCard key={story.title} story={story} />
+            <ImportedStoryCard key={story.id} item={story} />
           ))}
         </div>
       </section>
@@ -122,6 +142,32 @@ export default function Home() {
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {categories.map((category) => (
             <CategoryCard key={category.name} category={category} />
+          ))}
+        </div>
+      </section>
+
+      <section className="space-y-8">
+        <SectionHeading
+          eyebrow="Offers, specials, and high-value pages"
+          title="The original money pages and feature pages still matter."
+          description="Instead of burying them, the new site gives them a dedicated place and lets them benefit from the upgraded design language."
+        />
+        <div className="grid gap-6 lg:grid-cols-2">
+          {offerPages.map((page) => (
+            <OfferCard key={page.id} item={page} />
+          ))}
+        </div>
+      </section>
+
+      <section className="space-y-8">
+        <SectionHeading
+          eyebrow="Latest from the archive"
+          title="Hundreds of existing stories now have a place inside the new site."
+          description="Recent posts from the original corpus are now part of the living experience instead of being trapped in the old WordPress layout."
+        />
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {latestPosts.map((story) => (
+            <ImportedStoryCard key={story.id} item={story} />
           ))}
         </div>
       </section>
