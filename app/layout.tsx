@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
+import { PalmCursor } from "@/components/palm-cursor";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
@@ -52,6 +53,7 @@ export default function RootLayout({
       className={`${manrope.variable} ${cormorant.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <PalmCursor />
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />
