@@ -12,6 +12,7 @@ const mainNav = [
   { href: "/join-the-socialite", label: "Join The Socialite", highlight: true },
   { href: "/merch", label: "Merch" },
   { href: "/fat-pig-society-cbd", label: "Organic CBD" },
+  { href: "/categories", label: "Video Categories" },
 ];
 
 const mobileNav = mainNav;
