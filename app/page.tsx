@@ -28,8 +28,8 @@ export default function Home() {
     <div className="flex flex-col">
 
       {/* ── Full-bleed cinematic hero ────────────────────────────────── */}
-      <section className="relative overflow-hidden" style={{ minHeight: "clamp(480px, 68vh, 740px)" }}>
-        {/* Background image — full size, nothing cut off */}
+      <section className="relative overflow-hidden" style={{ minHeight: "clamp(520px, 72vh, 800px)" }}>
+        {/* Background image */}
         <div className="absolute inset-0">
           <Image
             src="/reference-selected/villages_header.jpg"
@@ -40,25 +40,33 @@ export default function Home() {
             priority
           />
         </div>
-        {/* Cinematic gradient overlay — left side readable, right edge visible */}
-        <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(5,20,25,0.88)_0%,rgba(5,20,25,0.70)_40%,rgba(5,20,25,0.28)_70%,rgba(5,20,25,0.08)_100%)]" />
+        {/* Gradient — heavier on left for text, fades right so image breathes */}
+        <div className="absolute inset-0 bg-[linear-gradient(105deg,rgba(5,20,25,0.85)_0%,rgba(5,20,25,0.62)_38%,rgba(5,20,25,0.22)_65%,rgba(5,20,25,0.04)_100%)]" />
+        {/* Subtle bottom fade so bottom content reads cleanly */}
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[rgba(5,20,25,0.55)] to-transparent" />
 
-        {/* Text content — left-aligned, vertically centered */}
-        <div className="relative mx-auto flex h-full w-full max-w-7xl items-center px-6 py-16 sm:px-10 lg:px-14">
-          <div className="max-w-3xl space-y-7 text-white">
+        {/* Layout: heading top-left, CTAs pinned bottom-left */}
+        <div className="relative mx-auto flex h-full w-full max-w-7xl flex-col justify-between px-6 py-10 sm:px-10 sm:py-12 lg:px-14 lg:py-14">
+
+          {/* ── Top: eyebrow + heading ── */}
+          <div className="max-w-3xl text-white">
             <p className="text-[11px] font-extrabold uppercase tracking-[0.38em] text-[var(--color-cyan)]">
               The Villages, Florida — All-Access Pass
             </p>
             <h1
-              className="font-[family:var(--font-cormorant)] font-semibold"
+              className="mt-4 font-[family:var(--font-cormorant)] font-semibold text-white"
               style={{ fontSize: "clamp(2.4rem, 4.6vw, 5.4rem)", lineHeight: 1.08 }}
             >
               Watch The Villages<br />Come To Life.
             </h1>
-            <p className="text-lg leading-9 text-white/85 sm:text-xl">
-              Discover nightlife, golf, live music, dining, real estate, and the local moments through real video. Browse by category or dive into the feed.
+          </div>
+
+          {/* ── Bottom: description + buttons + quick links ── */}
+          <div className="max-w-2xl space-y-5 text-white">
+            <p className="text-lg leading-8 text-white/88 sm:text-xl">
+              Nightlife, golf, live music, dining, real estate, and the moments that make The Villages unlike anywhere else.
             </p>
-            <div className="flex flex-wrap gap-3 pt-1">
+            <div className="flex flex-wrap gap-3">
               <Link
                 href="/categories"
                 className="rounded-full bg-[var(--color-teal)] px-8 py-4 text-base font-extrabold text-white shadow-[0_6px_24px_rgba(0,175,197,0.5)] transition hover:-translate-y-0.5 hover:shadow-[0_10px_32px_rgba(0,175,197,0.55)]"
@@ -72,8 +80,7 @@ export default function Home() {
                 Join The Socialite
               </Link>
             </div>
-            {/* Quick-links row */}
-            <div className="flex flex-wrap gap-5 border-t border-white/15 pt-6">
+            <div className="flex flex-wrap gap-5 border-t border-white/15 pt-4">
               {[
                 { href: "/categories", label: "▶ Start Watching" },
                 { href: "/best-golf-carts-the-villages", label: "🛺 Best Golf Carts" },
@@ -89,6 +96,7 @@ export default function Home() {
               ))}
             </div>
           </div>
+
         </div>
       </section>
 
