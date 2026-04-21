@@ -123,13 +123,13 @@ export default function CategoriesPage() {
         {/* Center: Follow us on Facebook */}
         <div className="flex items-stretch justify-center">
           <a
-            href="https://www.facebook.com/VillageSocialite"
+            href="https://www.facebook.com/profile.php?id=61586012620132"
             target="_blank"
             rel="noopener noreferrer"
             className="group relative block w-full overflow-hidden rounded-[2rem] shadow-[0_8px_40px_rgba(18,27,33,0.18)] lg:w-[240px]"
           >
             <Image
-              src="/villagesocialitefacebook.jpg"
+              src="https://villagesocialite.com/wp-content/uploads/2026/03/followvillagesocialiteonfacebook.jpg"
               alt="Follow Village Socialite on Facebook"
               width={480}
               height={640}
