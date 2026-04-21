@@ -45,12 +45,12 @@ export default function Home() {
 
         {/* Text content — left-aligned, vertically centered */}
         <div className="relative mx-auto flex h-full w-full max-w-7xl items-center px-6 py-16 sm:px-10 lg:px-14">
-          <div className="max-w-2xl space-y-7 text-white">
+          <div className="max-w-3xl space-y-7 text-white">
             <p className="text-[11px] font-extrabold uppercase tracking-[0.38em] text-[var(--color-cyan)]">
               The Villages, Florida — All-Access Pass
             </p>
-            <h1 className="font-[family:var(--font-cormorant)] text-[2.8rem] font-semibold leading-[1.1] sm:text-[3.6rem] lg:text-[5rem]">
-              Watch The Villages Come&nbsp;To&nbsp;Life.
+            <h1 className="font-[family:var(--font-cormorant)] text-[2.6rem] font-semibold leading-[1.08] sm:text-[3.8rem] lg:text-[5.2rem]">
+              Watch The Villages<br />Come To Life.
             </h1>
             <p className="text-lg leading-9 text-white/85 sm:text-xl">
               Discover nightlife, golf, live music, dining, real estate, and the local moments through real video. Browse by category or dive into the feed.
