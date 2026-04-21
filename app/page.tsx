@@ -227,6 +227,98 @@ export default function Home() {
           </article>
         </section>
 
+        {/* ── Facebook follow banner ──────────────────────────────────── */}
+        <section className="relative overflow-hidden rounded-[2.5rem] shadow-[0_24px_80px_rgba(0,77,99,0.28)]"
+          style={{ background: "linear-gradient(120deg, #003546 0%, #005a78 40%, #007a96 70%, #00afc5 100%)" }}
+        >
+          {/* Decorative glow blobs */}
+          <div className="pointer-events-none absolute -top-20 -right-20 h-72 w-72 rounded-full opacity-20"
+            style={{ background: "radial-gradient(circle, #22e8d4 0%, transparent 70%)" }} />
+          <div className="pointer-events-none absolute -bottom-16 left-10 h-56 w-56 rounded-full opacity-15"
+            style={{ background: "radial-gradient(circle, #00d4e0 0%, transparent 70%)" }} />
+
+          <div className="relative flex flex-col items-center gap-10 px-8 py-12 lg:flex-row lg:items-stretch lg:gap-0 lg:px-0 lg:py-0">
+
+            {/* Left — copy */}
+            <div className="flex flex-1 flex-col justify-center gap-6 text-white lg:px-14 lg:py-14">
+              <div className="flex items-center gap-2">
+                <span className="rounded-full bg-white/15 px-4 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.32em] text-[#22e8d4] ring-1 ring-white/20">
+                  Active on Facebook
+                </span>
+                {/* Live pulse dot */}
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#22e8d4] opacity-60" />
+                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-[#22e8d4]" />
+                </span>
+              </div>
+
+              <h2
+                className="font-[family:var(--font-cormorant)] font-semibold leading-[1.04] text-white"
+                style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.8rem)" }}
+              >
+                See what&apos;s happening<br />
+                <span style={{ color: "#22e8d4" }}>right now</span> in The Villages.
+              </h2>
+
+              <p className="max-w-md text-base leading-8 text-white/80">
+                We go live at the town squares, cover events as they unfold, and give you a front-row seat to Village life — before you ever set foot here.
+              </p>
+
+              <ul className="space-y-2 text-sm font-medium text-white/70">
+                {[
+                  "🎬  Live video from the squares & events",
+                  "🏡  Real estate, new neighborhoods & community news",
+                  "💬  Real talk from people who actually live there",
+                ].map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+
+              <a
+                href="https://www.facebook.com/profile.php?id=61586012620132"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mt-2 inline-flex w-fit items-center gap-3 rounded-full px-8 py-4 text-base font-extrabold text-white shadow-[0_8px_32px_rgba(24,119,242,0.55)] transition hover:-translate-y-0.5 hover:shadow-[0_14px_44px_rgba(24,119,242,0.7)]"
+                style={{ background: "linear-gradient(135deg, #1877F2 0%, #145dbf 100%)" }}
+              >
+                {/* Facebook icon */}
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+                  <path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+                </svg>
+                Follow Village Socialite
+                <span className="transition group-hover:translate-x-0.5" aria-hidden="true">→</span>
+              </a>
+            </div>
+
+            {/* Right — image */}
+            <div className="relative w-full shrink-0 lg:w-[42%]">
+              <div className="relative h-72 w-full overflow-hidden lg:h-full lg:min-h-[420px]">
+                <Image
+                  src="https://villagesocialite.com/wp-content/uploads/2026/03/followvillagesocialiteonfacebook.jpg"
+                  alt="Follow Village Socialite on Facebook"
+                  fill
+                  sizes="(min-width: 1024px) 42vw, 100vw"
+                  className="object-cover"
+                />
+                {/* Left edge fade so it blends into the copy side */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[#003546]/80 via-[#003546]/20 to-transparent lg:block hidden" />
+                {/* Bottom fade on mobile */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#003546]/70 via-transparent to-transparent lg:hidden" />
+
+                {/* Facebook badge */}
+                <div className="absolute bottom-5 right-5 flex h-12 w-12 items-center justify-center rounded-2xl shadow-[0_8px_24px_rgba(0,0,0,0.35)]"
+                  style={{ background: "#1877F2" }}
+                >
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="white" aria-hidden="true">
+                    <path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.886v2.267h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
         {/* ── Newsletter / Spotlight form ─────────────────────────────── */}
         <SpotlightForm />
 
