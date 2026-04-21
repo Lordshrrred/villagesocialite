@@ -44,57 +44,72 @@ function CategoryGlyph({ name }: { name: CategoryIconName }) {
     <svg viewBox="0 0 64 64" aria-hidden="true" className="h-12 w-12">
       {name === "calendar" && (
         <>
-          <path d="M17 15h30a5 5 0 0 1 5 5v28a5 5 0 0 1-5 5H17a5 5 0 0 1-5-5V20a5 5 0 0 1 5-5Z" fill="currentColor" opacity=".13" />
+          <path d="M17 15h30a5 5 0 0 1 5 5v28a5 5 0 0 1-5 5H17a5 5 0 0 1-5-5V20a5 5 0 0 1 5-5Z" fill="currentColor" opacity=".18" />
+          <path d="M12 20a5 5 0 0 1 5-5h30a5 5 0 0 1 5 5v8H12v-8Z" fill="currentColor" opacity=".24" />
+          <path d="M20 34h9v7h-9zM35 34h9v7h-9zM20 44h9v5h-9z" fill="currentColor" opacity=".16" />
           <path d="M19 13v8M45 13v8M12 26h40M20 35h8M36 35h8M20 44h12" fill="none" {...strokeProps} />
           <path d="M43 41l3 2.2 3.6-5.2" fill="none" {...strokeProps} />
         </>
       )}
       {name === "music" && (
         <>
+          <path d="M29 16l21-4v8l-21 4v-8Z" fill="currentColor" opacity=".22" />
+          <path d="M18.8 43.3c-3.8.3-6.4 2.2-6.4 4.7 0 2.9 3.4 5 7.6 5s8-2.2 8-5-3.6-5-7.6-5c-.5 0-1 0-1.6.3ZM40.8 37.3c-3.8.3-6.4 2.2-6.4 4.7 0 2.9 3.4 5 7.6 5s8-2.2 8-5-3.6-5-7.6-5c-.5 0-1 0-1.6.3Z" fill="currentColor" opacity=".24" />
           <path d="M20 43c4 0 8-2.4 8-6.2V16l22-4v22.5" fill="none" {...strokeProps} />
-          <path d="M28 23l22-4M20 43c-4.2 0-7.6 2.1-7.6 5s3.4 5 7.6 5 8-2.2 8-5-3.8-5-8-5ZM42 37c-4.2 0-7.6 2.1-7.6 5s3.4 5 7.6 5 8-2.2 8-5-3.8-5-8-5Z" fill="currentColor" opacity=".16" />
+          <path d="M28 23l22-4M20 43c-4.2 0-7.6 2.1-7.6 5s3.4 5 7.6 5 8-2.2 8-5-3.8-5-8-5ZM42 37c-4.2 0-7.6 2.1-7.6 5s3.4 5 7.6 5 8-2.2 8-5-3.8-5-8-5Z" fill="none" {...strokeProps} />
           <path d="M47 10l5 3-5 3" fill="none" {...strokeProps} />
         </>
       )}
       {name === "dining" && (
         <>
-          <path d="M17 51h30M21 46h22c4.4 0 8-3.6 8-8H13c0 4.4 3.6 8 8 8Z" fill="currentColor" opacity=".14" />
+          <path d="M21 46h22c4.4 0 8-3.6 8-8H13c0 4.4 3.6 8 8 8Z" fill="currentColor" opacity=".22" />
+          <path d="M17 38c1.7-6 7.6-10 15-10s13.3 4 15 10H17Z" fill="currentColor" opacity=".15" />
+          <path d="M19 47h26v4H19z" fill="currentColor" opacity=".18" />
           <path d="M13 38h38M22 29c-2.4-3.8 2.2-5.5 0-9M32 29c-2.4-3.8 2.2-5.5 0-9M42 29c-2.4-3.8 2.2-5.5 0-9M20 51h24" fill="none" {...strokeProps} />
           <path d="M16 38c1.2-8 7.8-14 16-14s14.8 6 16 14" fill="none" {...strokeProps} />
         </>
       )}
       {name === "heart" && (
         <>
-          <path d="M32 52S14 42 14 27.6C14 20.8 18.6 17 24 17c3.8 0 6.5 2 8 5 1.5-3 4.2-5 8-5 5.4 0 10 3.8 10 10.6C50 42 32 52 32 52Z" fill="currentColor" opacity=".18" />
+          <path d="M32 52S14 42 14 27.6C14 20.8 18.6 17 24 17c3.8 0 6.5 2 8 5 1.5-3 4.2-5 8-5 5.4 0 10 3.8 10 10.6C50 42 32 52 32 52Z" fill="currentColor" opacity=".28" />
+          <path d="M24 22c-3.2 0-5.4 2.2-5.4 5.5 0 5.8 5.5 11.4 10.1 15.1" fill="none" stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" opacity=".62" />
           <path d="M32 52S14 42 14 27.6C14 20.8 18.6 17 24 17c3.8 0 6.5 2 8 5 1.5-3 4.2-5 8-5 5.4 0 10 3.8 10 10.6C50 42 32 52 32 52Z" fill="none" {...strokeProps} />
           <path d="M49 13l1.6 3.4L54 18l-3.4 1.6L49 23l-1.6-3.4L44 18l3.4-1.6L49 13Z" fill="currentColor" />
         </>
       )}
       {name === "cart" && (
         <>
-          <path d="M16 39h33l-3-12H24l-8 12Z" fill="currentColor" opacity=".16" />
+          <path d="M16 39h33l-3-12H24l-8 12Z" fill="currentColor" opacity=".24" />
+          <path d="M25 31h10v8H25zM37 31h8l2 8H37zM25 18h17l3 9H23l2-9Z" fill="currentColor" opacity=".16" />
           <path d="M16 39h33l-3-12H24l-8 12ZM23 39v-8h12M35 27v12M45 39v-7M18 47h32" fill="none" {...strokeProps} />
-          <path d="M23 47a4 4 0 1 0 0 8 4 4 0 0 0 0-8ZM46 47a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" fill="currentColor" opacity=".25" />
+          <path d="M23 47a4 4 0 1 0 0 8 4 4 0 0 0 0-8ZM46 47a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" fill="currentColor" opacity=".3" />
+          <path d="M23 50h.1M46 50h.1" fill="none" {...strokeProps} />
           <path d="M19 25h7l2-8h14l3 8" fill="none" {...strokeProps} />
         </>
       )}
       {name === "home" && (
         <>
-          <path d="M13 31 32 15l19 16v20H18V31Z" fill="currentColor" opacity=".14" />
+          <path d="M13 31 32 15l19 16v20H18V31Z" fill="currentColor" opacity=".22" />
+          <path d="M25 34h6v6h-6zM36 34h6v6h-6zM28 41h8v10h-8z" fill="currentColor" opacity=".16" />
+          <path d="M18 31 32 19l14 12" fill="none" stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" opacity=".5" />
           <path d="M13 31 32 15l19 16M18 31v20h28V31M27 51V38h10v13" fill="none" {...strokeProps} />
           <path d="M42 19v-5h6v10" fill="none" {...strokeProps} />
         </>
       )}
       {name === "nightlife" && (
         <>
-          <path d="M18 15h28L35 31v18h-6V31L18 15Z" fill="currentColor" opacity=".14" />
+          <path d="M18 15h28L35 31v18h-6V31L18 15Z" fill="currentColor" opacity=".22" />
+          <path d="M22 19h20l-5.5 8h-9L22 19Z" fill="currentColor" opacity=".18" />
+          <path d="M29 31h6v18h-6z" fill="currentColor" opacity=".18" />
           <path d="M18 15h28L35 31v18h-6V31L18 15ZM24 23h16M26 49h12" fill="none" {...strokeProps} />
           <path d="M47 36a11 11 0 0 1-11-11 12 12 0 1 0 11 11Z" fill="currentColor" opacity=".28" />
         </>
       )}
       {name === "golf" && (
         <>
-          <path d="M28 51c9.4 0 17-2.7 17-6s-7.6-6-17-6-17 2.7-17 6 7.6 6 17 6Z" fill="currentColor" opacity=".13" />
+          <path d="M28 51c9.4 0 17-2.7 17-6s-7.6-6-17-6-17 2.7-17 6 7.6 6 17 6Z" fill="currentColor" opacity=".18" />
+          <path d="M35 14l15 5-15 5V14Z" fill="currentColor" opacity=".22" />
+          <path d="M22 44c0-3 2.7-5.5 6-5.5S34 41 34 44H22Z" fill="currentColor" opacity=".18" />
           <path d="M34 45V12M34 13l17 6-17 6M22 44h8M42 47h.1" fill="none" {...strokeProps} />
           <path d="M22 44c0-3 2.7-5.5 6-5.5S34 41 34 44" fill="none" {...strokeProps} />
         </>
