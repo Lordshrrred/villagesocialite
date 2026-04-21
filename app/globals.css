@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8f3ea;
+  --foreground: #10202b;
+  --color-ink: #10202b;
+  --color-ink-soft: #4d5d66;
+  --color-paper: #fffaf2;
+  --color-line: rgba(16, 32, 43, 0.08);
+  --color-sea: #1d6573;
+  --color-seafoam: #8ed8cb;
+  --color-coral: #df7b55;
+  --color-gold: #e9c178;
+  --color-mist: #c5d2d8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-manrope);
+  --font-display: var(--font-cormorant);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at top, rgba(233, 193, 120, 0.18), transparent 24%),
+    radial-gradient(circle at 80% 0%, rgba(29, 101, 115, 0.12), transparent 24%),
+    var(--background);
+  color: var(--foreground);
+  font-family: var(--font-manrope), sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+::selection {
+  background: rgba(223, 123, 85, 0.22);
+}
+
+.font-display {
+  font-family: var(--font-cormorant), serif;
+}
