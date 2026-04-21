@@ -85,6 +85,10 @@ export function getItemBySlug(slug: string) {
   return itemMap.get(slug) ?? null;
 }
 
+export function getPageBySlug(slug: string) {
+  return dataset.pages.find((page) => page.slug === slug) ?? null;
+}
+
 export function getCategoryBySlug(slug: string) {
   return dataset.categories.find((category) => category.slug === slug) ?? null;
 }
@@ -135,6 +139,35 @@ export function getLatestPosts(limit = 12) {
   return [...dataset.posts]
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, limit);
+}
+
+export function getAllPostsSorted() {
+  return [...dataset.posts].sort(
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
+  );
+}
+
+export function getTopTags(limit = 250) {
+  return [...dataset.tags].sort((a, b) => b.count - a.count).slice(0, limit);
+}
+
+export function getRelatedPosts(item: WordpressItem, limit = 6) {
+  const scored = dataset.posts
+    .filter((post) => post.slug !== item.slug)
+    .map((post) => {
+      const sharedCategories = post.categories.filter((id) =>
+        item.categories.includes(id),
+      ).length;
+      const sharedTags = post.tags.filter((id) => item.tags.includes(id)).length;
+      return {
+        post,
+        score: sharedCategories * 3 + sharedTags,
+      };
+    })
+    .filter((entry) => entry.score > 0)
+    .sort((a, b) => b.score - a.score);
+
+  return scored.slice(0, limit).map((entry) => entry.post);
 }
 
 export function getFeaturedMigrationStories() {

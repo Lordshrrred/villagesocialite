@@ -1,8 +1,9 @@
+import { LegacyContent } from "@/components/legacy-content";
 import { CategoryCard } from "@/components/category-card";
 import { ImportedStoryCard } from "@/components/imported-story-card";
 import { SectionHeading } from "@/components/section-heading";
 import { featuredCollections } from "@/lib/site-data";
-import { getAllCategories, getLatestPosts } from "@/lib/wordpress";
+import { getAllCategories, getLatestPosts, getPageBySlug } from "@/lib/wordpress";
 
 export function ExplorePage() {
   const categories = getAllCategories()
@@ -16,6 +17,7 @@ export function ExplorePage() {
       countLabel: `${category.count} archived stories`,
     }));
   const latestPosts = getLatestPosts(12);
+  const explorePage = getPageBySlug("explore");
 
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-18 px-5 py-10 sm:px-8 sm:py-14">
@@ -32,6 +34,12 @@ export function ExplorePage() {
           <CategoryCard key={category.name} category={category} />
         ))}
       </section>
+
+      {explorePage?.content ? (
+        <section className="rounded-[2rem] border border-[var(--color-line)] bg-white p-6 shadow-[0_24px_60px_rgba(18,27,33,0.05)] sm:p-10">
+          <LegacyContent html={explorePage.content} />
+        </section>
+      ) : null}
 
       <section className="grid gap-6 lg:grid-cols-3">
         {featuredCollections.map((collection) => (

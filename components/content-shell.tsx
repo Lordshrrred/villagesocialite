@@ -1,3 +1,4 @@
+import { ImportedStoryCard } from "@/components/imported-story-card";
 import Image from "next/image";
 import Link from "next/link";
 import { LegacyContent } from "@/components/legacy-content";
@@ -5,6 +6,7 @@ import { formatLongDate } from "@/lib/content-format";
 import {
   getCategoryNames,
   getPrimaryImage,
+  getRelatedPosts,
   getTagNames,
   type WordpressItem,
 } from "@/lib/wordpress";
@@ -12,6 +14,7 @@ import {
 export function ContentShell({ item }: { item: WordpressItem }) {
   const categories = getCategoryNames(item.categories);
   const tags = getTagNames(item.tags).slice(0, 12);
+  const relatedPosts = getRelatedPosts(item, 3);
 
   return (
     <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-5 py-10 sm:px-8 sm:py-14">
@@ -79,6 +82,24 @@ export function ContentShell({ item }: { item: WordpressItem }) {
           ) : null}
         </aside>
       </section>
+
+      {relatedPosts.length > 0 ? (
+        <section className="space-y-8">
+          <div className="max-w-3xl space-y-3">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-[var(--color-coral)]">
+              Keep exploring
+            </p>
+            <h2 className="font-[family:var(--font-cormorant)] text-4xl font-semibold text-[var(--color-ink)]">
+              More from the original Village Socialite archive
+            </h2>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {relatedPosts.map((post) => (
+              <ImportedStoryCard key={post.id} item={post} />
+            ))}
+          </div>
+        </section>
+      ) : null}
     </div>
   );
 }
