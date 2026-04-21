@@ -1,17 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8f3ea;
-  --foreground: #10202b;
-  --color-ink: #10202b;
-  --color-ink-soft: #4d5d66;
-  --color-paper: #fffaf2;
-  --color-line: rgba(16, 32, 43, 0.08);
-  --color-sea: #1d6573;
-  --color-seafoam: #8ed8cb;
-  --color-coral: #df7b55;
-  --color-gold: #e9c178;
-  --color-mist: #c5d2d8;
+  /* Core palette — warm editorial with high contrast for older readers */
+  --background: #faf6ee;
+  --foreground: #0d1c25;
+  --color-ink: #0d1c25;
+  --color-ink-soft: #3a4e59;    /* was #4d5d66 — darker for better contrast */
+  --color-paper: #fff9f0;
+  --color-line: rgba(13, 28, 37, 0.10);
+  --color-sea: #155e6e;          /* slightly deeper teal for better contrast */
+  --color-seafoam: #6dcbbf;
+  --color-coral: #c9612e;        /* deeper coral — stronger contrast on white */
+  --color-gold: #d4a843;         /* deeper gold — readable as text */
+  --color-mist: #afc3cb;
 }
 
 @theme inline {
@@ -27,28 +28,32 @@
 
 html {
   scroll-behavior: smooth;
+  /* Slightly larger base for older readers */
+  font-size: 17px;
+}
+
+@media (min-width: 640px) {
+  html {
+    font-size: 17px;
+  }
 }
 
 body {
   background:
-    radial-gradient(circle at top, rgba(233, 193, 120, 0.18), transparent 24%),
-    radial-gradient(circle at 80% 0%, rgba(29, 101, 115, 0.12), transparent 24%),
+    radial-gradient(circle at top, rgba(212, 168, 67, 0.14), transparent 26%),
+    radial-gradient(circle at 80% 0%, rgba(21, 94, 110, 0.10), transparent 26%),
     var(--background);
   color: var(--foreground);
   font-family: var(--font-manrope), sans-serif;
+  line-height: 1.65;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  body,
-  a,
-  button,
-  input,
-  textarea,
-  select,
-  summary,
-  [role="button"] {
-    cursor: url("/palm-cursor.svg") 16 48, auto;
-  }
+a,
+button,
+[role="button"],
+label[for],
+label:has(input) {
+  cursor: pointer;
 }
 
 a {
@@ -65,8 +70,8 @@ a {
 
 .legacy-content {
   color: var(--color-ink);
-  font-size: 1.05rem;
-  line-height: 1.9;
+  font-size: 1.1rem;
+  line-height: 2;
 }
 
 .legacy-content > * + * {
