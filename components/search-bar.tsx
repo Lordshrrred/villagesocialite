@@ -18,16 +18,19 @@ export function SearchBar() {
     <form onSubmit={onSubmit} className="flex w-full items-center gap-2">
       <input
         value={query}
-        onChange={(event) => setQuery(event.target.value)}
-        placeholder="Search stories, guides, businesses, and local buzz..."
-        className="h-12 w-full rounded-full border-2 border-[#17a6ff] bg-white px-5 text-sm text-[var(--color-ink)] shadow-[0_8px_30px_rgba(23,166,255,0.15)] outline-none placeholder:text-slate-400"
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="Search stories, videos, restaurants, events..."
+        className="h-11 w-full rounded-full border-2 border-[var(--color-teal)]/35 bg-white px-5 text-[0.9rem] text-[var(--color-ink)] shadow-sm outline-none placeholder:text-slate-400 focus:border-[var(--color-teal)] focus:shadow-[0_0_0_3px_rgba(0,175,197,0.15)] transition"
       />
       <button
         type="submit"
-        className="flex h-12 min-w-12 items-center justify-center rounded-full border-2 border-[#17a6ff] bg-[#178fdb] px-4 text-white shadow-[0_8px_24px_rgba(23,143,219,0.28)] transition hover:scale-[1.03]"
         aria-label="Search"
+        className="flex h-11 min-w-11 items-center justify-center rounded-full bg-[var(--color-teal)] px-4 text-white shadow-[0_4px_14px_rgba(0,175,197,0.35)] transition hover:scale-105 hover:shadow-[0_6px_20px_rgba(0,175,197,0.45)]"
       >
-        <span className="text-lg">⌕</span>
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <circle cx="8" cy="8" r="5.5" stroke="currentColor" strokeWidth="2"/>
+          <path d="M12.5 12.5L16 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
       </button>
     </form>
   );

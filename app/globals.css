@@ -1,18 +1,22 @@
 @import "tailwindcss";
 
 :root {
-  /* Core palette — warm editorial with high contrast for older readers */
-  --background: #faf6ee;
-  --foreground: #0d1c25;
-  --color-ink: #0d1c25;
-  --color-ink-soft: #3a4e59;    /* was #4d5d66 — darker for better contrast */
-  --color-paper: #fff9f0;
-  --color-line: rgba(13, 28, 37, 0.10);
-  --color-sea: #155e6e;          /* slightly deeper teal for better contrast */
-  --color-seafoam: #6dcbbf;
-  --color-coral: #c9612e;        /* deeper coral — stronger contrast on white */
-  --color-gold: #d4a843;         /* deeper gold — readable as text */
-  --color-mist: #afc3cb;
+  /* ── Core palette — vibrant teal/cyan, high contrast for all ages ── */
+  --background: #eef9fb;
+  --foreground: #051419;
+  --color-ink: #051419;
+  --color-ink-soft: #184555;
+  --color-paper: #e0f5f8;
+  --color-line: rgba(5, 20, 25, 0.10);
+  --color-sea: #006a82;
+  --color-seafoam: #48cfe0;
+  --color-coral: #e0461e;
+  --color-gold: #e8a415;
+  --color-mist: #8ec8d5;
+  /* Teal scale */
+  --color-teal-deep: #004d63;
+  --color-teal: #00afc5;
+  --color-cyan: #00d8f0;
 }
 
 @theme inline {
@@ -28,46 +32,125 @@
 
 html {
   scroll-behavior: smooth;
-  /* Slightly larger base for older readers */
   font-size: 17px;
-}
-
-@media (min-width: 640px) {
-  html {
-    font-size: 17px;
-  }
 }
 
 body {
   background:
-    radial-gradient(circle at top, rgba(212, 168, 67, 0.14), transparent 26%),
-    radial-gradient(circle at 80% 0%, rgba(21, 94, 110, 0.10), transparent 26%),
+    radial-gradient(ellipse at top left, rgba(0,175,197,0.12), transparent 40%),
+    radial-gradient(ellipse at 85% 0%, rgba(0,216,240,0.08), transparent 40%),
     var(--background);
   color: var(--foreground);
   font-family: var(--font-manrope), sans-serif;
   line-height: 1.65;
 }
 
+/* ── Palm cursor — hotspot at bright tip dot (14 43) ─────────────── */
+@media (hover: hover) and (pointer: fine) {
+  body,
+  a,
+  button,
+  [role="button"],
+  label,
+  summary,
+  input[type="checkbox"],
+  input[type="radio"],
+  select {
+    cursor: url("/palm-cursor.svg") 14 43, pointer;
+  }
+}
+
 a,
 button,
 [role="button"],
-label[for],
-label:has(input) {
+label,
+select {
   cursor: pointer;
 }
 
-a {
-  text-decoration: none;
+/* ── Nav hover shimmer ───────────────────────────────────────────── */
+@keyframes navShimmer {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
 }
 
+.nav-item-hover {
+  position: relative;
+  overflow: hidden;
+}
+.nav-item-hover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+}
+.nav-item-hover:hover::after {
+  transform: translateX(100%);
+}
+
+/* ── Benefit card glow ───────────────────────────────────────────── */
+@keyframes glowPulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0px rgba(0,175,197,0),
+      0 4px 20px rgba(5,20,25,0.05);
+  }
+  50% {
+    box-shadow:
+      0 0 28px rgba(0,175,197,0.38),
+      0 0 55px rgba(0,175,197,0.14),
+      0 8px 30px rgba(5,20,25,0.08);
+  }
+}
+
+.benefit-glow {
+  animation: glowPulse 2.8s ease-in-out infinite;
+}
+
+.benefit-glow:nth-child(2) { animation-delay: 0.5s; }
+.benefit-glow:nth-child(3) { animation-delay: 1s; }
+.benefit-glow:nth-child(4) { animation-delay: 1.5s; }
+.benefit-glow:nth-child(5) { animation-delay: 2s; }
+.benefit-glow:nth-child(6) { animation-delay: 2.5s; }
+
+/* ── Join page shimmer text ──────────────────────────────────────── */
+@keyframes shimmerText {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer-text {
+  background: linear-gradient(90deg, #ffffff 20%, #7af2dd 40%, #ffffff 60%, #7af2dd 80%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmerText 5s linear infinite;
+}
+
+/* ── Slow hero pan ───────────────────────────────────────────────── */
+@keyframes slowPan {
+  0% { transform: scale(1.08) translate(0, 0); }
+  100% { transform: scale(1.18) translate(-2%, -1.5%); }
+}
+
+.hero-pan {
+  animation: slowPan 22s infinite alternate cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ── Selection ───────────────────────────────────────────────────── */
 ::selection {
-  background: rgba(223, 123, 85, 0.22);
+  background: rgba(0, 175, 197, 0.22);
 }
 
+/* ── Text util ───────────────────────────────────────────────────── */
 .font-display {
   font-family: var(--font-cormorant), serif;
 }
 
+/* ── Legacy content ──────────────────────────────────────────────── */
 .legacy-content {
   color: var(--color-ink);
   font-size: 1.1rem;
@@ -75,7 +158,7 @@ a {
 }
 
 .legacy-content > * + * {
-  margin-top: 1.35rem;
+  margin-top: 1.4rem;
 }
 
 .legacy-content h1,
@@ -86,21 +169,13 @@ a {
   font-family: var(--font-cormorant), serif;
   font-weight: 600;
   letter-spacing: -0.02em;
-  line-height: 1.05;
+  line-height: 1.08;
   margin-top: 2.4rem;
 }
 
-.legacy-content h1 {
-  font-size: clamp(2.6rem, 5vw, 4rem);
-}
-
-.legacy-content h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-}
-
-.legacy-content h3 {
-  font-size: clamp(1.7rem, 3vw, 2.3rem);
-}
+.legacy-content h1 { font-size: clamp(2.6rem, 5vw, 4rem); }
+.legacy-content h2 { font-size: clamp(2rem, 4vw, 3rem); }
+.legacy-content h3 { font-size: clamp(1.7rem, 3vw, 2.3rem); }
 
 .legacy-content p,
 .legacy-content li,
@@ -120,9 +195,7 @@ a {
   padding-left: 1.4rem;
 }
 
-.legacy-content li + li {
-  margin-top: 0.5rem;
-}
+.legacy-content li + li { margin-top: 0.5rem; }
 
 .legacy-content img {
   border-radius: 1.5rem;
@@ -147,9 +220,7 @@ a {
   padding-left: 1rem;
 }
 
-.legacy-content figure {
-  margin: 2rem 0;
-}
+.legacy-content figure { margin: 2rem 0; }
 
 .legacy-content table {
   border-collapse: collapse;
@@ -161,6 +232,6 @@ a {
 
 .legacy-content th,
 .legacy-content td {
-  border: 1px solid rgba(16, 32, 43, 0.1);
+  border: 1px solid rgba(5,20,25,0.10);
   padding: 0.75rem 0.9rem;
 }

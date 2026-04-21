@@ -32,7 +32,7 @@ export function ContentShell({ item }: { item: WordpressItem }) {
             className="object-cover"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-ink)] via-[var(--color-ink)]/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
         </div>
 
         {/* Text block below image, inside same dark card */}
