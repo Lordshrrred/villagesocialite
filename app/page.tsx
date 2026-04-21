@@ -53,7 +53,7 @@ export default function Home() {
             </p>
             <h1
               className="mt-4 font-[family:var(--font-cormorant)] font-semibold text-white"
-              style={{ fontSize: "clamp(3rem, 5.8vw, 6.4rem)", lineHeight: 1.05 }}
+              style={{ fontSize: "clamp(3.6rem, 7.5vw, 8.5rem)", lineHeight: 1.02 }}
             >
               Watch The Villages<br />Come To Life.
             </h1>
