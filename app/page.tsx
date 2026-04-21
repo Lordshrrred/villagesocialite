@@ -530,19 +530,19 @@ export default function Home() {
         </section>
 
         {/* ── Preserve Your Story — Celebrating Life Movies ──────────── */}
-        <section className="overflow-hidden rounded-[2rem] shadow-[0_20px_60px_rgba(90,40,0,0.28)]"
-          style={{ background: "linear-gradient(135deg, #160800 0%, #3a1800 35%, #5c2e00 65%, #3a1800 100%)" }}
+        <section className="overflow-hidden rounded-[2rem] shadow-[0_20px_60px_rgba(5,20,25,0.2)]"
+          style={{ background: "linear-gradient(135deg, #051419 0%, #0b2e3f 40%, #004d63 100%)" }}
         >
           <div className="flex flex-col gap-8 p-7 sm:p-10 lg:flex-row lg:items-center lg:gap-12">
 
             {/* Left — film icon */}
             <div className="flex shrink-0 flex-col items-center gap-3 lg:w-44">
-              <div className="flex h-28 w-28 items-center justify-center rounded-full border-2 border-[#c9a44a]/25 shadow-[0_0_48px_rgba(201,164,74,0.3)]"
-                style={{ background: "radial-gradient(circle at 40% 35%, #4a2600 0%, #160800 100%)" }}
+              <div className="flex h-28 w-28 items-center justify-center rounded-full border-2 border-[var(--color-teal)]/30 shadow-[0_0_48px_rgba(0,175,197,0.3)]"
+                style={{ background: "radial-gradient(circle at 40% 35%, #0b2e3f 0%, #051419 100%)" }}
               >
                 <span className="text-5xl" role="img" aria-label="Film reel">🎬</span>
               </div>
-              <p className="text-center text-[10px] font-extrabold uppercase tracking-[0.24em] text-[#c9a44a]/60">
+              <p className="text-center text-[10px] font-extrabold uppercase tracking-[0.24em] text-[var(--color-teal)]/70">
                 Celebrating<br />Life Movies
               </p>
             </div>
@@ -550,7 +550,7 @@ export default function Home() {
             {/* Right — content */}
             <div className="flex-1 space-y-5">
               <div className="space-y-2">
-                <span className="inline-block rounded-full border border-[#c9a44a]/40 bg-[#c9a44a]/15 px-4 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.30em] text-[#c9a44a]">
+                <span className="inline-block rounded-full border border-[var(--color-teal)]/35 bg-[var(--color-teal)]/15 px-4 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.30em] text-[var(--color-teal)]">
                   Exclusive Resident Perk
                 </span>
                 <h2
@@ -558,7 +558,7 @@ export default function Home() {
                   style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", lineHeight: 1.1 }}
                 >
                   Preserve Your Story with{" "}
-                  <span style={{ color: "#e8c06a" }}>15% Off</span>
+                  <span style={{ color: "#22e8d4" }}>15% Off</span>
                 </h2>
               </div>
 
@@ -569,12 +569,12 @@ export default function Home() {
               </p>
 
               {/* Promo code box */}
-              <div className="inline-flex flex-wrap items-center gap-4 rounded-xl border-2 border-dashed border-[#c9a44a]/45 bg-white/6 px-5 py-4">
+              <div className="inline-flex flex-wrap items-center gap-4 rounded-xl border-2 border-dashed border-[var(--color-teal)]/35 bg-white/6 px-5 py-4">
                 <div>
-                  <p className="text-[10px] font-extrabold uppercase tracking-[0.26em] text-[#c9a44a]/65">Your Promo Code</p>
-                  <p className="mt-0.5 font-[family:var(--font-cormorant)] text-2xl font-semibold tracking-widest text-[#e8c06a]">VILLAGES15</p>
+                  <p className="text-[10px] font-extrabold uppercase tracking-[0.26em] text-[var(--color-teal)]/65">Your Promo Code</p>
+                  <p className="mt-0.5 font-[family:var(--font-cormorant)] text-2xl font-semibold tracking-widest text-[#22e8d4]">VILLAGES15</p>
                 </div>
-                <div className="hidden h-10 w-px bg-[#c9a44a]/20 sm:block" />
+                <div className="hidden h-10 w-px bg-[var(--color-teal)]/20 sm:block" />
                 <p className="text-xs font-semibold text-white/50">Apply at checkout<br />to save 15%</p>
               </div>
 
@@ -582,8 +582,8 @@ export default function Home() {
                 href="https://www.celebratinglifemovies.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-extrabold shadow-[0_8px_32px_rgba(201,164,74,0.48)] transition hover:-translate-y-0.5 hover:brightness-110"
-                style={{ background: "linear-gradient(135deg, #e8c06a, #c9a44a)", color: "#160800" }}
+                className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-extrabold text-[var(--color-ink)] shadow-[0_8px_32px_rgba(0,175,197,0.45)] transition hover:-translate-y-0.5 hover:brightness-110"
+                style={{ background: "linear-gradient(135deg, #22e8d4, #00afc5)" }}
               >
                 Claim My 15% Discount →
               </a>
