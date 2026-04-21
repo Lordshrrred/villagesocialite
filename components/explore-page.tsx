@@ -23,9 +23,9 @@ export function ExplorePage() {
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-18 px-5 py-10 sm:px-8 sm:py-14">
       <section className="rounded-[2.4rem] border border-[var(--color-line)] bg-white px-6 py-8 shadow-[0_30px_80px_rgba(18,27,33,0.06)] sm:px-10 sm:py-12">
         <SectionHeading
-          eyebrow="Explore the ecosystem"
-          title="Editorial lanes designed around how people actually navigate Village life."
-          description="The live site had valuable categories. The rebuild keeps the strongest ones conceptually, then groups them into a clearer and more premium discovery experience."
+          eyebrow="Explore Village Socialite"
+          title="Every corner of life in The Villages, organized so you can actually find it."
+          description="Dining, events, golf carts, dating, real estate, live music, wellness, community, and more — browse by category or dive into recent stories."
         />
       </section>
 
@@ -58,9 +58,9 @@ export function ExplorePage() {
 
       <section className="space-y-8">
         <SectionHeading
-          eyebrow="Live archive"
-          title="The original content is part of the site now."
-          description="Recent stories from the old site are fully integrated into the new experience, with room to keep growing without losing what was already built."
+          eyebrow="Latest stories"
+          title="Fresh Village Socialite coverage."
+          description="Recent stories from inside The Villages — restaurants, events, real estate, golf carts, community moments, and more."
         />
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {latestPosts.map((post) => (

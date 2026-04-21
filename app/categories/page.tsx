@@ -28,9 +28,9 @@ export default function CategoriesPage() {
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-5 py-10 sm:px-8 sm:py-14">
       <section className="rounded-[2.3rem] border border-[var(--color-line)] bg-white p-8 shadow-[0_24px_60px_rgba(18,27,33,0.05)] sm:p-12">
         <SectionHeading
-          eyebrow="Categories"
-          title="Every lane of Village life, organized so people can actually explore it."
-          description="From nightlife and golf to food, dating, wellness, and local buzz, the categories now read like a guide instead of a dump."
+          eyebrow="Video Categories"
+          title="Every lane of Village life, in one place."
+          description="Dining, events, golf carts, dating, live music, real estate, nightlife, wellness, pets, arts, and more — find your corner of The Villages."
         />
       </section>
 

@@ -37,7 +37,17 @@ export async function generateStaticParams() {
   const itemSlugs = [...all.posts, ...all.pages]
     .map((item) => item.slug)
     .filter(
-      (slug) => !["explore", "categories", "blog"].includes(slug),
+      (slug) => ![
+        "explore", "categories", "blog",
+        "best-golf-carts-the-villages",
+        "join-the-socialite",
+        "merch",
+        "fat-pig-society-cbd",
+        "privacy-policy",
+        "affiliate-disclosure",
+        "terms-conditions",
+        "dmca",
+      ].includes(slug),
     );
 
   return [...new Set(itemSlugs)].map((slug) => ({ slug }));

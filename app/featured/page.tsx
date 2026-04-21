@@ -44,7 +44,7 @@ export default function FeaturedPage() {
             className="rounded-[1.8rem] border border-[var(--color-line)] bg-[var(--color-paper)] p-6"
           >
             <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--color-sea)]">
-              Launch module
+              Content series
             </p>
             <h3 className="text-2xl font-semibold text-[var(--color-ink)]">{collection.title}</h3>
             <p className="mt-4 text-sm leading-7 text-[var(--color-ink-soft)]">{collection.text}</p>

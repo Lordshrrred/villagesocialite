@@ -12,23 +12,28 @@ export type Category = {
   description: string;
   href: string;
   countLabel: string;
+  emoji?: string;
 };
 
 export const navLinks = [
   { href: "/", label: "Home" },
+  { href: "/categories", label: "Video Categories" },
+  { href: "/best-golf-carts-the-villages", label: "Best Golf Carts" },
+  { href: "/join-the-socialite", label: "Join The Socialite" },
+  { href: "/merch", label: "Merch" },
+  { href: "/fat-pig-society-cbd", label: "Organic CBD" },
   { href: "/explore", label: "Explore" },
-  { href: "/blog", label: "Blog" },
-  { href: "/featured", label: "Featured" },
-  { href: "/contact", label: "Contact" },
+  { href: "/tags", label: "Tags" },
+  { href: "/contact-village-socialite", label: "Contact Us" },
 ];
 
 export const featuredStories: Story[] = [
   {
     title: "Where the town squares still shape the rhythm of the week",
     description:
-      "An editorial-style look at the plazas, patios, and social rituals that make The Villages feel bigger than a retirement zip code.",
-    href: "/featured",
-    category: "Culture Guide",
+      "An inside look at the plazas, patios, and social rituals that make The Villages feel bigger than a retirement zip code.",
+    href: "/the-villages-florida-what-are-the-town-squares-like",
+    category: "Community Culture",
     image:
       "/reference-selected/the-villages-florida-what-are-the-town-squares-like.jpg",
     eyebrow: "Community pulse",
@@ -36,129 +41,135 @@ export const featuredStories: Story[] = [
   {
     title: "The food scene worth bookmarking before your next golf cart ride",
     description:
-      "Top restaurant roundups, quick-hit local recommendations, and the spots people actually talk about after dinner.",
-    href: "/featured",
+      "Top restaurant roundups, quick-hit recommendations, and the spots people actually talk about after dinner.",
+    href: "/our-top-5-bbq-restaurants-in-the-villages-florida-surrounding-area-amazing-bbq-in-the-villages",
     category: "Food & Dining",
     image:
       "/reference-selected/our-top-5-bbq-restaurants-in-the-villages-florida-surrounding-area-amazing-bbq-in-the-villages.jpg",
     eyebrow: "Curated picks",
   },
   {
-    title: "A clearer lens on singles clubs, social circles, and belonging",
+    title: "Singles clubs, social circles, and what belonging really looks like",
     description:
-      "Connection stories, social life, and community culture deserve better framing than rumor and clickbait.",
-    href: "/featured",
-    category: "People & Community",
+      "Honest, warm coverage of connection, social life, and community culture in The Villages.",
+    href: "/single-in-the-villages-florida-55-retirement-community-singles-clubs-you-can-join",
+    category: "Dating & Social Life",
     image:
       "/reference-selected/single-in-the-villages-florida-55-retirement-community-singles-clubs-you-can-join.jpg",
-    eyebrow: "Modern editorial",
+    eyebrow: "Social life",
   },
   {
-    title: "Golf cart life, without the cluttered grid treatment",
+    title: "Golf cart life: the real guide to getting around The Villages",
     description:
-      "From practical trail tips to standout rides and local utility, one of the brand's strongest themes becomes a premium content lane.",
-    href: "/featured",
+      "From trail tips to standout rides — one of the community's defining features gets the coverage it deserves.",
+    href: "/best-golf-carts-the-villages",
     category: "Golf Cart Life",
     image: "/reference-selected/golf-carts-the-villages-florida.jpg",
-    eyebrow: "Signature vertical",
+    eyebrow: "Community staple",
   },
 ];
 
 export const categories: Category[] = [
   {
     name: "Food & Dining",
-    description: "Restaurant finds, local favorites, quick takes, and destination-worthy nights out.",
-    href: "/explore#food-dining",
-    countLabel: "40 archived stories",
+    description: "Restaurant finds, local favorites, honest reviews, and destination-worthy nights out across The Villages.",
+    href: "/category/food-dining-the-villages",
+    countLabel: "40 stories",
+    emoji: "🍽️",
   },
   {
     name: "Events & Nightlife",
-    description: "Town square energy, live music, gatherings, and the calendar worth planning around.",
-    href: "/explore#events-nightlife",
-    countLabel: "68 combined stories",
+    description: "Town square energy, live music, community gatherings, and the calendar worth planning your week around.",
+    href: "/category/events-the-villages",
+    countLabel: "68+ stories",
+    emoji: "🎉",
   },
   {
-    name: "Homes & Moving",
-    description: "Guides, market perspective, neighborhood feel, and the real-life transition into The Villages.",
-    href: "/explore#homes-moving",
-    countLabel: "48 combined stories",
+    name: "Real Estate",
+    description: "Market updates, neighborhood guides, new listings, and real talk about buying or selling in The Villages.",
+    href: "/category/real-estate-the-villages",
+    countLabel: "37 stories",
+    emoji: "🏡",
   },
   {
     name: "Golf Cart Life",
-    description: "Trails, carts, local transport culture, and the signature mobility layer of the community.",
-    href: "/explore#golf-cart-life",
-    countLabel: "24 archived stories",
+    description: "Trails, carts, local transport culture, and the signature mobility layer of Village community life.",
+    href: "/category/golf-cart-life-the-villages",
+    countLabel: "24 stories",
+    emoji: "🛺",
   },
   {
-    name: "Health & Wellness",
-    description: "Care access, wellbeing, active living, and practical quality-of-life coverage.",
-    href: "/explore#health-wellness",
-    countLabel: "37 combined stories",
+    name: "Dating & Social Life",
+    description: "Singles clubs, social circles, dating stories, and honest community culture coverage.",
+    href: "/category/dating-the-villages",
+    countLabel: "43 stories",
+    emoji: "💛",
   },
   {
-    name: "People & Community",
-    description: "Social life, local personalities, clubs, neighbors, and the stories that create belonging.",
-    href: "/explore#people-community",
-    countLabel: "57 combined stories",
+    name: "Live Music",
+    description: "Bands, performers, town square shows, and the vibrant music scene that keeps The Villages alive every night.",
+    href: "/category/live-music-the-villages",
+    countLabel: "40 stories",
+    emoji: "🎸",
   },
 ];
 
 export const whyVillageSocialite = [
   {
-    title: "Curated, not chaotic",
+    title: "Real local coverage",
     description:
-      "A clear editorial layer helps visitors know where to start, what matters, and what to explore next.",
+      "Stories, videos, and guides produced from inside The Villages — not scraped from somewhere else or padded with filler.",
   },
   {
-    title: "Broad enough to be useful",
+    title: "Every corner of Village life",
     description:
-      "Dining, culture, moving, health, events, shopping, and community now live inside one clear system instead of scattered silos.",
+      "Golf carts to gourmet dining, live music to luxury real estate — one destination for everything worth knowing.",
   },
   {
-    title: "Built like a real platform",
+    title: "Built for the community",
     description:
-      "The brand now has room for guides, features, business spotlights, newsletters, and signature series without losing focus.",
+      "Whether you live here, you're moving here, or you just love following the story — Village Socialite is your home base.",
   },
 ];
 
 export const communityHighlights = [
-  "A more credible front door for residents, newcomers, businesses, and local storytellers.",
-  "A homepage that can spotlight what is hot right now while still supporting deeper exploration.",
-  "Room for guides, featured videos, local partnerships, and newsletter growth without becoming a random content dump.",
+  "The Villages is home to 130,000+ residents and the most active social scene of any retirement community in America.",
+  "Golf carts outnumber cars on many streets — there are over 750 miles of multi-modal paths connecting the community.",
+  "Town squares at Lake Sumter Landing, Brownwood, and Spanish Springs host free live music every single night of the year.",
 ];
 
 export const featuredCollections = [
   {
     title: "The Local Guidebook",
-    text: "Practical coverage for moving, settling in, finding services, and understanding how the community actually functions.",
+    text: "Practical coverage for moving to The Villages, settling in, finding services, and understanding how the community actually works.",
   },
   {
     title: "What People Are Watching",
-    text: "A sharper home for standout videos, social cuts, and stories with high entertainment or conversation value.",
+    text: "The standout videos, viral social moments, and stories with high entertainment or conversation value across the community.",
   },
   {
     title: "Business Spotlights",
-    text: "A more trustworthy way to feature local brands and service providers without letting promotional content overwhelm the experience.",
+    text: "Local brands, services, and partner businesses featured as part of the real Village ecosystem — not buried in generic ads.",
   },
 ];
 
 export const aboutPoints = [
-  "Village Socialite is growing into a polished local lifestyle platform with a stronger editorial voice.",
-  "The brand now reads as a central digital hub for discovery, community, and credible local storytelling.",
-  "The next phase can support editorial publishing, newsletter growth, partnerships, and richer local guide content.",
+  "Village Socialite is The Villages' most active local media and lifestyle platform — covering the stories, events, and community culture that matter most.",
+  "From live music at the town squares to real estate market updates and golf cart reviews, we cover the full spectrum of life in The Villages.",
+  "Join thousands of residents, newcomers, and fans who follow Village Socialite for the inside view on the most talked-about retirement community in America.",
 ];
 
 export const contactChannels = [
   {
-    title: "Editorial tips",
-    detail: "Story leads, openings, events, people to know, and community submissions.",
+    title: "Story tips & local news",
+    detail: "Story leads, event news, business openings, community submissions, and notable Village moments.",
   },
   {
-    title: "Partnerships",
+    title: "Business partnerships",
     detail: "Local brands, sponsored features, featured business packages, and launch collaborations.",
   },
   {
-    title: "Brand inquiries",
-    detail: "Partnership conversations, featured opportunities, and larger brand collaborations.",
+    title: "Advertising & promotions",
+    detail: "Reach an engaged local audience with targeted Village Socialite placements and partnership opportunities.",
   },
 ];

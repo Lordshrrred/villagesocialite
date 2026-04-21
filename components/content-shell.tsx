@@ -59,10 +59,10 @@ export function ContentShell({ item }: { item: WordpressItem }) {
         <aside className="space-y-6">
           <div className="rounded-[1.6rem] border border-[var(--color-line)] bg-[var(--color-paper)] p-6">
             <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[var(--color-coral)]">
-              Village Socialite archive
+              Village Socialite
             </p>
             <p className="mt-4 text-sm leading-7 text-[var(--color-ink-soft)]">
-              Original Village Socialite copy, images, and intent are preserved here so the archive still feels lived-in, local, and connected to the brand&apos;s roots.
+              Real local coverage from inside The Villages, Florida — stories, videos, and community moments you won&apos;t find anywhere else.
             </p>
           </div>
           {tags.length > 0 ? (
@@ -91,7 +91,7 @@ export function ContentShell({ item }: { item: WordpressItem }) {
               Keep exploring
             </p>
             <h2 className="font-[family:var(--font-cormorant)] text-4xl font-semibold text-[var(--color-ink)]">
-              More from the original Village Socialite archive
+              More from Village Socialite
             </h2>
           </div>
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">

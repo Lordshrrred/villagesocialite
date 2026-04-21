@@ -37,9 +37,9 @@ export default async function CategoryPage({ params }: PageProps) {
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-10 px-5 py-10 sm:px-8 sm:py-14">
       <section className="rounded-[2.3rem] border border-[var(--color-line)] bg-white p-8 shadow-[0_24px_60px_rgba(18,27,33,0.05)] sm:p-12">
         <SectionHeading
-          eyebrow="Category archive"
+          eyebrow="Village Socialite"
           title={category.name}
-          description={`Preserved from the original Village Socialite archive with ${category.count} published stories and videos now folded into the redesigned site.`}
+          description={`${category.count} stories and videos covering ${category.name.toLowerCase()} in The Villages, Florida.`}
         />
       </section>
 
