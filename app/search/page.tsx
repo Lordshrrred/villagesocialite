@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { ImportedStoryCard } from "@/components/imported-story-card";
 import { SectionHeading } from "@/components/section-heading";
+import { SeoBlogCard } from "@/components/seo-blog-card";
 import { stripHtml } from "@/lib/content-format";
+import { getSeoBlogPosts } from "@/lib/seo-blog";
 import { getAllItems } from "@/lib/wordpress";
 
 export const metadata: Metadata = {
@@ -16,6 +18,12 @@ type SearchProps = {
 export default async function SearchPage({ searchParams }: SearchProps) {
   const { q = "" } = await searchParams;
   const query = q.trim().toLowerCase();
+  const blogResults = query
+    ? getSeoBlogPosts().filter((post) => {
+        const haystack = `${post.title} ${post.keyword} ${post.description} ${post.category} ${post.secondaryKeywords.join(" ")}`.toLowerCase();
+        return haystack.includes(query);
+      })
+    : [];
   const results = query
     ? getAllItems().filter((item) => {
         const haystack = `${item.title} ${stripHtml(item.content)} ${stripHtml(item.excerpt)}`.toLowerCase();
@@ -29,14 +37,27 @@ export default async function SearchPage({ searchParams }: SearchProps) {
         <SectionHeading
           eyebrow="Search"
           title={query ? `Results for "${q}"` : "Search Village Socialite"}
-          description={query ? `${results.length} results across stories, pages, offers, and archive content.` : "Use the search bar above to jump straight into the archive."}
+          description={query ? `${results.length + blogResults.length} results across SEO guides, stories, pages, offers, and archive content.` : "Use the search bar above to jump straight into the archive and the new SEO blog."}
         />
       </section>
+      {blogResults.length > 0 ? (
+        <section className="space-y-6">
+          <h2 className="text-2xl font-extrabold text-[var(--color-ink)]">SEO blog guides</h2>
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {blogResults.map((post) => (
+              <SeoBlogCard key={post.slug} post={post} />
+            ))}
+          </div>
+        </section>
+      ) : null}
       {query ? (
-        <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {results.map((item) => (
-            <ImportedStoryCard key={`${item.type}-${item.id}`} item={item} />
-          ))}
+        <section className="space-y-6">
+          <h2 className="text-2xl font-extrabold text-[var(--color-ink)]">Original archive matches</h2>
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {results.map((item) => (
+              <ImportedStoryCard key={`${item.type}-${item.id}`} item={item} />
+            ))}
+          </div>
         </section>
       ) : null}
     </div>

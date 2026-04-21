@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ContentShell } from "@/components/content-shell";
 import { decodeHtmlEntities } from "@/lib/content-format";
 import { getItemBySlug, getPrimaryImage, getItemsForCategory, getCategoryBySlug } from "@/lib/wordpress";
 import { ImportedStoryCard } from "@/components/imported-story-card";

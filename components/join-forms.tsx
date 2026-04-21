@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-
 export function JoinHeroEmailForm() {
   return (
     <div className="mx-auto flex max-w-md flex-col gap-3 pt-2">
