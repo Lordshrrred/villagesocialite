@@ -55,7 +55,7 @@ export default function Home() {
               className="font-[family:var(--font-cormorant)] font-semibold text-white"
               style={{ fontSize: "clamp(2.4rem, 9vw, 3.4rem)", lineHeight: 1.08 }}
             >
-              Watch The Villages Come To Life.
+              Watch The Villages<br />Come To Life.
             </h1>
             <p className="text-base leading-8 text-white/85">
               Nightlife, golf, live music, dining, real estate, and the moments that make The Villages unlike anywhere else.
