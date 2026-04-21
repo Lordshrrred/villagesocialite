@@ -130,16 +130,13 @@ export default function Home() {
   const realEstateCat= getCategoryBySlug("real-estate-the-villages");
   const lifestyleCat = getCategoryBySlug("lifestyle-the-villages");
   const eventsCat    = getCategoryBySlug("events-the-villages");
-  const petsCat      = getCategoryBySlug("pets-animals-the-villages");
-  const nightlifeCat = getCategoryBySlug("nightlife-the-villages");
+
 
   const diningPosts     = diningCat     ? getItemsForCategory(diningCat.id).slice(0, 5)     : [];
   const golfCartPosts   = golfCartCat   ? getItemsForCategory(golfCartCat.id).slice(0, 5)   : [];
   const realEstatePosts = realEstateCat ? getItemsForCategory(realEstateCat.id).slice(0, 5) : [];
   const lifestylePosts  = lifestyleCat  ? getItemsForCategory(lifestyleCat.id).slice(0, 5)  : [];
   const eventsPosts     = eventsCat     ? getItemsForCategory(eventsCat.id).slice(0, 5)     : [];
-  const petsPosts       = petsCat       ? getItemsForCategory(petsCat.id).slice(0, 4)       : [];
-  const nightlifePosts  = nightlifeCat  ? getItemsForCategory(nightlifeCat.id).slice(0, 4)  : [];
 
   return (
     <div className="flex flex-col">
@@ -448,59 +445,6 @@ export default function Home() {
               >
                 Join the Conversation →
               </a>
-            </div>
-          </div>
-        </section>
-
-        {/* ── Video category spotlights (Pets + FB + Nightlife) ───────── */}
-        <section className="grid gap-6 lg:grid-cols-[1fr_auto_1fr]">
-          <div className="rounded-[2rem] border border-[var(--color-line)] bg-white p-5 shadow-[0_8px_32px_rgba(18,27,33,0.06)]">
-            <div className="mb-3 flex items-center justify-between">
-              <span className="rounded-full bg-[var(--color-teal)] px-4 py-1.5 text-xs font-extrabold text-white shadow-[0_4px_14px_rgba(0,175,197,0.4)]">
-                {petsCat ? decodeHtmlEntities(petsCat.name) : "Pets & Animals"}
-              </span>
-              {petsCat && <Link href={`/category/${petsCat.slug}`} className="text-xs font-semibold text-[var(--color-teal)] hover:underline">+ More videos</Link>}
-            </div>
-            <div className="grid grid-cols-2 gap-2.5">
-              {petsPosts.map((post) => (
-                <Link key={post.id} href={`/${post.slug}`} className="group block">
-                  <div className="relative aspect-video overflow-hidden rounded-xl bg-[var(--color-paper)]">
-                    <Image src={getPrimaryImage(post)} alt={post.title} fill className="object-cover transition duration-300 group-hover:scale-105" sizes="140px" />
-                  </div>
-                  <p className="mt-1 line-clamp-2 text-xs font-medium leading-snug text-[var(--color-ink)]">{decodeHtmlEntities(post.title)}</p>
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <div className="flex items-stretch justify-center">
-            <a href="https://www.facebook.com/profile.php?id=61586012620132" target="_blank" rel="noopener noreferrer"
-              className="group relative block w-full overflow-hidden rounded-[2rem] shadow-[0_8px_32px_rgba(18,27,33,0.16)] lg:w-[180px]"
-            >
-              <Image src="https://villagesocialite.com/wp-content/uploads/2026/03/followvillagesocialiteonfacebook.jpg" alt="Follow Village Socialite on Facebook" width={480} height={640} className="h-full w-full object-cover object-left transition duration-500 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-0 right-0 flex justify-center">
-                <span className="rounded-full px-4 py-1.5 text-xs font-extrabold text-white" style={{ background: "#1877F2" }}>Follow Us</span>
-              </div>
-            </a>
-          </div>
-
-          <div className="rounded-[2rem] border border-[var(--color-line)] bg-white p-5 shadow-[0_8px_32px_rgba(18,27,33,0.06)]">
-            <div className="mb-3 flex items-center justify-between">
-              <span className="rounded-full bg-[var(--color-teal)] px-4 py-1.5 text-xs font-extrabold text-white shadow-[0_4px_14px_rgba(0,175,197,0.4)]">
-                {nightlifeCat ? decodeHtmlEntities(nightlifeCat.name) : "Nightlife"}
-              </span>
-              {nightlifeCat && <Link href={`/category/${nightlifeCat.slug}`} className="text-xs font-semibold text-[var(--color-teal)] hover:underline">+ More videos</Link>}
-            </div>
-            <div className="grid grid-cols-2 gap-2.5">
-              {nightlifePosts.map((post) => (
-                <Link key={post.id} href={`/${post.slug}`} className="group block">
-                  <div className="relative aspect-video overflow-hidden rounded-xl bg-[var(--color-paper)]">
-                    <Image src={getPrimaryImage(post)} alt={post.title} fill className="object-cover transition duration-300 group-hover:scale-105" sizes="140px" />
-                  </div>
-                  <p className="mt-1 line-clamp-2 text-xs font-medium leading-snug text-[var(--color-ink)]">{decodeHtmlEntities(post.title)}</p>
-                </Link>
-              ))}
             </div>
           </div>
         </section>
