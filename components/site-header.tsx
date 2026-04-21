@@ -100,10 +100,10 @@ export function SiteHeader() {
             <svg className="sparkle absolute -top-1 left-6 pointer-events-none" width="8" height="8" viewBox="0 0 12 12" fill="none" aria-hidden="true">
               <path d="M6 0 C6 3.5 8.5 6 12 6 C8.5 6 6 8.5 6 12 C6 8.5 3.5 6 0 6 C3.5 6 6 3.5 6 0Z" fill="#00afc5" />
             </svg>
-            <p className="text-center font-[family:var(--font-cormorant)] text-[1.65rem] font-semibold leading-none tracking-tight text-[var(--color-ink)]">
+            <p className="font-[family:var(--font-cormorant)] text-[1.65rem] font-semibold leading-none tracking-tight text-[var(--color-ink)]">
               Village Socialite
             </p>
-            <p className="mt-1 text-center whitespace-nowrap text-[8.5px] font-extrabold uppercase tracking-[0.1em] text-[var(--color-teal)]">
+            <p className="mt-1 whitespace-nowrap text-[8.5px] font-extrabold uppercase tracking-[0.1em] text-[var(--color-teal)]">
               Watch. Explore. Belong.
             </p>
           </Link>
