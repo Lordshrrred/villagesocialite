@@ -36,7 +36,12 @@ export function SiteFooter() {
       {/* ── Facebook follow strip ──────────────────────────────────── */}
       <div style={{ background: "linear-gradient(90deg, #003546 0%, #005a78 45%, #00afc5 100%)" }}>
         <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-5 px-5 py-6 sm:flex-row sm:px-8">
-          <div className="flex items-center gap-4">
+          <a
+            href="https://www.facebook.com/profile.php?id=61586012620132"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-4 transition hover:opacity-85"
+          >
             <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl">
               <Image
                 src="https://villagesocialite.com/wp-content/uploads/2026/03/followvillagesocialiteonfacebook.jpg"
@@ -50,7 +55,7 @@ export function SiteFooter() {
               <p className="text-xs font-extrabold uppercase tracking-[0.26em] text-[#22e8d4]">Follow Us on Facebook</p>
               <p className="mt-0.5 text-base font-semibold text-white">Village Socialite — Stay in the loop, live.</p>
             </div>
-          </div>
+          </a>
           <a
             href="https://www.facebook.com/profile.php?id=61586012620132"
             target="_blank"
