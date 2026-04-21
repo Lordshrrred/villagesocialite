@@ -13,6 +13,7 @@ export type Category = {
   href: string;
   countLabel: string;
   emoji?: string;
+  image?: string;
 };
 
 export const navLinks = [

@@ -9,7 +9,7 @@ import { SearchBar } from "@/components/search-bar";
 const mainNav = [
   { href: "/", label: "Home" },
   { href: "/best-golf-carts-the-villages", label: "Best Golf Carts" },
-  { href: "/join-the-socialite", label: "Join The Socialite", highlight: true },
+  { href: "/join-the-socialite", label: "Join The Socialite" },
   { href: "/merch", label: "Merch" },
   { href: "/fat-pig-society-cbd", label: "Organic CBD" },
   { href: "/categories", label: "Video Categories" },
