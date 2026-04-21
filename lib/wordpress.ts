@@ -126,7 +126,7 @@ export function getOfferPages() {
     "fat-pig-society-cbd",
     "best-golf-carts-the-villages",
     "home-spa-relaxation-favorites",
-    "turning-life-stories-into-lasting-films-village-socialite-special-price",
+    "celebrating-life-movies-villages-discount",
     "contact-village-socialite",
   ];
 

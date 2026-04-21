@@ -1,14 +1,106 @@
 # Blog Image Attribution
 
-The blog image set uses Village Socialite reference/archive assets first, then Wikimedia Commons media from `Category:The Villages, Florida`, then original generated Village Socialite editorial cards where unique coverage was still needed.
+The generated SEO blog posts use 100 distinct local images stored in `public/blog-images/commons/`. These images are sourced from Wikimedia Commons and Openverse-indexed Creative Commons/public-domain media. The generated blog image map is `lib/seo-blog-images.ts`, and the machine-readable attribution manifest is `public/blog-images/commons/wikimedia-blog-images.json`.
 
-## Wikimedia Commons Assets
-
-- [Feeney Recreational Center 2017.jpg](https://commons.wikimedia.org/wiki/File:Feeney_Recreational_Center_2017.jpg) — CC BY-SA 4.0; Whoisjohngalt
-- [Aerial Pickleball Courts.jpg](https://commons.wikimedia.org/wiki/File:Aerial_Pickleball_Courts.jpg) — CC BY-SA 4.0; TheVillagesFL
-- [Golfcars in Sunter Landings, The Villages, Florida.jpg](https://commons.wikimedia.org/wiki/File:Golfcars_in_Sunter_Landings%2C_The_Villages%2C_Florida.jpg) — CC BY-SA 4.0; Tetraeder
-- [Spanish Springs, The Villages, Florida.jpg](https://commons.wikimedia.org/wiki/File:Spanish_Springs%2C_The_Villages%2C_Florida.jpg) — CC BY-SA 4.0; Tetraeder
-
-## Generated Editorial Assets
-
-- 40 original branded SVG editorial cards generated for Village Socialite to ensure every SEO blog post has a distinct visual without relying on repeated stock imagery.
+| # | Local file | Title | Creator | License | Source |
+|---:|---|---|---|---|---|
+| 1 | `/blog-images/commons/01-5k-run-in-the-villages-florida.jpg` | 5K run in the Villages Florida.jpg | Whoisjohngalt | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File:5K_run_in_the_Villages_Florida.jpg) |
+| 2 | `/blog-images/commons/02-abendkulisse-in-spanish-springs-the-villages-florida.jpg` | Abendkulisse in Spanish Springs, The Villages, Florida.jpg | Tetraeder | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File:Abendkulisse_in_Spanish_Springs,_The_Villages,_Florida.jpg) |
+| 3 | `/blog-images/commons/03-bridge-over-sr-44-at-brownwood.jpg` | Bridge over SR 44 at Brownwood.jpg | Iamorangelightning | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File:Bridge_over_SR_44_at_Brownwood.jpg) |
+| 4 | `/blog-images/commons/04-carrots-at-a-farmers-market-in-the-villages-florida.png` | Carrots at a farmers market in the Villages Florida.png | Whoisjohngalt | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File:Carrots_at_a_farmers_market_in_the_Villages_Florida.png) |
+| 5 | `/blog-images/commons/05-citizens-first-bank.jpg` | Citizens First Bank .jpg | Iamorangelightning | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File:Citizens_First_Bank_.jpg) |
+| 6 | `/blog-images/commons/06-dietz-and-watson-brand-ambassador.jpg` | Dietz and Watson brand ambassador.jpg | Whoisjohngalt | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File:Dietz_and_Watson_brand_ambassador.jpg) |
+| 7 | `/blog-images/commons/07-eb-fl-44-eastern-the-villages-footbridge-1.jpg` | EB FL 44; Eastern 'The Villages' Footbridge-1.jpg | DanTD | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File:EB_FL_44;_Eastern_%27The_Villages%27_Footbridge-1.jpg) |
+| 8 | `/blog-images/commons/08-eb-fl-44-eastern-the-villages-footbridge-2.jpg` | EB FL 44; Eastern 'The Villages' Footbridge-2.jpg | DanTD | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File:EB_FL_44;_Eastern_%27The_Villages%27_Footbridge-2.jpg) |
+| 9 | `/blog-images/commons/09-eb-fl-44-western-the-villages-footbridge.jpg` | EB FL 44; Western 'The Villages' Footbridge.jpg | DanTD | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File:EB_FL_44;_Western_%27The_Villages%27_Footbridge.jpg) |
+| 10 | `/blog-images/commons/10-fema-28118-photograph-by-mark-wolfe-taken-on-02-06-2007-in-florida.jpg` | FEMA - 28118 - Photograph by Mark Wolfe taken on 02-06-2007 in Florida.jpg | Mark Wolfe | Public domain | [source](https://commons.wikimedia.org/wiki/File:FEMA_-_28118_-_Photograph_by_Mark_Wolfe_taken_on_02-06-2007_in_Florida.jpg) |
+| 11 | `/blog-images/commons/12-holiday-yard-inflatables.jpg` | Holiday yard inflatables.jpg | Whoisjohngalt | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File:Holiday_yard_inflatables.jpg) |
+| 12 | `/blog-images/commons/13-hour-14-the-villages-5135772591.jpg` | Hour 14 The Villages (5135772591).jpg | Kendrick Meek | CC BY 2.0 | [source](https://commons.wikimedia.org/wiki/File:Hour_14_The_Villages_(5135772591).jpg) |
+| 13 | `/blog-images/commons/14-hour-14-the-villages-5136375472.jpg` | Hour 14 The Villages (5136375472).jpg | Kendrick Meek | CC BY 2.0 | [source](https://commons.wikimedia.org/wiki/File:Hour_14_The_Villages_(5136375472).jpg) |
+| 14 | `/blog-images/commons/15-oranges-for-sale-at-a-farmers-market-in-the-villages-florida.jpg` | Oranges for sale at a farmers market in The Villages Florida.jpg | Whoisjohngalt | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File:Oranges_for_sale_at_a_farmers_market_in_The_Villages_Florida.jpg) |
+| 15 | `/blog-images/commons/16-panera-bread-the-villages-florida.jpg` | Panera Bread The Villages Florida.jpg | Motwog | CC BY 4.0 | [source](https://commons.wikimedia.org/wiki/File:Panera_Bread_The_Villages_Florida.jpg) |
+| 16 | `/blog-images/commons/17-pier-in-sunter-landings-the-villages-florida.jpg` | Pier in Sunter Landings, The Villages, Florida.jpg | Tetraeder | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File:Pier_in_Sunter_Landings,_The_Villages,_Florida.jpg) |
+| 17 | `/blog-images/commons/18-polo-stadium-in-the-villages-florida.jpg` | Polo Stadium in The Villages Florida.jpg | Whoisjohngalt | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File:Polo_Stadium_in_The_Villages_Florida.jpg) |
+| 18 | `/blog-images/commons/19-prime-time-twirlers-2023.jpg` | Prime Time Twirlers 2023.jpg | Whoisjohngalt | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File:Prime_Time_Twirlers_2023.jpg) |
+| 19 | `/blog-images/commons/20-salt-water-chlorinateded-pool-at-the-villages-florida.jpg` | Salt water chlorinateded pool at The Villages Florida.jpg | Whoisjohngalt | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File:Salt_water_chlorinateded_pool_at_The_Villages_Florida.jpg) |
+| 20 | `/blog-images/commons/21-smoothie-booth-2020.jpg` | Smoothie booth 2020.jpg | Whoisjohngalt | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File:Smoothie_booth_2020.jpg) |
+| 21 | `/blog-images/commons/22-spanish-springs-entrance-arch-the-villages-florida.jpg` | Spanish springs entrance arch the villages florida.jpg | Connor J. Williams | CC BY 3.0 | [source](https://commons.wikimedia.org/wiki/File:Spanish_springs_entrance_arch_the_villages_florida.jpg) |
+| 22 | `/blog-images/commons/23-sumter-landing-the-villages-fl-panoramio.jpg` | Sumter Landing, The Villages, FL - panoramio.jpg | royt314 | CC BY-SA 3.0 | [source](https://commons.wikimedia.org/wiki/File:Sumter_Landing,_The_Villages,_FL_-_panoramio.jpg) |
+| 23 | `/blog-images/commons/24-the-villages-panorama-1374077049.jpg` | The Villages Panorama (1374077049).jpg | freddthompson | CC BY-SA 2.0 | [source](https://commons.wikimedia.org/wiki/File:The_Villages_Panorama_(1374077049).jpg) |
+| 24 | `/blog-images/commons/25-the-villages-fl-usa-panoramio-13.jpg` | The Villages, FL, USA - panoramio (13).jpg | Evan Nichols | CC BY 3.0 | [source](https://commons.wikimedia.org/wiki/File:The_Villages,_FL,_USA_-_panoramio_(13).jpg) |
+| 25 | `/blog-images/commons/26-the-villages-fl-panoramio.jpg` | The Villages,fl - panoramio.jpg | gregdanowski | CC BY 3.0 | [source](https://commons.wikimedia.org/wiki/File:The_Villages,fl_-_panoramio.jpg) |
+| 26 | `/blog-images/commons/27-thevillagesgolf.jpg` | TheVillagesGolf.jpg | WikiGnosis at English Wikipedia | Public domain | [source](https://commons.wikimedia.org/wiki/File:TheVillagesGolf.jpg) |
+| 27 | `/blog-images/commons/28-villages-banner.jpg` | Villages banner.jpg | Ebyabe | CC BY 2.5 | [source](https://commons.wikimedia.org/wiki/File:Villages_banner.jpg) |
+| 28 | `/blog-images/commons/29-villages-fl-golf-arch-name01.jpg` | Villages FL golf arch name01.jpg | Ebyabe | CC BY-SA 3.0 | [source](https://commons.wikimedia.org/wiki/File:Villages_FL_golf_arch_name01.jpg) |
+| 29 | `/blog-images/commons/30-villages-fl-golf-arch-under01.jpg` | Villages FL golf arch under01.jpg | Ebyabe | CC BY-SA 3.0 | [source](https://commons.wikimedia.org/wiki/File:Villages_FL_golf_arch_under01.jpg) |
+| 30 | `/blog-images/commons/31-villages-fl-golf-arch01.jpg` | Villages FL golf arch01.jpg | Ebyabe | CC BY-SA 3.0 | [source](https://commons.wikimedia.org/wiki/File:Villages_FL_golf_arch01.jpg) |
+| 31 | `/blog-images/commons/32-villages-fl-golf-arch02.jpg` | Villages FL golf arch02.jpg | Ebyabe | CC BY-SA 3.0 | [source](https://commons.wikimedia.org/wiki/File:Villages_FL_golf_arch02.jpg) |
+| 32 | `/blog-images/commons/33-villages-fl-golf-arch03.jpg` | Villages FL golf arch03.jpg | Ebyabe | CC BY-SA 3.0 | [source](https://commons.wikimedia.org/wiki/File:Villages_FL_golf_arch03.jpg) |
+| 33 | `/blog-images/commons/34-villages-fl-golf-arch04.jpg` | Villages FL golf arch04.jpg | Ebyabe | CC BY-SA 3.0 | [source](https://commons.wikimedia.org/wiki/File:Villages_FL_golf_arch04.jpg) |
+| 34 | `/blog-images/commons/35-villages-fl-golf-arch05.jpg` | Villages FL golf arch05.jpg | Ebyabe | CC BY-SA 3.0 | [source](https://commons.wikimedia.org/wiki/File:Villages_FL_golf_arch05.jpg) |
+| 35 | `/blog-images/commons/36-villages-lsl-lake-sumter-pano01.jpg` | Villages LSL Lake Sumter pano01.jpg | Ebyabe | CC BY 2.5 | [source](https://commons.wikimedia.org/wiki/File:Villages_LSL_Lake_Sumter_pano01.jpg) |
+| 36 | `/blog-images/commons/37-villages-lsl01.jpg` | Villages LSL01.jpg | Ebyabe | CC BY 2.5 | [source](https://commons.wikimedia.org/wiki/File:Villages_LSL01.jpg) |
+| 37 | `/blog-images/commons/38-villages-lsl02.jpg` | Villages LSL02.jpg | Ebyabe | CC BY 2.5 | [source](https://commons.wikimedia.org/wiki/File:Villages_LSL02.jpg) |
+| 38 | `/blog-images/commons/39-wvlg-studio-in-spanish-springs.jpg` | WVLG Studio in Spanish Springs.jpg | Whoisjohngalt | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File:WVLG_Studio_in_Spanish_Springs.jpg) |
+| 39 | `/blog-images/commons/40-shuffleboard-is-popular-at-the-century-village-retirement-community-nara-548566.jpg` | SHUFFLEBOARD IS POPULAR AT THE CENTURY VILLAGE RETIREMENT COMMUNITY - NARA - 548566.jpg | Flip Schulke | Public domain | [source](https://commons.wikimedia.org/wiki/File:SHUFFLEBOARD_IS_POPULAR_AT_THE_CENTURY_VILLAGE_RETIREMENT_COMMUNITY_-_NARA_-_548566.jpg) |
+| 40 | `/blog-images/commons/42-town-square-event.jpg` | Town Square Event.jpg | TheVillagesFL | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File%3ATown_Square_Event.jpg) |
+| 41 | `/blog-images/commons/43-villages-lsl-lake-sumter-pano01.jpg` | Villages LSL Lake Sumter pano01.jpg | Ebyabe | CC BY 2.5 | [source](https://commons.wikimedia.org/wiki/File%3AVillages_LSL_Lake_Sumter_pano01.jpg) |
+| 42 | `/blog-images/commons/44-spanish-springs-the-villages-florida.jpg` | Spanish Springs, The Villages, Florida.jpg | Tetraeder | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File%3ASpanish_Springs%2C_The_Villages%2C_Florida.jpg) |
+| 43 | `/blog-images/commons/45-abendkulisse-in-spanish-springs-the-villages-florida.jpg` | Abendkulisse in Spanish Springs, The Villages, Florida.jpg | Tetraeder | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File%3AAbendkulisse_in_Spanish_Springs%2C_The_Villages%2C_Florida.jpg) |
+| 44 | `/blog-images/commons/46-wvlg-studio-in-spanish-springs.jpg` | WVLG Studio in Spanish Springs.jpg | Whoisjohngalt | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File%3AWVLG_Studio_in_Spanish_Springs.jpg) |
+| 45 | `/blog-images/commons/47-eb-fl-44-western-the-villages-footbridge.jpg` | EB FL 44; Western 'The Villages' Footbridge.jpg | DanTD | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File%3AEB_FL_44%3B_Western_'The_Villages'_Footbridge.jpg) |
+| 46 | `/blog-images/commons/48-aerial-pickleball-courts.jpg` | Aerial Pickleball Courts.jpg | TheVillagesFL | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File%3AAerial_Pickleball_Courts.jpg) |
+| 47 | `/blog-images/commons/49-photograph-of-line-waiting-to-play-shuffleboard-at-the-century-village-retirement-communit.jpg` | Photograph of Line Waiting to Play Shuffleboard at the Century Village Retirement Community - NARA - 548565.jpg | Flip Schulke | Public domain | [source](https://commons.wikimedia.org/wiki/File%3APhotograph_of_Line_Waiting_to_Play_Shuffleboard_at_the_Century_Village_Retirement_Community_-_NARA_-_548565.jpg) |
+| 48 | `/blog-images/commons/50-dz6-2425-sunlight-filters-through-palm-trees-onto-a-peaceful-green-park-at-golden-hour.jpg` | DZ6 2425 Sunlight filters through palm trees onto a peaceful green park at golden hour.jpg | PattayaPatrol | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File%3ADZ6_2425_Sunlight_filters_through_palm_trees_onto_a_peaceful_green_park_at_golden_hour.jpg) |
+| 49 | `/blog-images/commons/51-fema-28118-photograph-by-mark-wolfe-taken-on-02-06-2007-in-florida.jpg` | FEMA - 28118 - Photograph by Mark Wolfe taken on 02-06-2007 in Florida.jpg | Mark Wolfe | Public domain | [source](https://commons.wikimedia.org/wiki/File%3AFEMA_-_28118_-_Photograph_by_Mark_Wolfe_taken_on_02-06-2007_in_Florida.jpg) |
+| 50 | `/blog-images/commons/52-fema-28126-photograph-by-mark-wolfe-taken-on-02-06-2007-in-florida.jpg` | FEMA - 28126 - Photograph by Mark Wolfe taken on 02-06-2007 in Florida.jpg | Mark Wolfe | Public domain | [source](https://commons.wikimedia.org/wiki/File%3AFEMA_-_28126_-_Photograph_by_Mark_Wolfe_taken_on_02-06-2007_in_Florida.jpg) |
+| 51 | `/blog-images/commons/53-feeney-recreational-center-2017.jpg` | Feeney Recreational Center 2017.jpg | Whoisjohngalt | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File%3AFeeney_Recreational_Center_2017.jpg) |
+| 52 | `/blog-images/commons/54-aerial-pickleball-courts.jpg` | Aerial Pickleball Courts.jpg | TheVillagesFL | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File%3AAerial_Pickleball_Courts.jpg) |
+| 53 | `/blog-images/commons/55-abendkulisse-in-spanish-springs-the-villages-florida.jpg` | Abendkulisse in Spanish Springs, The Villages, Florida.jpg | Tetraeder | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File%3AAbendkulisse_in_Spanish_Springs%2C_The_Villages%2C_Florida.jpg) |
+| 54 | `/blog-images/commons/56-eb-fl-44-western-the-villages-footbridge.jpg` | EB FL 44; Western 'The Villages' Footbridge.jpg | DanTD | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File%3AEB_FL_44%3B_Western_'The_Villages'_Footbridge.jpg) |
+| 55 | `/blog-images/commons/57-spanish-springs-the-villages-florida.jpg` | Spanish Springs, The Villages, Florida.jpg | Tetraeder | CC BY-SA 4.0 | [source](https://commons.wikimedia.org/wiki/File%3ASpanish_Springs%2C_The_Villages%2C_Florida.jpg) |
+| 56 | `/blog-images/commons/58-apollonorthboundviewfromnorthend.jpg` | ApolloNorthboundViewFromNorthEnd.jpg | 350z33 (talk) | CC BY-SA 3.0 | [source](https://commons.wikimedia.org/wiki/File%3AApolloNorthboundViewFromNorthEnd.jpg) |
+| 57 | `/blog-images/commons/81-florida-palm-trees.jpg` | Florida Palm Trees! | twodolla | CC BY 2.0 | [source](https://www.flickr.com/photos/76991932@N00/2208157345) |
+| 58 | `/blog-images/commons/82-miami-palmed-skyline.jpg` | Miami Palmed Skyline | wyntuition | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/15926096@N00/2912624792) |
+| 59 | `/blog-images/commons/83-classic-art-deco-stylin.jpg` | Classic Art Deco Stylin' | wyntuition | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/15926096@N00/2911773889) |
+| 60 | `/blog-images/commons/84-florida-palm-trees.jpg` | Florida Palm Trees | Capture of Time | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/31047913@N03/2910923280) |
+| 61 | `/blog-images/commons/85-florida-palm-tree.jpg` | Florida = palm tree | MattHurst | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/22937701@N00/3403053255) |
+| 62 | `/blog-images/commons/87-everglades-foliage.jpg` | Everglades Foliage | wyntuition | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/15926096@N00/2915149033) |
+| 63 | `/blog-images/commons/88-palm-trees-in-florida.jpg` | Palm Trees in Florida | Dougtone | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/7327243@N05/7022505943) |
+| 64 | `/blog-images/commons/90-a-taste-of-the-everglades.jpg` | A Taste of the Everglades | wyntuition | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/15926096@N00/2915157341) |
+| 65 | `/blog-images/commons/91-palm-trees-in-florida.jpg` | Palm Trees in Florida | Dougtone | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/7327243@N05/6876397706) |
+| 66 | `/blog-images/commons/92-palm-trees-in-florida.jpg` | Palm Trees in Florida | Dougtone | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/7327243@N05/7022497123) |
+| 67 | `/blog-images/commons/94-palm-trees-in-florida.jpg` | Palm Trees in Florida | Dougtone | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/7327243@N05/7022502385) |
+| 68 | `/blog-images/commons/95-florida-palm-tree.jpg` | Florida palm tree | jdeeringdavis | CC BY 2.0 | [source](https://www.flickr.com/photos/21139095@N00/6597156105) |
+| 69 | `/blog-images/commons/96-a-florida-palm-tree.jpg` | A Florida Palm Tree | FotoGuy 49057 | CC BY 2.0 | [source](https://www.flickr.com/photos/28682774@N00/43845321132) |
+| 70 | `/blog-images/commons/97-palm.jpg` | Palm | FotoGuy 49057 | CC BY 2.0 | [source](https://www.flickr.com/photos/28682774@N00/16534691767) |
+| 71 | `/blog-images/commons/98-naples-florida.jpg` | Naples, Florida | *rboed* | CC BY 2.0 | [source](https://www.flickr.com/photos/92082510@N04/31493148683) |
+| 72 | `/blog-images/commons/99-miami-beach-mesoamerican-deco.jpg` | Miami Beach Mesoamerican Deco | Infrogmation | CC BY 2.0 | [source](https://www.flickr.com/photos/29350288@N06/4719202587) |
+| 73 | `/blog-images/commons/100-florida-keys.jpg` | Florida Keys | SachinChitale | CC BY 2.0 | [source](https://www.flickr.com/photos/31741070@N00/6178937560) |
+| 74 | `/blog-images/commons/101-key-biscayne-beach-taking-iphone-5s-camera-to-its-limits-130924-0135-jikatu.jpg` | Key Biscayne Beach - Taking iPhone 5S Camera to its limits \| 130924-0135-jikatu | jikatu | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/7221539@N06/9981454303) |
+| 75 | `/blog-images/commons/102-palm-trees-in-florida.jpg` | Palm Trees in Florida | Dougtone | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/7327243@N05/6876396836) |
+| 76 | `/blog-images/commons/103-palm-trees-in-florida.jpg` | Palm Trees in Florida | Dougtone | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/7327243@N05/7022499521) |
+| 77 | `/blog-images/commons/104-palm-trees-in-florida.jpg` | Palm Trees in Florida | Dougtone | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/7327243@N05/7022501097) |
+| 78 | `/blog-images/commons/105-early-morning-fireworks-over-biscayne-bay-july-4.jpg` | Early morning fireworks over Biscayne Bay - July 4 | joiseyshowaa | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/30201239@N00/2636356801) |
+| 79 | `/blog-images/commons/106-miami-sunrise.jpg` | miami sunrise | alexdecarvalho | CC BY 2.0 | [source](https://www.flickr.com/photos/51035823282@N01/234873888) |
+| 80 | `/blog-images/commons/107-gasparillla-inn-at-boca-grande-florida.jpg` | Gasparillla Inn at Boca Grande Florida | trishhartmann | CC BY 2.0 | [source](https://www.flickr.com/photos/21078769@N00/11370743003) |
+| 81 | `/blog-images/commons/109-colorful-canal-community.jpg` | Colorful Canal Community | Charles Patrick Ewing | CC BY 2.0 | [source](https://www.flickr.com/photos/132033298@N04/40876458832) |
+| 82 | `/blog-images/commons/110-dawn-over-safety-harbor.jpg` | Dawn over Safety Harbor | joiseyshowaa | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/30201239@N00/14439568551) |
+| 83 | `/blog-images/commons/111-palm-trees-in-florida.jpg` | Palm Trees in Florida | Dougtone | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/7327243@N05/6876396072) |
+| 84 | `/blog-images/commons/112-palm-trees-in-florida.jpg` | Palm Trees in Florida | Dougtone | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/7327243@N05/6876394574) |
+| 85 | `/blog-images/commons/113-palm-trees-in-florida.jpg` | Palm Trees in Florida | Dougtone | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/7327243@N05/6876400988) |
+| 86 | `/blog-images/commons/114-palm-trees-in-florida.jpg` | Palm Trees in Florida | Dougtone | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/7327243@N05/7022505713) |
+| 87 | `/blog-images/commons/116-southernmost-key-west-florida.jpg` | Southernmost, Key West, Florida | *rboed* | CC BY 2.0 | [source](https://www.flickr.com/photos/92082510@N04/32100732966) |
+| 88 | `/blog-images/commons/117-miami-beach-faux-maya-5.jpg` | Miami Beach Faux Maya 5 | Infrogmation | CC BY 2.0 | [source](https://www.flickr.com/photos/29350288@N06/4719855198) |
+| 89 | `/blog-images/commons/119-red-mangrove-rhizophora-mangle.jpg` | Red Mangrove - Rhizophora mangle | bob in swamp | CC BY 2.0 | [source](https://www.flickr.com/photos/50152666@N02/28202962464) |
+| 90 | `/blog-images/commons/120-palm-trees-in-florida.jpg` | Palm Trees in Florida | Dougtone | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/7327243@N05/6876398044) |
+| 91 | `/blog-images/commons/121-palm-trees-in-florida.jpg` | Palm Trees in Florida | Dougtone | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/7327243@N05/7022504121) |
+| 92 | `/blog-images/commons/122-duval-south-key-west.jpg` | Duval & South, Key West | *rboed* | CC BY 2.0 | [source](https://www.flickr.com/photos/92082510@N04/31992047002) |
+| 93 | `/blog-images/commons/123-the-pool.jpg` | The Pool | Sam Howzit | CC BY 2.0 | [source](https://www.flickr.com/photos/12508217@N08/13529021144) |
+| 94 | `/blog-images/commons/124-safe-harbor.jpg` | Safe Harbor | joiseyshowaa | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/30201239@N00/2166016146) |
+| 95 | `/blog-images/commons/125-straight-up-the-palm-tree.jpg` | Straight Up the Palm Tree | Crossed | CC0 | [source](https://www.flickr.com/photos/26916668@N06/12095558265) |
+| 96 | `/blog-images/commons/126-bench-by-the-bay.jpg` | bench by the bay | alexdecarvalho | CC BY 2.0 | [source](https://www.flickr.com/photos/51035823282@N01/232784764) |
+| 97 | `/blog-images/commons/127-miami-beach.jpg` | Miami Beach | Stig Nygaard | CC BY 2.0 | [source](https://www.flickr.com/photos/10259776@N00/460045366) |
+| 98 | `/blog-images/commons/128-hdr-1361209562496-jpg-explored.jpg` | hdr_1361209562496.jpg(Explored) | R9 Studios FL (Thanks to all the fans!!!) | CC BY 2.0 | [source](https://www.flickr.com/photos/53477219@N02/8485575399) |
+| 99 | `/blog-images/commons/129-hollywood-beach-florida.jpg` | Hollywood Beach, Florida | epitomized1 | CC BY-SA 2.0 | [source](https://www.flickr.com/photos/56269939@N04/5838370938) |
+| 100 | `/blog-images/commons/130-four-headed-pindo-palm-tree.jpg` | Four-Headed Pindo Palm Tree | Olin Gilbert | CC BY 2.0 | [source](https://www.flickr.com/photos/75341352@N08/15515482423) |

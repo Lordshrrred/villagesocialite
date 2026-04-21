@@ -149,7 +149,7 @@ export function SiteHeader() {
         style={{ background: "linear-gradient(90deg, #004d63 0%, #007a96 20%, #00afc5 50%, #00d4e0 78%, #22e8d4 100%)" }}
       >
         <div className="mx-auto flex w-full max-w-7xl items-center justify-center px-4 py-1.5 sm:px-6">
-          <div className="flex w-full max-w-5xl items-center justify-between gap-1">
+          <div className="flex w-full max-w-5xl items-center justify-center gap-2">
             {mainNav.map((item) => (
               <Link key={item.href} href={item.href} className={navItemClass(item.href)}>
                 {item.label}

@@ -527,19 +527,19 @@ export default function Home() {
         </section>
 
         {/* ── Preserve Your Story — Celebrating Life Movies ──────────── */}
-        <section className="overflow-hidden rounded-[2rem] shadow-[0_20px_60px_rgba(5,20,25,0.2)]"
-          style={{ background: "linear-gradient(135deg, #051419 0%, #0b2e3f 40%, #004d63 100%)" }}
+        <section className="overflow-hidden rounded-[2rem] border border-[var(--color-gold)]/30 shadow-[0_18px_50px_rgba(5,20,25,0.12)]"
+          style={{ background: "linear-gradient(135deg, #fffdf5 0%, #f5fbfb 52%, #d9f4f6 100%)" }}
         >
           <div className="flex flex-col gap-8 p-7 sm:p-10 lg:flex-row lg:items-center lg:gap-12">
 
             {/* Left — film icon */}
             <div className="flex shrink-0 flex-col items-center gap-3 lg:w-44">
-              <div className="flex h-28 w-28 items-center justify-center rounded-full border-2 border-[var(--color-teal)]/30 shadow-[0_0_48px_rgba(0,175,197,0.3)]"
-                style={{ background: "radial-gradient(circle at 40% 35%, #0b2e3f 0%, #051419 100%)" }}
+              <div className="flex h-28 w-28 items-center justify-center rounded-full border-2 border-white bg-[var(--color-ink)] shadow-[0_18px_42px_rgba(5,20,25,0.18)]"
+                style={{ background: "radial-gradient(circle at 40% 35%, #006a82 0%, #051419 100%)" }}
               >
                 <span className="text-5xl" role="img" aria-label="Film reel">🎬</span>
               </div>
-              <p className="text-center text-[10px] font-extrabold uppercase tracking-[0.24em] text-[var(--color-teal)]/70">
+              <p className="text-center text-[10px] font-extrabold uppercase tracking-[0.24em] text-[var(--color-teal-deep)]">
                 Celebrating<br />Life Movies
               </p>
             </div>
@@ -547,43 +547,41 @@ export default function Home() {
             {/* Right — content */}
             <div className="flex-1 space-y-5">
               <div className="space-y-2">
-                <span className="inline-block rounded-full border border-[var(--color-teal)]/35 bg-[var(--color-teal)]/15 px-4 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.30em] text-[var(--color-teal)]">
+                <span className="inline-block rounded-full border border-[var(--color-gold)]/45 bg-white px-4 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.30em] text-[var(--color-coral)] shadow-sm">
                   Exclusive Resident Perk
                 </span>
                 <h2
-                  className="font-[family:var(--font-cormorant)] font-semibold text-white"
+                  className="font-[family:var(--font-cormorant)] font-semibold text-[var(--color-ink)]"
                   style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", lineHeight: 1.1 }}
                 >
                   Preserve Your Story with{" "}
-                  <span style={{ color: "#22e8d4" }}>15% Off</span>
+                  <span className="text-[var(--color-coral)]">15% Off</span>
                 </h2>
               </div>
 
-              <p className="max-w-xl text-sm leading-7 text-white/72">
+              <p className="max-w-xl text-sm leading-7 text-[var(--color-ink-soft)]">
                 Turn your life into a cinematic film. Through guided interviews and restored media,{" "}
-                <strong className="font-bold text-white">Celebrating Life Movies</strong>{" "}
+                <strong className="font-bold text-[var(--color-ink)]">Celebrating Life Movies</strong>{" "}
                 helps you shape your message into a legacy masterpiece for generations to watch.
               </p>
 
               {/* Promo code box */}
-              <div className="inline-flex flex-wrap items-center gap-4 rounded-xl border-2 border-dashed border-[var(--color-teal)]/35 bg-white/6 px-5 py-4">
+              <div className="inline-flex flex-wrap items-center gap-4 rounded-xl border-2 border-dashed border-[var(--color-gold)]/55 bg-white px-5 py-4 shadow-[0_14px_34px_rgba(5,20,25,0.08)]">
                 <div>
-                  <p className="text-[10px] font-extrabold uppercase tracking-[0.26em] text-[var(--color-teal)]/65">Your Promo Code</p>
-                  <p className="mt-0.5 font-[family:var(--font-cormorant)] text-2xl font-semibold tracking-widest text-[#22e8d4]">VILLAGES15</p>
+                  <p className="text-[10px] font-extrabold uppercase tracking-[0.26em] text-[var(--color-teal-deep)]/70">Your Promo Code</p>
+                  <p className="mt-0.5 font-[family:var(--font-cormorant)] text-2xl font-semibold tracking-widest text-[var(--color-coral)]">VILLAGES15</p>
                 </div>
-                <div className="hidden h-10 w-px bg-[var(--color-teal)]/20 sm:block" />
-                <p className="text-xs font-semibold text-white/50">Apply at checkout<br />to save 15%</p>
+                <div className="hidden h-10 w-px bg-[var(--color-line)] sm:block" />
+                <p className="text-xs font-semibold text-[var(--color-ink-soft)]">Apply at checkout<br />to save 15%</p>
               </div>
 
-              <a
-                href="https://www.celebratinglifemovies.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-extrabold text-[var(--color-ink)] shadow-[0_8px_32px_rgba(0,175,197,0.45)] transition hover:-translate-y-0.5 hover:brightness-110"
-                style={{ background: "linear-gradient(135deg, #22e8d4, #00afc5)" }}
+              <Link
+                href="/celebrating-life-movies-villages-discount"
+                className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-extrabold text-white shadow-[0_8px_28px_rgba(224,70,30,0.26)] transition hover:-translate-y-0.5 hover:brightness-105"
+                style={{ background: "linear-gradient(135deg, var(--color-coral), var(--color-gold))" }}
               >
                 Claim My 15% Discount →
-              </a>
+              </Link>
             </div>
           </div>
         </section>

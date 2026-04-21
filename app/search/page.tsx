@@ -8,7 +8,7 @@ import { getAllItems } from "@/lib/wordpress";
 
 export const metadata: Metadata = {
   title: "Search",
-  description: "Search the Village Socialite archive.",
+  description: "Search Village Socialite guides, stories, offers, and local coverage.",
 };
 
 type SearchProps = {
@@ -37,7 +37,7 @@ export default async function SearchPage({ searchParams }: SearchProps) {
         <SectionHeading
           eyebrow="Search"
           title={query ? `Results for "${q}"` : "Search Village Socialite"}
-          description={query ? `${results.length + blogResults.length} results across Village guides, stories, pages, offers, and archive content.` : "Use the search bar above to jump straight into Village Socialite stories, guides, offers, and local finds."}
+          description={query ? `${results.length + blogResults.length} results across Village guides, stories, pages, offers, and local coverage.` : "Use the search bar above to jump straight into Village Socialite stories, guides, offers, and local finds."}
         />
       </section>
       {blogResults.length > 0 ? (
@@ -52,7 +52,7 @@ export default async function SearchPage({ searchParams }: SearchProps) {
       ) : null}
       {query ? (
         <section className="space-y-6">
-          <h2 className="text-2xl font-extrabold text-[var(--color-ink)]">Original archive matches</h2>
+          <h2 className="text-2xl font-extrabold text-[var(--color-ink)]">Village Socialite story matches</h2>
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {results.map((item) => (
               <ImportedStoryCard key={`${item.type}-${item.id}`} item={item} />

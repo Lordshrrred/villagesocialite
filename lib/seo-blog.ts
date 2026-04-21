@@ -22,6 +22,18 @@ export type SeoBlogPost = {
   secondaryKeywords: string[];
 };
 
+export type SeoArticleSection = {
+  title: string;
+  body: string[];
+  takeaways: string[];
+};
+
+export type SeoInternalLink = {
+  href: string;
+  label: string;
+  description: string;
+};
+
 const categories: SeoBlogCategory[] = [
   {
     slug: "moving-to-the-villages",
@@ -269,7 +281,26 @@ function titleFromKeyword(keyword: string) {
     "The Smart Socialite Guide to",
     "The Village Socialite Guide to",
   ];
-  return `${starts[keyword.length % starts.length]} ${keyword}`;
+  return `${starts[keyword.length % starts.length]} ${headlineKeyword(keyword)}`;
+}
+
+function headlineKeyword(keyword: string) {
+  const smallWords = new Set(["a", "an", "and", "at", "for", "in", "near", "of", "or", "the", "to", "vs", "with"]);
+
+  return keyword
+    .split(" ")
+    .map((word, index) => {
+      if (/^(BBQ|FL|USA)$/i.test(word)) return word.toUpperCase();
+      if (word === "The" || word === "Villages" || word === "Florida") return word;
+      const lower = word.toLowerCase();
+      if (index > 0 && smallWords.has(lower)) return lower;
+      return lower.charAt(0).toUpperCase() + lower.slice(1);
+    })
+    .join(" ");
+}
+
+function sentenceKeyword(keyword: string) {
+  return keyword.charAt(0).toUpperCase() + keyword.slice(1);
 }
 
 function slugify(value: string) {
@@ -339,24 +370,26 @@ function editorialFor(slug: string) {
 
 function descriptionFor(keyword: string, slug: string, index: number) {
   const editorial = editorialFor(slug);
+  const sentenceCaseKeyword = sentenceKeyword(keyword);
   const opens = [
-    `${keyword} gets clearer when you look at how people actually live it in The Villages.`,
-    `${keyword} can shape a whole day in The Villages, from the first plan to the ride home.`,
-    `${keyword} is one of those local questions where the details matter more than the headline.`,
-    `${keyword} deserves a Villages-specific read, because the community has its own rhythm.`,
+    `${sentenceCaseKeyword} gets clearer when you look at how people actually live it in The Villages.`,
+    `${sentenceCaseKeyword} can shape a whole day in The Villages, from the first plan to the ride home.`,
+    `${sentenceCaseKeyword} is one of those local questions where the details matter more than the headline.`,
+    `${sentenceCaseKeyword} deserves a Villages-specific read, because the community has its own rhythm.`,
   ];
   return `${opens[index % opens.length]} This guide looks at ${editorial.scene}. ${editorial.promise}`;
 }
 
 function hookFor(keyword: string, slug: string, index: number) {
   const editorial = editorialFor(slug);
+  const sentenceCaseKeyword = sentenceKeyword(keyword);
   const hooks = [
-    `Around The Villages, ${keyword} is tied to real choices: where to go, who to meet, what to compare, and how to make the day feel easier.`,
+    `${sentenceCaseKeyword} is tied to real choices around The Villages: where to go, who to meet, what to compare, and how to make the day feel easier.`,
     `The Villages has a way of turning ${keyword} into something practical, social, and surprisingly personal once you are here.`,
     `For residents, future residents, and visiting family, ${keyword} is not abstract. It affects the routes, rooms, tables, and moments that make the community work.`,
     `A good answer on ${keyword} should feel local. It should understand the golf carts, the squares, the clubs, the weather, and the social pace of The Villages.`,
   ];
-  return `${hooks[index % hooks.length]} The Socialite angle is simple: ${editorial.promise}`;
+  return `${hooks[index % hooks.length]} ${editorial.promise}`;
 }
 
 function intentFor(slug: string) {
@@ -422,27 +455,156 @@ export function getRelatedSeoBlogPosts(post: SeoBlogPost, limit = 4) {
     .slice(0, limit);
 }
 
+const crossCategoryMap: Record<string, string[]> = {
+  "moving-to-the-villages": ["real-estate", "visitor-guides", "clubs-community"],
+  "things-to-do": ["dining-and-nightlife", "visitor-guides", "clubs-community"],
+  "golf-cart-life": ["moving-to-the-villages", "shopping-local-services", "visitor-guides"],
+  "dining-and-nightlife": ["things-to-do", "dating-social-life", "visitor-guides"],
+  "real-estate": ["moving-to-the-villages", "golf-cart-life", "health-wellness"],
+  "health-wellness": ["clubs-community", "moving-to-the-villages", "shopping-local-services"],
+  "clubs-community": ["things-to-do", "dating-social-life", "health-wellness"],
+  "shopping-local-services": ["golf-cart-life", "health-wellness", "dining-and-nightlife"],
+  "dating-social-life": ["clubs-community", "dining-and-nightlife", "things-to-do"],
+  "visitor-guides": ["things-to-do", "moving-to-the-villages", "dining-and-nightlife"],
+};
+
+function linkForPost(post: SeoBlogPost): SeoInternalLink {
+  return {
+    href: `/blog/${post.slug}`,
+    label: post.keyword,
+    description: post.description,
+  };
+}
+
+export function getSeoInternalLinks(post: SeoBlogPost) {
+  const categoryPosts = getSeoBlogPostsByCategory(post.categorySlug);
+  const currentIndex = categoryPosts.findIndex((item) => item.slug === post.slug);
+  const sameCategory = categoryPosts
+    .filter((item) => item.slug !== post.slug)
+    .sort((a, b) => {
+      const distanceA = Math.abs(categoryPosts.indexOf(a) - currentIndex);
+      const distanceB = Math.abs(categoryPosts.indexOf(b) - currentIndex);
+      return distanceA - distanceB || a.id - b.id;
+    })
+    .slice(0, 4)
+    .map(linkForPost);
+
+  const crossCategory = (crossCategoryMap[post.categorySlug] ?? [])
+    .map((categorySlug) => getSeoBlogPostsByCategory(categorySlug)[0])
+    .filter((item): item is SeoBlogPost => Boolean(item))
+    .slice(0, 3)
+    .map(linkForPost);
+
+  const category = getSeoBlogCategoryBySlug(post.categorySlug);
+  const categoryHub: SeoInternalLink = {
+    href: `/blog/category/${post.categorySlug}`,
+    label: category?.name ?? post.category,
+    description: category?.description ?? `More Village Socialite guides about ${post.category}.`,
+  };
+
+  const cornerstone: SeoInternalLink[] = [
+    {
+      href: "/blog",
+      label: "The Villages Florida Blog",
+      description: "The main hub for Village Socialite guides, local stories, offers, and resident-friendly research.",
+    },
+    {
+      href: "/search",
+      label: "Search Village Socialite",
+      description: "Search guides, local stories, categories, offers, and helpful Village Socialite coverage.",
+    },
+  ];
+
+  if (post.categorySlug === "golf-cart-life") {
+    cornerstone.push({
+      href: "/best-golf-carts-the-villages",
+      label: "Best Golf Carts in The Villages",
+      description: "A dedicated cornerstone page for cart reviews, buying guides, and cart-life coverage.",
+    });
+  }
+
+  return {
+    categoryHub,
+    sameCategory,
+    crossCategory,
+    cornerstone,
+  };
+}
+
+export function getRelatedSeoCategoryLinks(categorySlug: string) {
+  return (crossCategoryMap[categorySlug] ?? [])
+    .map((slug) => getSeoBlogCategoryBySlug(slug))
+    .filter((category): category is SeoBlogCategory => Boolean(category))
+    .map((category) => ({
+      href: `/blog/category/${category.slug}`,
+      label: category.name,
+      description: category.description,
+    }));
+}
+
 export function buildSeoArticleSections(post: SeoBlogPost) {
+  const editorial = editorialFor(post.categorySlug);
+
   return [
     {
       title: `Why "${post.keyword}" matters in The Villages`,
-      body: `${post.keyword} usually matters because somebody is trying to make a real Village decision. They might be visiting for the first time, comparing retirement communities, meeting friends for dinner, planning a cart route, choosing a club, or figuring out where the energy is tonight. Village Socialite treats that curiosity like the start of a local plan, not a generic answer dropped onto a page.`,
+      body: [
+        `${post.keyword} usually starts with a real-life decision, not a random search. Someone may be comparing retirement communities, planning a lifestyle visit, looking for a better dinner spot, sorting out a golf cart route, or trying to understand whether daily life in The Villages matches the story they have heard from friends.`,
+        `That is why this guide keeps the focus local. The Villages has its own pace, its own geography, and its own social habits. A useful answer needs to account for town squares, recreation centers, cart paths, seasonal crowds, weather, accessibility, and the way residents actually plan their week.`,
+      ],
+      takeaways: [
+        `Use ${post.keyword} as a planning topic, not just a search phrase.`,
+        "Compare convenience, social fit, timing, access, and repeat value.",
+        "Think about how the answer changes for residents, visitors, and future residents.",
+      ],
     },
     {
       title: "The local reality behind the topic",
-      body: `The Villages works differently from a normal Florida town. Town squares, recreation centers, golf cart paths, clubs, restaurants, healthcare, home services, and social calendars are all connected. That means a strong answer has to go beyond a generic list. It needs to explain how people actually move, meet, eat, shop, relax, and show up here.`,
+      body: [
+        `The Villages works differently from a typical Florida town because so much of daily life is connected. A restaurant choice can depend on golf cart access. A club may be easier to try if it meets near your neighborhood. A home search can change once you understand how often you want to be near Lake Sumter Landing, Brownwood, Spanish Springs, Sawgrass Grove, or a favorite recreation center.`,
+        `For this topic, pay attention to ${editorial.scene}. Those details are usually what separate a nice idea from something you will actually use once the novelty wears off.`,
+      ],
+      takeaways: [
+        "Location matters, but so does the rhythm of the day around that location.",
+        "Seasonal traffic, parking, reservations, heat, and rain can change the experience.",
+        "The best answer is the one that still works on an ordinary Tuesday.",
+      ],
     },
     {
       title: `How to use this guide if you are researching ${post.category}`,
-      body: `Start with the kind of day you actually want. If you are moving here, think about daily rhythm and proximity. If you are visiting, prioritize town squares, live music, restaurants, and golf cart access. If you already live here, use this as a prompt to try a new lane of Village life instead of repeating the same routine. The best local guides do not just answer a question; they help you move.`,
+      body: [
+        `Start with the kind of day you want to have. If you are moving here, think about errands, healthcare, social plans, club access, and how far you want to travel by cart or car. If you are visiting, give yourself enough time to see more than one square and at least one ordinary neighborhood route. If you already live here, use this topic as a nudge to refresh your routine.`,
+        `${editorial.promise} That may mean saving a list, making a reservation, checking a schedule, mapping a route, or asking one more question before you commit.`,
+      ],
+      takeaways: [
+        "Future residents should test the everyday routine, not only the brochure moments.",
+        "Visitors should plan around one or two strong anchors instead of trying to see everything.",
+        "Current residents can use the topic to discover a new club, route, service, or night out.",
+      ],
     },
     {
       title: "What locals and future locals should compare",
-      body: `Compare convenience, social fit, seasonality, cost, accessibility, and how easy it is to take action. A beautiful place matters, but the best Village experiences usually come from frictionless details: parking, golf cart access, timing, crowd level, reservation habits, weather, mobility, and whether the spot gives people a reason to come back.`,
+      body: [
+        `The strongest Villages decisions usually come from comparing the practical details. Cost matters, but so do crowd level, noise, parking, cart access, shade, seating, distance from home, beginner friendliness, and how comfortable the experience feels for different mobility levels.`,
+        `For ${post.keyword}, the right comparison is ${editorial.decision}. A beautiful place can still be a poor fit if it is hard to reach, too crowded at the wrong hour, or not aligned with the social life you are trying to build.`,
+      ],
+      takeaways: [
+        "Compare the experience at different times of day when timing affects comfort.",
+        "Look for friction points before they become reasons not to go.",
+        "Prioritize places and choices that make it easy to come back.",
+      ],
     },
     {
-      title: "The Village Socialite take",
-      body: `Village Socialite works best when it feels like the human version of the answer: practical guidance, local personality, useful offers, and clear next steps. The goal is simple: help businesses, creators, residents, and visitors connect faster with the people, places, and moments that make The Villages worth talking about.`,
+      title: "A practical next step",
+      body: [
+        `The next move is simple: pick one action that gets you closer to a real answer. Visit the square you keep hearing about. Drive the cart route before you need it. Call the restaurant before a busy weekend night. Tour the neighborhood at the hour you would normally be out. Ask whether the club welcomes first-timers. Small checks like that make local research feel less abstract.`,
+        `The Villages rewards people who test the lifestyle in motion. Whether you are studying ${post.keyword} for a move, a weekend visit, a better routine, or a business idea, the best information comes from seeing how the topic behaves in real Village conditions.`,
+      ],
+      takeaways: [
+        "Choose one specific test instead of collecting endless general advice.",
+        "Write down what felt easy, what felt awkward, and what you would repeat.",
+        "Use that real-world feedback to make the next decision sharper.",
+      ],
     },
   ];
 }

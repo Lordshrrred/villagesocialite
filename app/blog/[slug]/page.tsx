@@ -2,11 +2,10 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { BlogPromoAd } from "@/components/blog-promo-ad";
-import { SeoBlogCard } from "@/components/seo-blog-card";
 import {
   buildSeoArticleSections,
   getRelatedSeoBlogPosts,
+  getSeoInternalLinks,
   getSeoBlogPostBySlug,
   getSeoBlogPosts,
 } from "@/lib/seo-blog";
@@ -52,7 +51,21 @@ export default async function SeoBlogPostPage({ params }: PageProps) {
 
   const sections = buildSeoArticleSections(post);
   const related = getRelatedSeoBlogPosts(post, 3);
-  const isSvgImage = post.image.endsWith(".svg");
+  const internalLinks = getSeoInternalLinks(post);
+  const faqItems = [
+    [
+      `What is the best way to research ${post.keyword}?`,
+      "Start with the actual day you are trying to plan. Check location, timing, access, cost, comfort, and whether the choice fits how people move around The Villages.",
+    ],
+    [
+      `Is ${post.keyword} mainly for residents or visitors?`,
+      "It can matter to both. Residents use it to improve daily life, future residents use it to compare the lifestyle, and visitors use it to plan a trip that feels less rushed.",
+    ],
+    [
+      "What should I compare before deciding?",
+      "Compare convenience, golf cart or car access, crowd level, social fit, weather, reservations, mobility needs, and whether the experience is something you would actually repeat.",
+    ],
+  ];
   const schema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -72,161 +85,210 @@ export default async function SeoBlogPostPage({ params }: PageProps) {
     mainEntityOfPage: `https://villagesocialite.com/blog/${post.slug}`,
     keywords: [post.keyword, ...post.secondaryKeywords].join(", "),
   };
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://villagesocialite.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: "https://villagesocialite.com/blog",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.category,
+        item: `https://villagesocialite.com/blog/category/${post.categorySlug}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 4,
+        name: post.title,
+        item: `https://villagesocialite.com/blog/${post.slug}`,
+      },
+    ],
+  };
+  const internalLinkSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: `Internal links for ${post.keyword}`,
+    itemListElement: [
+      internalLinks.categoryHub,
+      ...internalLinks.sameCategory,
+      ...internalLinks.crossCategory,
+      ...internalLinks.cornerstone,
+    ].map((link, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: link.label,
+      url: `https://villagesocialite.com${link.href}`,
+    })),
+  };
+
+  const readingLinks = [
+    internalLinks.categoryHub,
+    ...internalLinks.sameCategory.slice(0, 4),
+    ...internalLinks.crossCategory,
+    ...internalLinks.cornerstone,
+  ];
 
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-5 py-10 sm:px-8 sm:py-14">
+    <div className="mx-auto w-full max-w-4xl px-5 py-10 sm:px-8 sm:py-14">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(internalLinkSchema) }}
+      />
 
-      <article className="overflow-hidden rounded-[2.4rem] border border-white/20 bg-[radial-gradient(circle_at_12%_0%,rgba(0,216,240,0.20),transparent_30%),linear-gradient(135deg,#051419,#004d63_55%,#00afc5)] text-white shadow-[0_30px_90px_rgba(5,20,25,0.22)]">
-        <div className="grid gap-0 lg:grid-cols-[1.02fr_0.98fr]">
-          <div className="space-y-6 p-7 sm:p-10 lg:p-12">
-            <Link
-              href={`/blog/category/${post.categorySlug}`}
-              className="inline-flex rounded-full border border-white/12 bg-white/8 px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.26em] text-[var(--color-seafoam)]"
-            >
-              {post.category}
-            </Link>
-            <h1 className="font-[family:var(--font-cormorant)] text-5xl font-semibold leading-none sm:text-6xl">
-              {post.title}
-            </h1>
-            <p className="text-lg leading-8 text-white/78">{post.hook}</p>
-            <div className="flex flex-wrap gap-2">
-              {[post.keyword, ...post.secondaryKeywords.slice(0, 3)].map((keyword) => (
-                <span
-                  key={keyword}
-                  className="rounded-full border border-white/10 bg-white/6 px-3 py-1 text-xs text-white/65"
-                >
-                  {keyword}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className="relative min-h-[340px]">
+      <nav aria-label="Breadcrumb" className="flex flex-wrap gap-2 text-sm font-bold text-[var(--color-ink-soft)]">
+        <Link href="/" className="hover:text-[var(--color-teal-deep)]">Home</Link>
+        <span>/</span>
+        <Link href="/blog" className="hover:text-[var(--color-teal-deep)]">Blog</Link>
+        <span>/</span>
+        <Link href={internalLinks.categoryHub.href} className="hover:text-[var(--color-teal-deep)]">
+          {post.category}
+        </Link>
+      </nav>
+
+      <article className="mt-9 bg-white">
+        <header className="space-y-6 border-b border-[var(--color-line)] pb-9">
+          <Link
+            href={`/blog/category/${post.categorySlug}`}
+            className="text-[11px] font-extrabold uppercase tracking-[0.28em] text-[var(--color-coral)] hover:text-[var(--color-teal-deep)]"
+          >
+            {post.category}
+          </Link>
+          <h1 className="font-[family:var(--font-cormorant)] text-5xl font-semibold leading-none text-[var(--color-ink)] sm:text-6xl">
+            {post.title}
+          </h1>
+          <p className="text-xl leading-9 text-[var(--color-ink-soft)]">{post.hook}</p>
+          <div className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-[var(--color-line)] bg-[var(--color-paper)]">
             <Image
               src={post.image}
               alt={post.title}
               fill
               priority
-              unoptimized={isSvgImage}
-              sizes="(min-width: 1024px) 42vw, 100vw"
-              className="object-cover"
+              sizes="(min-width: 768px) 768px, 100vw"
+              className="object-cover object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
           </div>
-        </div>
-      </article>
+          <p className="text-sm font-semibold leading-7 text-[var(--color-ink-soft)]">
+            Updated for Village Socialite readers. Main topic: <span className="text-[var(--color-ink)]">{post.keyword}</span>.
+          </p>
+        </header>
 
-      <section className="grid gap-8 lg:grid-cols-[0.7fr_0.3fr]">
-        <div className="space-y-6">
-          <div className="rounded-[2rem] border-2 border-white bg-[linear-gradient(180deg,#ffffff,#f7fcfd)] p-6 shadow-[0_24px_60px_rgba(5,20,25,0.06)] sm:p-10">
-            <p className="text-[11px] font-extrabold uppercase tracking-[0.3em] text-[var(--color-coral)]">
-              Local read
+        <div className="space-y-11 pt-9">
+          <section className="space-y-5">
+            <p className="text-xl leading-9 text-[var(--color-ink)]">{post.intent}</p>
+            <p className="text-lg leading-9 text-[var(--color-ink-soft)]">
+              This guide is organized around <strong className="font-extrabold text-[var(--color-ink)]">{post.keyword}</strong>, but it is written for real people making real plans in and around The Villages. The point is to help you compare the local details, understand the tradeoffs, and decide what is actually worth your time.
             </p>
-            <p className="mt-4 text-lg leading-9 text-[var(--color-ink-soft)]">{post.intent}</p>
-          </div>
+          </section>
 
-          {sections.map((section, index) => (
-            <div key={section.title} className="space-y-6">
-              <section className="rounded-[2rem] border-2 border-white bg-[linear-gradient(180deg,#ffffff,#f7fcfd)] p-6 shadow-[0_24px_60px_rgba(5,20,25,0.06)] sm:p-10">
-                <h2 className="font-[family:var(--font-cormorant)] text-4xl font-semibold leading-tight text-[var(--color-ink)]">
-                  {section.title}
-                </h2>
-                <p className="mt-5 text-lg leading-9 text-[var(--color-ink-soft)]">{section.body}</p>
-                <div className="mt-6 rounded-[1.4rem] border border-[var(--color-teal)]/15 bg-[var(--color-paper)] p-5">
-                  <p className="text-sm font-extrabold uppercase tracking-[0.22em] text-[var(--color-teal)]">
-                    Socialite move
-                  </p>
-                  <p className="mt-3 text-sm leading-7 text-[var(--color-ink-soft)]">
-                    If this topic matters to you, bookmark Village Socialite, search the archive, and join the list so the next great Village find comes to you first.
-                  </p>
-                  {index === 2 ? (
-                    <p className="mt-3 text-sm leading-7 text-[var(--color-ink-soft)]">
-                      Heading into a town square, market, golf cart ride, or Socialite-worthy night out?{" "}
-                      <Link href="/merch" className="font-extrabold text-[var(--color-coral)] underline decoration-[var(--color-gold)] decoration-2 underline-offset-4">
-                        Shop the Village Socialite merch
-                      </Link>{" "}
-                      and make the look part of the story.
-                    </p>
-                  ) : null}
-                  <Link
-                    href="/join-the-socialite"
-                    className="mt-4 inline-flex rounded-full bg-[var(--color-teal-deep)] px-5 py-2.5 text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-[var(--color-teal)]"
-                  >
-                    Join The Socialite →
-                  </Link>
-                </div>
-              </section>
-            </div>
+          {sections.map((section) => (
+            <section key={section.title} className="space-y-5 border-t border-[var(--color-line)] pt-9">
+              <h2 className="font-[family:var(--font-cormorant)] text-4xl font-semibold leading-tight text-[var(--color-ink)]">
+                {section.title}
+              </h2>
+              {section.body.map((paragraph) => (
+                <p key={paragraph} className="text-lg leading-9 text-[var(--color-ink-soft)]">
+                  {paragraph}
+                </p>
+              ))}
+              <div className="space-y-3">
+                <h3 className="text-base font-extrabold uppercase tracking-[0.18em] text-[var(--color-teal-deep)]">
+                  What to check
+                </h3>
+                <ul className="list-disc space-y-2 pl-6 text-base leading-8 text-[var(--color-ink-soft)]">
+                  {section.takeaways.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </section>
           ))}
 
-          <section className="rounded-[2rem] border-2 border-white bg-[linear-gradient(180deg,#ffffff,#f7fcfd)] p-6 shadow-[0_24px_60px_rgba(5,20,25,0.06)] sm:p-10">
+          <section className="space-y-5 border-y border-[var(--color-line)] py-9">
+            <h2 className="font-[family:var(--font-cormorant)] text-4xl font-semibold leading-tight text-[var(--color-ink)]">
+              Related reading on Village Socialite
+            </h2>
+            <p className="text-lg leading-9 text-[var(--color-ink-soft)]">
+              Continue with the larger <Link href={internalLinks.categoryHub.href} className="font-extrabold text-[var(--color-teal-deep)] underline decoration-[var(--color-teal)]/35 underline-offset-4">{post.category}</Link> guide path, then compare this topic with these nearby searches:
+            </p>
+            <ul className="space-y-3 text-base leading-8 text-[var(--color-ink-soft)]">
+              {readingLinks.slice(1, 7).map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="font-extrabold text-[var(--color-ink)] underline decoration-[var(--color-teal)]/30 underline-offset-4 hover:text-[var(--color-teal-deep)]">
+                    {link.label}
+                  </Link>
+                  <span className="text-[var(--color-ink-soft)]"> - {link.description}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="border-b border-[var(--color-line)] pb-9">
+            <p className="text-[11px] font-extrabold uppercase tracking-[0.28em] text-[var(--color-coral)]">
+              Join The Socialite
+            </p>
+            <h2 className="mt-3 font-[family:var(--font-cormorant)] text-4xl font-semibold leading-tight text-[var(--color-ink)]">
+              Keep up with the real life version of The Villages.
+            </h2>
+            <p className="mt-4 text-lg leading-9 text-[var(--color-ink-soft)]">
+              Village Socialite follows the restaurants, events, golf cart culture, resident stories, local services, and odd little moments that make this place feel alive.
+            </p>
+            <Link
+              href="/join-the-socialite"
+              className="mt-5 inline-flex rounded-full bg-[var(--color-teal-deep)] px-6 py-3 text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-[var(--color-teal)]"
+            >
+              Join The Socialite
+            </Link>
+          </section>
+
+          <section className="space-y-6">
             <h2 className="font-[family:var(--font-cormorant)] text-4xl font-semibold text-[var(--color-ink)]">
               Quick FAQ for {post.keyword}
             </h2>
-            <div className="mt-6 space-y-4">
-              {[
-                ["Who is this guide for?", "Residents, future residents, visiting family, local businesses, and anyone trying to make a better plan around The Villages."],
-                ["Is this official Villages information?", "No. Village Socialite is an independent lifestyle and media brand that organizes local discovery, commentary, offers, and community-facing content."],
-                ["What should I do next?", "Search the archive, explore related categories, and join The Socialite so you can stay close to the newest stories, events, guides, and offers."],
-              ].map(([question, answer]) => (
-                <details key={question} className="rounded-[1.25rem] border border-[var(--color-line)] bg-[var(--color-paper)] p-5">
-                  <summary className="cursor-pointer text-base font-extrabold text-[var(--color-ink)]">
-                    {question}
-                  </summary>
-                  <p className="mt-3 text-sm leading-7 text-[var(--color-ink-soft)]">{answer}</p>
-                </details>
-              ))}
-            </div>
+            {faqItems.map(([question, answer]) => (
+              <div key={question} className="space-y-2 border-t border-[var(--color-line)] pt-5">
+                <h3 className="text-xl font-extrabold text-[var(--color-ink)]">{question}</h3>
+                <p className="text-base leading-8 text-[var(--color-ink-soft)]">{answer}</p>
+              </div>
+            ))}
           </section>
         </div>
+      </article>
 
-        <aside className="space-y-6 lg:sticky lg:top-36 lg:self-start">
-          <div className="rounded-[1.7rem] border-2 border-white bg-[linear-gradient(180deg,#ffffff,#f7fcfd)] p-6 shadow-[0_20px_50px_rgba(5,20,25,0.06)]">
-            <p className="text-[11px] font-extrabold uppercase tracking-[0.28em] text-[var(--color-coral)]">
-              Plug in
-            </p>
-            <h2 className="mt-3 text-2xl font-extrabold text-[var(--color-ink)]">
-              Want your business, event, story, or offer in the Socialite mix?
-            </h2>
-            <p className="mt-3 text-sm leading-7 text-[var(--color-ink-soft)]">
-              Step into the spotlight and let Village Socialite help turn local attention into actual momentum.
-            </p>
-            <div className="mt-5 flex flex-wrap gap-3">
-              <Link
-                href="/join-the-socialite"
-                className="inline-flex rounded-full bg-[var(--color-gold)] px-5 py-3 text-sm font-extrabold text-[var(--color-ink)] transition hover:-translate-y-0.5"
-              >
-                Get featured →
-              </Link>
-              <Link
-                href="/merch"
-                className="inline-flex rounded-full border-2 border-[var(--color-teal)]/25 px-5 py-3 text-sm font-extrabold text-[var(--color-teal-deep)] transition hover:-translate-y-0.5 hover:border-[var(--color-coral)]/45"
-              >
-                Shop merch →
-              </Link>
-            </div>
-          </div>
-          <BlogPromoAd index={2} />
-          <BlogPromoAd index={0} />
-          <BlogPromoAd index={1} />
-        </aside>
-      </section>
-
-      <section className="space-y-8">
-        <div className="max-w-3xl space-y-3">
-          <p className="text-[11px] font-extrabold uppercase tracking-[0.32em] text-[var(--color-coral)]">
-            Keep reading
-          </p>
-          <h2 className="font-[family:var(--font-cormorant)] text-4xl font-semibold text-[var(--color-ink)]">
-            Related Village Socialite guides
-          </h2>
-        </div>
-        <div className="grid gap-6 md:grid-cols-3">
+      <section className="mt-12 border-t border-[var(--color-line)] pt-8">
+        <p className="text-[11px] font-extrabold uppercase tracking-[0.28em] text-[var(--color-coral)]">
+          Keep reading
+        </p>
+        <h2 className="mt-3 font-[family:var(--font-cormorant)] text-4xl font-semibold text-[var(--color-ink)]">
+          More Village Socialite guides
+        </h2>
+        <div className="mt-5 grid gap-4 sm:grid-cols-3">
           {related.map((item) => (
-            <SeoBlogCard key={item.slug} post={item} />
+            <Link
+              key={item.slug}
+              href={`/blog/${item.slug}`}
+              className="border-t border-[var(--color-line)] pt-4 text-base font-extrabold leading-7 text-[var(--color-ink)] underline decoration-[var(--color-teal)]/25 underline-offset-4 transition hover:text-[var(--color-teal-deep)]"
+            >
+              {item.keyword}
+            </Link>
           ))}
         </div>
       </section>

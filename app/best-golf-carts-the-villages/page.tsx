@@ -4,6 +4,7 @@ import Link from "next/link";
 import { decodeHtmlEntities } from "@/lib/content-format";
 import { getItemBySlug, getPrimaryImage, getItemsForCategory, getCategoryBySlug } from "@/lib/wordpress";
 import { ImportedStoryCard } from "@/components/imported-story-card";
+import { LegacyContent } from "@/components/legacy-content";
 
 const slug = "best-golf-carts-the-villages";
 
@@ -122,7 +123,7 @@ export default function BestGolfCartsPage() {
               sizes="(min-width: 768px) 80vw, 100vw"
             />
           </div>
-          <div className="legacy-content" dangerouslySetInnerHTML={{ __html: item.content }} />
+          <LegacyContent html={item.content} />
         </section>
       )}
 

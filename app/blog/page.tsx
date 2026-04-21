@@ -105,9 +105,9 @@ export default function BlogPage() {
 
       <section className="space-y-8">
         <SectionHeading
-          eyebrow="Original archive"
-          title="The original Socialite work still gets the spotlight."
-          description="The rebuilt blog keeps the existing archive in the mix, preserving the videos, offers, stories, and local texture that gave Village Socialite its personality in the first place."
+          eyebrow="Village Socialite stories"
+          title="Local videos, offers, and stories still get the spotlight."
+          description="The blog keeps the strongest Village Socialite coverage in the mix, including videos, offers, resident moments, restaurant finds, and the local texture that gives the site its personality."
         />
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {archivePosts.map((post) => (
