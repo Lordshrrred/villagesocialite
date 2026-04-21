@@ -46,7 +46,7 @@ export default function Home() {
         <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[rgba(5,20,25,0.55)] to-transparent" />
 
         {/* ══ MOBILE layout (hidden on desktop) ══════════════════════════ */}
-        <div className="relative flex h-full flex-col justify-center px-6 py-12 lg:hidden">
+        <div className="relative flex h-full flex-col justify-center px-6 pb-12 pt-20 lg:hidden">
           <div className="max-w-lg space-y-6 text-white">
             <p className="text-[11px] font-extrabold uppercase tracking-[0.38em] leading-6 text-[var(--color-cyan)]">
               The Villages, Florida<br />All-Access Pass
