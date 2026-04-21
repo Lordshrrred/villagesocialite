@@ -6,7 +6,7 @@ import { contactChannels } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact Village Socialite for editorial leads, partnerships, and launch planning.",
+    "Contact Village Socialite for editorial leads, partnerships, and brand inquiries.",
 };
 
 export default function ContactPage() {
@@ -15,8 +15,8 @@ export default function ContactPage() {
       <section className="rounded-[2.3rem] border border-[var(--color-line)] bg-white p-8 shadow-[0_24px_60px_rgba(18,27,33,0.05)] sm:p-12">
         <SectionHeading
           eyebrow="Contact"
-          title="A cleaner place to route conversation."
-          description="This placeholder contact surface is ready for final business details, a real inbox, and any launch-specific workflows the client wants to add."
+          title="Reach out for story leads, partnerships, and brand conversations."
+          description="Village Socialite is built to connect local insight, featured opportunities, and community-facing storytelling in one place."
         />
       </section>
 
@@ -34,19 +34,19 @@ export default function ContactPage() {
         </div>
         <div className="rounded-[1.9rem] border border-[var(--color-line)] bg-[var(--color-ink)] p-6 text-white">
           <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-[var(--color-seafoam)]">
-            Temporary contact path
+            Direct contact
           </p>
           <h3 className="mt-4 font-[family:var(--font-cormorant)] text-4xl font-semibold">
             hello@villagesocialite.com
           </h3>
           <p className="mt-4 text-sm leading-7 text-white/72">
-            Replace this placeholder inbox with the final approved email destination before launch.
+            For editorial ideas, featured opportunities, and partnership inquiries.
           </p>
           <Link
             href="mailto:hello@villagesocialite.com?subject=Village%20Socialite%20Launch"
             className="mt-6 inline-flex rounded-full bg-[var(--color-gold)] px-5 py-3 text-sm font-semibold text-[var(--color-ink)] transition hover:-translate-y-0.5"
           >
-            Email the launch team
+            Start the conversation
           </Link>
         </div>
       </section>

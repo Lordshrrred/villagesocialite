@@ -10,10 +10,10 @@ export function SiteFooter() {
             Village Socialite
           </p>
           <h2 className="max-w-xl font-[family:var(--font-cormorant)] text-4xl font-semibold text-white">
-            The polished digital hub for stories, culture, and local discovery in The Villages.
+            Stories, culture, and local discovery for the most talked-about corners of The Villages.
           </h2>
           <p className="max-w-2xl text-sm leading-7 text-[var(--color-mist)]">
-            Built as a clean rebuild with archived reference materials preserved separately for review.
+            Village Socialite brings together the places, people, moments, and conversations shaping daily life across the community.
           </p>
         </div>
         <div className="grid gap-10 sm:grid-cols-2">
@@ -32,11 +32,11 @@ export function SiteFooter() {
             </div>
           </div>
           <div>
-            <p className="mb-4 text-sm font-semibold text-white">Next steps</p>
+            <p className="mb-4 text-sm font-semibold text-white">Highlights</p>
             <div className="space-y-3 text-sm text-[var(--color-mist)]">
-              <p>Finalize approved copy and sponsor language.</p>
-              <p>Connect a real newsletter provider and inbox.</p>
-              <p>Replace placeholder contact endpoints before launch.</p>
+              <p>Featured stories and local guides.</p>
+              <p>Community culture and where to go next.</p>
+              <p>Business spotlights and partnership opportunities.</p>
             </div>
           </div>
         </div>

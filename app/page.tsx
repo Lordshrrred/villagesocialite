@@ -23,10 +23,10 @@ export default function Home() {
             </p>
             <div className="space-y-5">
               <h1 className="max-w-3xl font-[family:var(--font-cormorant)] text-5xl font-semibold leading-none sm:text-6xl lg:text-7xl">
-                Local life, elevated into a brand people want to come back to.
+                The insider&apos;s guide to what makes life in The Villages worth talking about.
               </h1>
               <p className="max-w-2xl text-base leading-8 text-white/78 sm:text-lg">
-                Village Socialite now feels like a polished home for stories, social energy, local discovery, guide content, and featured partnerships across The Villages.
+                From town square energy and standout dining to neighborhood culture, guides, and local personalities, Village Socialite brings the most interesting side of The Villages into one refined destination.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -34,7 +34,7 @@ export default function Home() {
                 href="/featured"
                 className="rounded-full bg-[var(--color-gold)] px-6 py-3 text-sm font-semibold text-[var(--color-ink)] transition hover:-translate-y-0.5"
               >
-                See the featured direction
+                Browse featured stories
               </Link>
               <Link
                 href="/explore"
@@ -45,9 +45,9 @@ export default function Home() {
             </div>
             <div className="grid gap-4 pt-4 sm:grid-cols-3">
               {[
-                ["20+", "editorial lanes and themes archived"],
-                ["13", "reference pages mirrored locally"],
-                ["60", "brand assets and visuals preserved"],
+                ["20+", "story lanes across culture, food, guides, and community"],
+                ["Weekly", "fresh reasons to explore what is happening now"],
+                ["One hub", "for discovery, personality, and local perspective"],
               ].map(([value, label]) => (
                 <div
                   key={label}
@@ -91,7 +91,7 @@ export default function Home() {
                     More editorial. More intentional. More trusted.
                   </p>
                   <p className="mt-4 text-sm leading-7 text-white/74">
-                    The homepage now guides visitors instead of dropping them into an undifferentiated archive.
+                    A sharper front door for stories, local finds, and the social pulse of The Villages.
                   </p>
                 </div>
               </div>
@@ -103,8 +103,8 @@ export default function Home() {
       <section className="space-y-8">
         <SectionHeading
           eyebrow="Featured stories and videos"
-          title="A stronger lead editorial package."
-          description="These showcase how Village Socialite can frame standout stories and recurring content verticals with more confidence and curation."
+          title="Featured stories with a stronger point of view."
+          description="The goal is simple: lead with the stories, videos, and local angles people actually want to click into first."
         />
         <div className="grid gap-6 lg:grid-cols-2">
           {featuredStories.map((story) => (
@@ -116,8 +116,8 @@ export default function Home() {
       <section className="space-y-8">
         <SectionHeading
           eyebrow="Explore by category"
-          title="Discovery paths that feel premium instead of sprawling."
-          description="The archive revealed a broad taxonomy. The rebuild keeps the most useful lanes and turns them into a clearer entry point for visitors."
+          title="Discovery paths that feel curated instead of crowded."
+          description="The Villages is bigger than one topic. These sections make it easier to move from curiosity to the exact lane that fits your interests."
         />
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {categories.map((category) => (
@@ -130,8 +130,8 @@ export default function Home() {
         <div className="rounded-[2rem] border border-[var(--color-line)] bg-white p-7 shadow-[0_20px_60px_rgba(18,27,33,0.05)] sm:p-10">
           <SectionHeading
             eyebrow="Why Village Socialite"
-            title="A more coherent identity for a much bigger platform."
-            description="The live site already hinted at a wider mission than a simple blog or video feed. This rebuild makes that breadth feel strategic."
+            title="A local brand with more range, more clarity, and more staying power."
+            description="Village Socialite works best when it feels like a true media and lifestyle hub, not just a stream of posts."
           />
         </div>
         <div className="grid gap-5">

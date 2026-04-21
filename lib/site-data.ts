@@ -46,7 +46,7 @@ export const featuredStories: Story[] = [
   {
     title: "A clearer lens on singles clubs, social circles, and belonging",
     description:
-      "Village Socialite can frame dating and connection content with more context, more care, and a much stronger editorial standard.",
+      "Connection stories, social life, and community culture deserve better framing than rumor and clickbait.",
     href: "/featured",
     category: "People & Community",
     image:
@@ -107,7 +107,7 @@ export const whyVillageSocialite = [
   {
     title: "Curated, not chaotic",
     description:
-      "The rebuild puts a real editorial layer in front of discovery so visitors know where to start and why it matters.",
+      "A clear editorial layer helps visitors know where to start, what matters, and what to explore next.",
   },
   {
     title: "Broad enough to be useful",
@@ -115,16 +115,16 @@ export const whyVillageSocialite = [
       "Dining, culture, moving, health, events, shopping, and community now live inside one clear system instead of scattered silos.",
   },
   {
-    title: "Built for growth",
+    title: "Built like a real platform",
     description:
-      "This structure is easy to expand with real client-approved content, sponsor modules, newsletter tooling, and launch-ready pages later.",
+      "The brand now has room for guides, features, business spotlights, newsletters, and signature series without losing focus.",
   },
 ];
 
 export const communityHighlights = [
   "A more credible front door for residents, newcomers, businesses, and local storytellers.",
-  "A flexible homepage that can spotlight one major campaign while still supporting ongoing discovery.",
-  "Room for guides, featured videos, local partnerships, and newsletter growth without collapsing back into a random content dump.",
+  "A homepage that can spotlight what is hot right now while still supporting deeper exploration.",
+  "Room for guides, featured videos, local partnerships, and newsletter growth without becoming a random content dump.",
 ];
 
 export const featuredCollections = [
@@ -143,9 +143,9 @@ export const featuredCollections = [
 ];
 
 export const aboutPoints = [
-  "Village Socialite is evolving from a legacy video-heavy site into a polished local lifestyle platform.",
+  "Village Socialite is growing into a polished local lifestyle platform with a stronger editorial voice.",
   "The brand now reads as a central digital hub for discovery, community, and credible local storytelling.",
-  "The next phase can support editorial publishing, newsletter growth, partnerships, and richer local guide content without a full replatform later.",
+  "The next phase can support editorial publishing, newsletter growth, partnerships, and richer local guide content.",
 ];
 
 export const contactChannels = [
@@ -158,7 +158,7 @@ export const contactChannels = [
     detail: "Local brands, sponsored features, featured business packages, and launch collaborations.",
   },
   {
-    title: "Launch planning",
-    detail: "Final content approvals, newsletter tooling, contact routing, and DNS/deployment handoff.",
+    title: "Brand inquiries",
+    detail: "Partnership conversations, featured opportunities, and larger brand collaborations.",
   },
 ];

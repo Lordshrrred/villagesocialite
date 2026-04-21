@@ -6,13 +6,13 @@ export function NewsletterPanel() {
       <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
         <div className="space-y-4">
           <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-white/70">
-            Newsletter CTA
+            Stay in the loop
           </p>
           <h2 className="font-[family:var(--font-cormorant)] text-4xl font-semibold sm:text-5xl">
-            Build the inbox version of Village Socialite next.
+            Get the best of Village Socialite delivered first.
           </h2>
           <p className="max-w-2xl text-base leading-8 text-white/78">
-            The visual system is ready for a real email program. For now, this presentation layer points visitors toward a manual sign-up path until the final newsletter stack is approved.
+            New features, local finds, standout stories, and the moments people will be talking about next.
           </p>
         </div>
         <div className="rounded-[1.5rem] bg-white/10 p-5 backdrop-blur">
@@ -33,7 +33,7 @@ export function NewsletterPanel() {
               Request early access
             </Link>
             <p className="self-center text-xs leading-6 text-white/68">
-              Replace with ConvertKit, Beehiiv, Mailchimp, or a custom form later.
+              Editorial updates, featured stories, and local highlights.
             </p>
           </div>
         </div>
