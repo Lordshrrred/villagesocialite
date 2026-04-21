@@ -127,8 +127,6 @@ export function SiteHeader() {
                       "rounded-xl px-5 py-4 text-lg font-bold transition",
                       active
                         ? "bg-white text-[var(--color-teal-deep)]"
-                        : item.highlight
-                        ? "bg-white/20 text-white border border-white/30"
                         : "text-white/90 hover:bg-white/15",
                     ].join(" ")}
                   >
