@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import { SpotlightForm } from "@/components/spotlight-form";
 import {
   getLatestPosts,
@@ -10,16 +11,97 @@ import {
 import { decodeHtmlEntities } from "@/lib/content-format";
 import type { WordpressItem } from "@/lib/wordpress";
 
-const featuredCategories = [
-  { slug: "events-the-villages",        label: "Events",        icon: "🎉" },
-  { slug: "live-music-the-villages",    label: "Live Music",    icon: "🎸" },
-  { slug: "food-dining-the-villages",   label: "Food & Dining", icon: "🍽️" },
-  { slug: "dating-the-villages",        label: "Dating",        icon: "💛" },
-  { slug: "golf-cart-life-the-villages",label: "Golf Carts",   icon: "🛺" },
-  { slug: "real-estate-the-villages",   label: "Real Estate",   icon: "🏡" },
-  { slug: "nightlife-the-villages",     label: "Nightlife",     icon: "🍸" },
-  { slug: "golfing-the-villages",       label: "Golfing",       icon: "⛳" },
+type CategoryIconName = "calendar" | "music" | "dining" | "heart" | "cart" | "home" | "nightlife" | "golf";
+type FeaturedCategory = {
+  slug: string;
+  label: string;
+  icon: CategoryIconName;
+  tone: string;
+  glow: string;
+  wash: string;
+};
+
+const featuredCategories: FeaturedCategory[] = [
+  { slug: "events-the-villages",         label: "Events",        icon: "calendar",  tone: "#ff5b35", glow: "rgba(255,91,53,0.34)", wash: "#fff0e9" },
+  { slug: "live-music-the-villages",     label: "Live Music",    icon: "music",     tone: "#7b4dff", glow: "rgba(123,77,255,0.34)", wash: "#f2edff" },
+  { slug: "food-dining-the-villages",    label: "Food & Dining", icon: "dining",    tone: "#d48700", glow: "rgba(212,135,0,0.32)", wash: "#fff6df" },
+  { slug: "dating-the-villages",         label: "Dating",        icon: "heart",     tone: "#e83170", glow: "rgba(232,49,112,0.34)", wash: "#ffeaf2" },
+  { slug: "golf-cart-life-the-villages", label: "Golf Carts",    icon: "cart",      tone: "#00a7b8", glow: "rgba(0,167,184,0.34)", wash: "#e2fbff" },
+  { slug: "real-estate-the-villages",    label: "Real Estate",   icon: "home",      tone: "#2d8a4b", glow: "rgba(45,138,75,0.32)", wash: "#e9f9ee" },
+  { slug: "nightlife-the-villages",      label: "Nightlife",     icon: "nightlife", tone: "#3342b8", glow: "rgba(51,66,184,0.34)", wash: "#ecf0ff" },
+  { slug: "golfing-the-villages",        label: "Golfing",       icon: "golf",      tone: "#66a80f", glow: "rgba(102,168,15,0.30)", wash: "#f1fadf" },
 ];
+
+function CategoryGlyph({ name }: { name: CategoryIconName }) {
+  const strokeProps = {
+    stroke: "currentColor",
+    strokeWidth: 2.3,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
+  };
+
+  return (
+    <svg viewBox="0 0 64 64" aria-hidden="true" className="h-12 w-12">
+      {name === "calendar" && (
+        <>
+          <path d="M17 15h30a5 5 0 0 1 5 5v28a5 5 0 0 1-5 5H17a5 5 0 0 1-5-5V20a5 5 0 0 1 5-5Z" fill="currentColor" opacity=".13" />
+          <path d="M19 13v8M45 13v8M12 26h40M20 35h8M36 35h8M20 44h12" fill="none" {...strokeProps} />
+          <path d="M43 41l3 2.2 3.6-5.2" fill="none" {...strokeProps} />
+        </>
+      )}
+      {name === "music" && (
+        <>
+          <path d="M20 43c4 0 8-2.4 8-6.2V16l22-4v22.5" fill="none" {...strokeProps} />
+          <path d="M28 23l22-4M20 43c-4.2 0-7.6 2.1-7.6 5s3.4 5 7.6 5 8-2.2 8-5-3.8-5-8-5ZM42 37c-4.2 0-7.6 2.1-7.6 5s3.4 5 7.6 5 8-2.2 8-5-3.8-5-8-5Z" fill="currentColor" opacity=".16" />
+          <path d="M47 10l5 3-5 3" fill="none" {...strokeProps} />
+        </>
+      )}
+      {name === "dining" && (
+        <>
+          <path d="M17 51h30M21 46h22c4.4 0 8-3.6 8-8H13c0 4.4 3.6 8 8 8Z" fill="currentColor" opacity=".14" />
+          <path d="M13 38h38M22 29c-2.4-3.8 2.2-5.5 0-9M32 29c-2.4-3.8 2.2-5.5 0-9M42 29c-2.4-3.8 2.2-5.5 0-9M20 51h24" fill="none" {...strokeProps} />
+          <path d="M16 38c1.2-8 7.8-14 16-14s14.8 6 16 14" fill="none" {...strokeProps} />
+        </>
+      )}
+      {name === "heart" && (
+        <>
+          <path d="M32 52S14 42 14 27.6C14 20.8 18.6 17 24 17c3.8 0 6.5 2 8 5 1.5-3 4.2-5 8-5 5.4 0 10 3.8 10 10.6C50 42 32 52 32 52Z" fill="currentColor" opacity=".18" />
+          <path d="M32 52S14 42 14 27.6C14 20.8 18.6 17 24 17c3.8 0 6.5 2 8 5 1.5-3 4.2-5 8-5 5.4 0 10 3.8 10 10.6C50 42 32 52 32 52Z" fill="none" {...strokeProps} />
+          <path d="M49 13l1.6 3.4L54 18l-3.4 1.6L49 23l-1.6-3.4L44 18l3.4-1.6L49 13Z" fill="currentColor" />
+        </>
+      )}
+      {name === "cart" && (
+        <>
+          <path d="M16 39h33l-3-12H24l-8 12Z" fill="currentColor" opacity=".16" />
+          <path d="M16 39h33l-3-12H24l-8 12ZM23 39v-8h12M35 27v12M45 39v-7M18 47h32" fill="none" {...strokeProps} />
+          <path d="M23 47a4 4 0 1 0 0 8 4 4 0 0 0 0-8ZM46 47a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" fill="currentColor" opacity=".25" />
+          <path d="M19 25h7l2-8h14l3 8" fill="none" {...strokeProps} />
+        </>
+      )}
+      {name === "home" && (
+        <>
+          <path d="M13 31 32 15l19 16v20H18V31Z" fill="currentColor" opacity=".14" />
+          <path d="M13 31 32 15l19 16M18 31v20h28V31M27 51V38h10v13" fill="none" {...strokeProps} />
+          <path d="M42 19v-5h6v10" fill="none" {...strokeProps} />
+        </>
+      )}
+      {name === "nightlife" && (
+        <>
+          <path d="M18 15h28L35 31v18h-6V31L18 15Z" fill="currentColor" opacity=".14" />
+          <path d="M18 15h28L35 31v18h-6V31L18 15ZM24 23h16M26 49h12" fill="none" {...strokeProps} />
+          <path d="M47 36a11 11 0 0 1-11-11 12 12 0 1 0 11 11Z" fill="currentColor" opacity=".28" />
+        </>
+      )}
+      {name === "golf" && (
+        <>
+          <path d="M28 51c9.4 0 17-2.7 17-6s-7.6-6-17-6-17 2.7-17 6 7.6 6 17 6Z" fill="currentColor" opacity=".13" />
+          <path d="M34 45V12M34 13l17 6-17 6M22 44h8M42 47h.1" fill="none" {...strokeProps} />
+          <path d="M22 44c0-3 2.7-5.5 6-5.5S34 41 34 44" fill="none" {...strokeProps} />
+        </>
+      )}
+    </svg>
+  );
+}
 
 function VideoSection({
   badge,
@@ -203,16 +285,29 @@ export default function Home() {
             <p className="text-[11px] font-extrabold uppercase tracking-[0.34em] text-[var(--color-coral)]">Explore by category</p>
             <h2 className="mt-2 font-[family:var(--font-cormorant)] text-4xl font-semibold text-[var(--color-ink)] sm:text-5xl">Choose your lane.</h2>
           </div>
-          <div className="rounded-[2rem] border-2 border-[var(--color-line)] bg-white p-5 shadow-[0_12px_40px_rgba(5,20,25,0.05)] sm:p-6">
-            <div className="grid grid-cols-4 gap-3 sm:grid-cols-8">
+          <div className="relative overflow-hidden rounded-[2rem] border-2 border-white/70 bg-[linear-gradient(135deg,rgba(255,255,255,0.92),rgba(204,232,238,0.48))] p-4 shadow-[0_24px_70px_rgba(5,20,25,0.10)] sm:p-6">
+            <span className="pointer-events-none absolute left-8 top-7 h-2 w-2 rounded-full bg-[var(--color-coral)] category-twinkle" />
+            <span className="pointer-events-none absolute right-16 top-10 h-2.5 w-2.5 rounded-full bg-[var(--color-gold)] category-twinkle category-twinkle-delay-1" />
+            <span className="pointer-events-none absolute bottom-8 left-1/3 h-1.5 w-1.5 rounded-full bg-[var(--color-teal)] category-twinkle category-twinkle-delay-2" />
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-8">
               {featuredCategories.map((cat) => (
                 <Link key={cat.slug} href={`/category/${cat.slug}`}
-                  className="group flex flex-col items-center gap-2.5 rounded-[1.4rem] bg-[var(--color-paper)] p-3.5 text-center transition hover:-translate-y-1 hover:bg-white hover:shadow-[0_8px_28px_rgba(0,175,197,0.18)]"
+                  className="category-card group relative isolate flex min-h-[8.75rem] flex-col items-center justify-between overflow-hidden rounded-[1.35rem] border border-white/70 bg-white px-3 py-4 text-center shadow-[0_10px_28px_rgba(5,20,25,0.07)] transition duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_42px_rgba(5,20,25,0.14)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-teal)]"
+                  style={{
+                    "--category-tone": cat.tone,
+                    "--category-glow": cat.glow,
+                    "--category-wash": cat.wash,
+                  } as CSSProperties}
                 >
-                  <span className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-2xl shadow-sm transition-transform group-hover:scale-110 group-hover:shadow-[0_4px_14px_rgba(0,175,197,0.22)]">
-                    {cat.icon}
+                  <span className="category-sheen" aria-hidden="true" />
+                  <span className="category-star category-star-1" aria-hidden="true" />
+                  <span className="category-star category-star-2" aria-hidden="true" />
+                  <span className="category-star category-star-3" aria-hidden="true" />
+                  <span className="category-orbit" aria-hidden="true" />
+                  <span className="category-icon-wrap flex h-16 w-16 items-center justify-center rounded-2xl text-[var(--category-tone)] transition duration-300 group-hover:scale-110">
+                    <CategoryGlyph name={cat.icon} />
                   </span>
-                  <span className="text-[11px] font-extrabold leading-tight text-[var(--color-ink)]">{cat.label}</span>
+                  <span className="relative z-10 text-[0.72rem] font-extrabold leading-tight text-[var(--color-ink)]">{cat.label}</span>
                 </Link>
               ))}
             </div>
