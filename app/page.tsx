@@ -1,13 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ImportedStoryCard } from "@/components/imported-story-card";
 import { SpotlightForm } from "@/components/spotlight-form";
 import {
   getLatestPosts,
   getCategoryBySlug,
   getItemsForCategory,
   getPrimaryImage,
-  getFeaturedMigrationStories,
 } from "@/lib/wordpress";
 import { decodeHtmlEntities } from "@/lib/content-format";
 import type { WordpressItem } from "@/lib/wordpress";
@@ -123,7 +121,6 @@ function VideoSection({
 
 export default function Home() {
   const trendingPosts = getLatestPosts(5);
-  const featuredStories = getFeaturedMigrationStories().slice(0, 4);
 
   const diningCat    = getCategoryBySlug("food-dining-the-villages");
   const golfCartCat  = getCategoryBySlug("golf-cart-life-the-villages");
@@ -153,7 +150,7 @@ export default function Home() {
         <div className="relative flex h-full flex-col justify-center px-6 pb-12 pt-20 lg:hidden">
           <div className="max-w-lg space-y-6 text-white">
             <p className="text-[11px] font-extrabold uppercase tracking-[0.38em] leading-6 text-[var(--color-cyan)]">The Villages, Florida<br />All-Access Pass</p>
-            <h1 className="font-[family:var(--font-cormorant)] font-semibold text-white" style={{ fontSize: "clamp(2.6rem, 10vw, 3.4rem)", lineHeight: 1.08 }}>
+            <h1 className="font-[family:var(--font-cormorant)] font-semibold text-white" style={{ fontSize: "clamp(2.1rem, 8.5vw, 3.4rem)", lineHeight: 1.08 }}>
               Watch The Villages<br />Come To Life.
             </h1>
             <p className="text-base leading-8 text-white/85">Nightlife, golf, live music, dining, real estate, and the moments that make The Villages unlike anywhere else.</p>
