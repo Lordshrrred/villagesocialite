@@ -28,7 +28,7 @@ export default function Home() {
     <div className="flex flex-col">
 
       {/* ── Full-bleed cinematic hero ────────────────────────────────── */}
-      <section className="relative overflow-hidden" style={{ height: "clamp(520px, 72vh, 800px)" }}>
+      <section className="relative overflow-hidden" style={{ minHeight: "clamp(520px, 72vh, 800px)" }}>
         {/* Background image */}
         <div className="absolute inset-0">
           <Image
