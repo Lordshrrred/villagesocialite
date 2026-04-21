@@ -49,8 +49,8 @@ export default function Home() {
             <p className="text-[11px] font-extrabold uppercase tracking-[0.38em] text-[var(--color-cyan)]">
               The Villages, Florida — All-Access Pass
             </p>
-            <h1 className="font-[family:var(--font-cormorant)] text-5xl font-semibold leading-[1.05] sm:text-6xl lg:text-[5.2rem]">
-              Watch The Villages Come&nbsp;To Life.
+            <h1 className="font-[family:var(--font-cormorant)] text-[3.2rem] font-semibold leading-[1.08] sm:text-[4rem] lg:text-[4.8rem]">
+              Watch The Villages<br />Come To Life.
             </h1>
             <p className="text-lg leading-9 text-white/85 sm:text-xl">
               Discover nightlife, golf, live music, dining, real estate, and the local moments through real video. Browse by category or dive into the feed.
@@ -157,7 +157,7 @@ export default function Home() {
             <p className="text-[11px] font-extrabold uppercase tracking-[0.32em] text-[var(--color-coral)]">
               Moving to The Villages?
             </p>
-            <h2 className="mt-3 font-[family:var(--font-cormorant)] text-3xl font-semibold text-[var(--color-ink)]">
+            <h2 className="mt-3 font-[family:var(--font-cormorant)] text-[1.75rem] font-semibold leading-tight text-[var(--color-ink)]">
               Get the real inside view before you move.
             </h2>
             <div className="mt-5 space-y-3 text-base text-[var(--color-ink-soft)]">

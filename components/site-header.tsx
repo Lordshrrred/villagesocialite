@@ -14,9 +14,7 @@ const mainNav = [
   { href: "/fat-pig-society-cbd", label: "Organic CBD" },
 ];
 
-const rightNav = { href: "/categories", label: "Video Categories", highlight: false };
-
-const mobileNav = [...mainNav, rightNav];
+const mobileNav = mainNav;
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -94,23 +92,13 @@ export function SiteHeader() {
         className="hidden lg:block"
         style={{ background: "linear-gradient(90deg, #004d63 0%, #007a96 20%, #00afc5 50%, #00d4e0 78%, #22e8d4 100%)" }}
       >
-        <div className="mx-auto flex w-full max-w-7xl items-center px-4 py-1.5 sm:px-6">
-          {/* Centered main nav */}
-          <div className="flex flex-1 items-center justify-center gap-0.5">
+        <div className="mx-auto flex w-full max-w-7xl items-center justify-center px-4 py-1.5 sm:px-6">
+          <div className="flex items-center justify-center gap-0.5">
             {mainNav.map((item) => (
               <Link key={item.href} href={item.href} className={navItemClass(item.href, item.highlight)}>
                 {item.label}
               </Link>
             ))}
-          </div>
-          {/* Video Categories pinned right */}
-          <div className="pl-2 border-l border-white/20">
-            <Link
-              href={rightNav.href}
-              className={navItemClass(rightNav.href) + " !bg-white/15 border border-white/30"}
-            >
-              {rightNav.label}
-            </Link>
           </div>
         </div>
       </nav>
