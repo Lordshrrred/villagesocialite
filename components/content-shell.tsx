@@ -11,11 +11,19 @@ import {
   type WordpressItem,
 } from "@/lib/wordpress";
 
-export function ContentShell({ item }: { item: WordpressItem }) {
+type ContentShellProps = {
+  item: WordpressItem;
+  heroImage?: string;
+  heroImageFit?: "cover" | "contain";
+};
+
+export function ContentShell({ item, heroImage, heroImageFit = "cover" }: ContentShellProps) {
   const categories = getCategoryNames(item.categories);
   const tags = getTagNames(item.tags).slice(0, 18);
   const relatedPosts = getRelatedPosts(item, 3);
   const title = decodeHtmlEntities(item.title);
+  const heroSrc = heroImage ?? getPrimaryImage(item);
+  const containHero = heroImageFit === "contain";
 
   return (
     <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-5 py-10 sm:px-8 sm:py-14">
@@ -23,16 +31,16 @@ export function ContentShell({ item }: { item: WordpressItem }) {
       {/* ── Hero header ─────────────────────────────────────────────── */}
       <header className="overflow-hidden rounded-[2.4rem] border border-white/10 bg-[var(--color-ink)] text-white shadow-[0_30px_90px_rgba(9,18,24,0.22)]">
         {/* Hero image — full width */}
-        <div className="relative h-56 w-full sm:h-72 lg:h-80">
+        <div className={`relative h-56 w-full sm:h-72 lg:h-80 ${containHero ? "bg-[linear-gradient(135deg,#f8fcf6,#eaf6ef)]" : ""}`}>
           <Image
-            src={getPrimaryImage(item)}
+            src={heroSrc}
             alt={title}
             fill
             sizes="(min-width: 1024px) 60vw, 100vw"
-            className="object-cover"
+            className={containHero ? "object-contain p-6 sm:p-8" : "object-cover"}
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+          {!containHero ? <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" /> : null}
         </div>
 
         {/* Text block below image, inside same dark card */}

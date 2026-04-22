@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ContentShell } from "@/components/content-shell";
 import { decodeHtmlEntities } from "@/lib/content-format";
-import { getItemBySlug, getPrimaryImage } from "@/lib/wordpress";
+import { getItemBySlug } from "@/lib/wordpress";
 
 const slug = "fat-pig-society-cbd";
+const heroImage =
+  "https://i0.wp.com/villagesocialite.com/wp-content/uploads/2026/04/500-1-scaled-1.jpg?w=1200&ssl=1";
 
 export function generateMetadata(): Metadata {
   const item = getItemBySlug(slug);
@@ -19,7 +21,7 @@ export function generateMetadata(): Metadata {
     openGraph: {
       title: decodeHtmlEntities(item.title),
       description: decodeHtmlEntities(item.description),
-      images: [{ url: getPrimaryImage(item) }],
+      images: [{ url: heroImage }],
     },
     alternates: {
       canonical: `/${slug}`,
@@ -34,5 +36,5 @@ export default function FatPigSocietyCbdPage() {
     notFound();
   }
 
-  return <ContentShell item={item} />;
+  return <ContentShell item={item} heroImage={heroImage} heroImageFit="contain" />;
 }
