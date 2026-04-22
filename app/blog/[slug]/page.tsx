@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BlogPromoAd } from "@/components/blog-promo-ad";
+import { shouldPreserveImageText } from "@/lib/image-fit";
 import {
   buildSeoArticleSections,
   getRelatedSeoBlogPosts,
@@ -53,6 +54,7 @@ export default async function SeoBlogPostPage({ params }: PageProps) {
   const sections = buildSeoArticleSections(post);
   const related = getRelatedSeoBlogPosts(post, 3);
   const internalLinks = getSeoInternalLinks(post);
+  const preserveImageText = shouldPreserveImageText(post.image);
   const faqItems = [
     [
       `What is the best way to research ${post.keyword}?`,
@@ -185,7 +187,7 @@ export default async function SeoBlogPostPage({ params }: PageProps) {
                 fill
                 priority
                 sizes="(min-width: 1024px) 760px, 100vw"
-                className="object-cover object-center"
+                className={preserveImageText ? "object-contain p-3" : "object-cover object-center"}
               />
             </div>
             <p className="text-sm font-semibold leading-7 text-[var(--color-ink-soft)]">
