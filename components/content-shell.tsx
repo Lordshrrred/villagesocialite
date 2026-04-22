@@ -17,9 +17,17 @@ type ContentShellProps = {
   item: WordpressItem;
   heroImage?: string;
   heroImageFit?: "cover" | "contain";
+  heroImagePosition?: string;
+  blendHeroText?: boolean;
 };
 
-export function ContentShell({ item, heroImage, heroImageFit = "cover" }: ContentShellProps) {
+export function ContentShell({
+  item,
+  heroImage,
+  heroImageFit = "cover",
+  heroImagePosition = "center",
+  blendHeroText = false,
+}: ContentShellProps) {
   const categories = getCategoryNames(item.categories);
   const tags = getTagNames(item.tags).slice(0, 18);
   const relatedPosts = getRelatedPosts(item, 3);
@@ -36,21 +44,36 @@ export function ContentShell({ item, heroImage, heroImageFit = "cover" }: Conten
         {videoTarget ? (
           <VideoEmbed item={item} image={heroSrc} priority />
         ) : (
-          <div className={`relative h-56 w-full sm:h-72 lg:h-80 ${containHero ? "bg-[linear-gradient(135deg,#f8fcf6,#eaf6ef)]" : ""}`}>
+          <div className={`relative w-full ${blendHeroText ? "h-72 sm:h-96 lg:h-[34rem]" : "h-56 sm:h-72 lg:h-80"} ${containHero ? "bg-[linear-gradient(135deg,#f8fcf6,#eaf6ef)]" : ""}`}>
             <Image
               src={heroSrc}
               alt={title}
               fill
               sizes="(min-width: 1024px) 60vw, 100vw"
               className={containHero ? "object-contain p-6 sm:p-8" : "object-cover"}
+              style={{ objectPosition: heroImagePosition }}
               priority
             />
-            {!containHero ? <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" /> : null}
+            {!containHero ? (
+              <div
+                className={
+                  blendHeroText
+                    ? "absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[var(--color-ink)] via-[rgba(2,16,20,0.34)] to-transparent"
+                    : "absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"
+                }
+              />
+            ) : null}
           </div>
         )}
 
         {/* Text block below image, inside same dark card */}
-        <div className="space-y-5 p-6 sm:p-10">
+        <div
+          className={
+            blendHeroText
+              ? "relative -mt-28 space-y-5 bg-gradient-to-b from-transparent via-[rgba(2,16,20,0.84)] to-[var(--color-ink)] px-6 pb-8 pt-32 sm:px-10 sm:pb-10 lg:-mt-36 lg:px-14 lg:pb-14 lg:pt-44"
+              : "space-y-5 p-6 sm:p-10"
+          }
+        >
           {categories.length > 0 && (
             <div className="flex flex-wrap gap-2">
               {categories.map((category) => (
