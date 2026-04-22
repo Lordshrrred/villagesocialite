@@ -11,6 +11,7 @@ export function ImportedStoryCard({ item }: { item: WordpressItem }) {
   const title = decodeHtmlEntities(item.title);
   const image = getPrimaryImage(item);
   const preserveImageText = shouldPreserveImageText(image);
+  const isVideoPost = item.type === "post";
 
   return (
     <article className="group overflow-hidden rounded-[1.25rem] border border-[var(--color-line)] bg-white shadow-[0_14px_34px_rgba(18,27,33,0.05)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_44px_rgba(18,27,33,0.08)]">
@@ -35,6 +36,13 @@ export function ImportedStoryCard({ item }: { item: WordpressItem }) {
               </div>
             </>
           ) : null}
+          {isVideoPost ? (
+            <div className="absolute bottom-3 right-3 flex h-10 w-10 items-center justify-center rounded-full border border-white/45 bg-white/92 text-[var(--color-ink)] shadow-[0_8px_22px_rgba(0,0,0,0.2)] transition duration-300 group-hover:scale-105 group-hover:bg-[var(--color-gold)]">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="ml-0.5">
+                <path d="M7 4.8v14.4L18.4 12 7 4.8z" fill="currentColor" />
+              </svg>
+            </div>
+          ) : null}
         </div>
         <div className="space-y-3 p-4">
           {preserveImageText ? (
@@ -45,7 +53,7 @@ export function ImportedStoryCard({ item }: { item: WordpressItem }) {
           <h3 className="text-lg font-extrabold leading-tight text-[var(--color-ink)]">{title}</h3>
           <p className="line-clamp-3 text-xs leading-6 text-[var(--color-ink-soft)]">{excerptText(item.excerpt || item.content)}</p>
           <span className="inline-flex items-center gap-2 text-xs font-extrabold text-[var(--color-ink)] transition group-hover:gap-3">
-            Read more
+            {isVideoPost ? "Watch now" : "Read more"}
             <span aria-hidden="true">→</span>
           </span>
         </div>

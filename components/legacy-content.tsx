@@ -1,5 +1,19 @@
+import { getYouTubeVideoId } from "@/lib/video-links";
+
+const youtubeVideoUrl =
+  /https?:\/\/(?:www\.)?(?:youtube\.com\/(?:watch\?[^<\s"']*?v=|embed\/|shorts\/|live\/)|youtu\.be\/)([A-Za-z0-9_-]{11})(?:[^\s<"']*)?/gi;
+
+function linkYouTubeUrls(html: string) {
+  return html.replace(youtubeVideoUrl, (url) => {
+    const videoId = getYouTubeVideoId(url);
+    if (!videoId) return url;
+
+    return `<a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" rel="noopener noreferrer">Watch this video on YouTube</a>`;
+  });
+}
+
 function normalizeInternalLinks(html: string) {
-  return html
+  return linkYouTubeUrls(html)
     .replace(
       /href=(["'])https?:\/\/(?:www\.)?villagesocialite\.com\/category\/([^"'?#/\s]+)\/?([^"']*)\1/gi,
       'href="/category/$2$3"',
